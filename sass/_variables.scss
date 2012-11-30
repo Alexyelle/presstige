@@ -1,0 +1,52 @@
+@import "compass/css3";
+
+// Global mixin
+// --------------------------------------------------
+
+@mixin transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  @extend .transparent-background;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+@mixin transparent-shades($name, $color) {
+  @each $alpha in 90, 80, 70, 60, 50, 40, 30, 20, 10 {
+    .#{$name}-#{$alpha} {
+      @include transparent($color, $alpha / 100);
+    }
+  }
+}
+
+// Global values
+// --------------------------------------------------
+
+$mainColor:#000;
+$secondColor:#999;
+$thirdColor:#666;
+$mainColorLighter: lighten($mainColor, 25%) !default;
+$secondColor: lighten($secondColor, 25%) !default;
+$thirdColor: lighten($thirdColor, 25%) !default;
+$mainColorDarker:  darken($mainColor, 15%) !default;
+$secondColorDarker:  darken($secondColor, 15%) !default;
+$thirdColorDarker:  darken($thirdColor, 15%) !default;
+
+// Grays
+// -------------------------
+$grayDark:  #a0a09f !default;
+$grayLight: #d8d8d8 !default;
+$grayLighter: #f2f1f0 !default;
+
+
+// Links
+// -------------------------
+$linkColor: #08c !default;
+$linkColorHover:  darken($linkColor, 15%) !default;
+
+
+// Typography
+// -------------------------
+$baseFontFamily:  Verdana, Helvetica, Arial, sans-serif !default;
+$titleFontFamily: Verdana, Helvetica, Arial, sans-serif !default;
+$secondFontFamily:  Verdana, Helvetica, Arial, sans-serif !default;
