@@ -72,9 +72,9 @@ function presstige_options_page_fields() {
 	// Checkbox Form Fields section
 	$options[] = array(
 		"section" => "checkbox_section",
-		"id"      => PRESSTIGE_SHORTNAME . "_checkbox_input",
-		"title"   => __( 'Checkbox', 'presstige' ),
-		"desc"    => __( 'Some Description', 'presstige' ),
+		"id"      => PRESSTIGE_SHORTNAME . "_maintenance",
+		"title"   => __( 'Website in maintenance', 'presstige' ),
+		"desc"    => __( 'Check this box if you want to hide your website.', 'presstige' ),
 		"type"    => "checkbox",
 		"std"     => 1 // 0 for off
 	);

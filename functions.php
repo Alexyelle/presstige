@@ -201,7 +201,7 @@ function remove_thumbnail_dimensions( $html ) {
 function load_page_wait() {
 	$options = get_option('presstige_options');
 	$maintenance = $options['presstige_maintenance'];
-	if ( $maintenance == 'true' ){
+	if ( $maintenance == 1){
 		$isLoginPage = strpos($_SERVER['REQUEST_URI'], "wp-login.php") !== false;
 		$adminPage = strpos($_SERVER['REQUEST_URI'], "wp-admin") !== false;
 		if($maintenance && !is_user_logged_in() && !$isLoginPage && !$adminPage) {
