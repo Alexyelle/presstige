@@ -6,7 +6,7 @@ require_once('functions/wordpress_cleanup.php'); //admin cleanups
 // require_once('functions/custom_post_types.php'); // boiler template for CPT
 require_once('functions/script_style_cleanups.php'); // javascript cleanups
 // require_once('functions/remove-comments-absolute.php'); //to remove comments completely
-require_once ( 'functions/theme-options.php' );
+require_once ( 'functions/my-theme-settings.php' );
 
 
 /**
@@ -199,12 +199,12 @@ function remove_thumbnail_dimensions( $html ) {
 
 // PAGE ATTENTE
 function load_page_wait() {
-	$options = get_option('inpixel_theme_settings_options');
-	$maintenance = $options['maintenance'];
+	$options = get_option('presstige_options');
+	$maintenance = $options['presstige_maintenance'];
 	if ( $maintenance == 'true' ){
 		$isLoginPage = strpos($_SERVER['REQUEST_URI'], "wp-login.php") !== false;
 		$adminPage = strpos($_SERVER['REQUEST_URI'], "wp-admin") !== false;
-		if($options['maintenance'] && !is_user_logged_in() && !$isLoginPage && !$adminPage) {
+		if($maintenance && !is_user_logged_in() && !$isLoginPage && !$adminPage) {
 			include('functions/maintenance.php');
 			exit();	
 		}
@@ -214,10 +214,10 @@ add_action('init','load_page_wait');
 
 // FAVICON
 function favicon() {
-	$options = get_option('inpixel_theme_settings_options');
-	if ($options['favicon'] != ""){
-		echo '<link rel="shortcut icon" href="'.$options['favicon'].'" type="image/vnd.microsoft.icon"/>';
-		echo '<link rel="icon" href="'.$options['favicon'].'" type="image/x-ico"/>';
+	$options = get_option('presstige_options');
+	if ($options['presstige_favicon'] != ""){
+		echo '<link rel="shortcut icon" href="'.$options['presstige_favicon'].'" type="image/vnd.microsoft.icon"/>';
+		echo '<link rel="icon" href="'.$options['presstige_favicon'].'" type="image/x-ico"/>';
 	} else {
 		echo '<link rel="shortcut icon" href="'.get_bloginfo('template_directory').'/img/favicon.ico" type="image/vnd.microsoft.icon"/>';
 		echo '<link rel="icon" href="'.get_bloginfo('template_directory').'/img/favicon.ico" type="image/x-ico"/>';
@@ -227,9 +227,9 @@ add_action('wp_head', 'favicon');
 
 // GOOGLE ANALYTICS
 function add_google_analytics() {
-	$options = get_option('inpixel_theme_settings_options');
-	if ($options['analytics'] != "")
-		echo $options['analytics'];
+	$options = get_option('presstige_options');
+	if ($options['presstige_analytics'] != "")
+		echo "<script type='text/javascript'>".$options['presstige_analytics']."</script>";
 }
 add_action('wp_footer', 'add_google_analytics');
 
