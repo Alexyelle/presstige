@@ -52,7 +52,7 @@
 	<?php wp_head(); ?>
 	</head>
 
-<body <?php body_class(); ?>
+<body <?php body_class(); ?> >
 	
 	<div class="hfeed" id="container">
 		<header role="banner" id="site-header">

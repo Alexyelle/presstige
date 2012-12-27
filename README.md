@@ -24,3 +24,4 @@ Presstige is a blank theme for starting a WordPress project based on <a href="ht
 * Somes functions (essential konami code)
 * Specifications options page (favicon - analytics - maintenance)
 * SASS
+* Some additions css from h5bp.com
