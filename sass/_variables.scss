@@ -2,7 +2,6 @@
 
 // Global mixin
 // --------------------------------------------------
-
 @mixin transparent($color, $alpha) {
   $rgba: rgba($color, $alpha);
   $ie-hex-str: ie-hex-str($rgba);
@@ -12,12 +11,13 @@
 }
 
 @mixin transparent-shades($name, $color) {
-  @each $alpha in 90, 80, 70, 60, 50, 40, 30, 20, 10 {
+  @each $alpha in 80, 60, 40, 20, 10 {
     .#{$name}-#{$alpha} {
       @include transparent($color, $alpha / 100);
     }
   }
 }
+
 
 // Global values
 // --------------------------------------------------

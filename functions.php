@@ -197,6 +197,19 @@ function remove_thumbnail_dimensions( $html ) {
     return $html;
 } */
 
+/** 
+* Collects our theme options 
+* 
+* @return array 
+*/  
+function presstige_get_global_options(){  
+	$options = array();  
+	$options = get_option('presstige_options');
+return $options;  
+}  
+
+$options = presstige_get_global_options();  
+
 // PAGE ATTENTE
 function load_page_wait() {
 	$options = get_option('presstige_options');

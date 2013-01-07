@@ -1,6 +1,7 @@
 <?php
-  
+  global $options;
 ?>
+
 
 	</div><!-- #main  -->
 
@@ -16,10 +17,10 @@
 					&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>
 					<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'presstige' ); ?>"   ><?php printf( __( 'Proudly powered by %s.', 'presstige' ), 'WordPress' ); ?></a>
 					<?php 
-						$options = get_option('inpixel_theme_settings_options');
-						if ($options['copy'] != "")
-							echo "<p class='small'>".$options['copy']."</p>";										 
-					?>
+						if ($options['presstige_copy'] != "")
+							echo "<p class='small'>".$options['presstige_copy']."</p>";			
+				 
+					?>	
 				</small>
 			</div>
 	</footer>

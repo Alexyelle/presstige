@@ -12,7 +12,7 @@
 	/*
 	 * Print the <title> tag based on what is being viewed.
 	 */
-	global $page, $paged;
+	global $page, $paged, $options;
 
 	wp_title( '|', true, 'right' );
 
@@ -50,6 +50,10 @@
     <![endif]-->
 	
 	<?php wp_head(); ?>
+
+	<!-- To use the options  -->
+	<?php $options = presstige_get_global_options(); ?>
+	
 	</head>
 
 <body <?php body_class(); ?> >
