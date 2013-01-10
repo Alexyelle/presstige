@@ -579,6 +579,9 @@ function presstige_validate_options($input) {
 					    $file = wp_handle_upload($_FILES[$inputfile], $overrides);
 					    $inputfile = $file['url'];
 						$valid_input[$option['id']] = $inputfile;
+					}else{
+						$options = get_option('presstige_options');
+						$valid_input[$option['id']] = $options['presstige_favicon'];
 					}
 
 					if ( $delete) { 

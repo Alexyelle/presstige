@@ -26,7 +26,7 @@
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'themename' ), max( $paged, $page ) );
+		echo ' | ' . sprintf( __( 'Page %s', 'presstige' ), max( $paged, $page ) );
 
 	?></title>
 	<meta name="description" content="">
@@ -66,11 +66,11 @@
 			</hgroup>
 
 			<nav>
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'themename' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Main menu', 'presstige' ); ?></h3>
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
 				
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'themename' ); ?>"><?php _e( 'Skip to primary content', 'themename' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'themename' ); ?>"><?php _e( 'Skip to secondary content', 'themename' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'presstige' ); ?>"><?php _e( 'Skip to secondary content', 'presstige' ); ?></a></div>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'container'=> 'div' )); ?>
 			</nav>

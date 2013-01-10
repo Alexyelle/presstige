@@ -224,7 +224,7 @@ if ( ! class_exists( 'Remove_Comments_Absolute' ) ) {
 				/* translators: Separator between blog name and feed type in feed links */
 				'separator'	=> _x( '&raquo;', 'feed link' ),
 				/* translators: 1: blog title, 2: separator (raquo) */
-				'feedtitle'	=> __( '%1$s %2$s Feed','themename' ),
+				'feedtitle'	=> __( '%1$s %2$s Feed','presstige' ),
 			);
 		
 			$args = wp_parse_args( $args, $defaults );

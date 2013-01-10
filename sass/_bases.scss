@@ -126,12 +126,12 @@ body {
     font-family:$baseFontFamily;
 }
 ::-moz-selection {
-    background: #ee868b;
+    background: $selectionColor;
     text-shadow: none;
 }
 
 ::selection {
-    background: #ee868b;
+    background: $selectionColor;
     text-shadow: none;
 }
 html,

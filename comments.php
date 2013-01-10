@@ -22,10 +22,10 @@ function handcraftedwp_comment( $comment, $args, $depth ) {
 			<footer>
 				<div class="comment-author vcard">
 					<?php echo get_avatar( $comment, 40 ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'themename' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php printf( __( '%s <span class="says">says:</span>', 'presstige' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 				</div><!-- .comment-author .vcard -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 'themename' ); ?></em>
+					<em><?php _e( 'Your comment is awaiting moderation.', 'presstige' ); ?></em>
 					<br />
 				<?php endif; ?>
 
@@ -33,9 +33,9 @@ function handcraftedwp_comment( $comment, $args, $depth ) {
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time   datetime="<?php comment_time( 'c' ); ?>">
 					<?php
 						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 'themename' ), get_comment_date(),  get_comment_time() ); ?>
+						printf( __( '%1$s at %2$s', 'presstige' ), get_comment_date(),  get_comment_time() ); ?>
 					</time></a>
-					<?php edit_comment_link( __( '(Edit)', 'themename' ), ' ' );
+					<?php edit_comment_link( __( '(Edit)', 'presstige' ), ' ' );
 					?>
 				</div><!-- .comment-meta .commentmetadata -->
 			</footer>
@@ -43,7 +43,7 @@ function handcraftedwp_comment( $comment, $args, $depth ) {
 			<div class="comment-body"><?php comment_text(); ?></div>
   	
 	         	 <div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => __('Reply','themename') ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => __('Reply','presstige') ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-##  -->
 
@@ -53,7 +53,7 @@ function handcraftedwp_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 	?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'themename' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'themename'), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', 'presstige' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'presstige'), ' ' ); ?></p>
 	<?php
 			break;
 	endswitch;
@@ -64,7 +64,7 @@ endif; // ends check for handcraftedwp_comment()
 
 	<div id="comments">
 	<?php if ( post_password_required() ) : ?>
-		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'themename' ); ?></div>
+		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'presstige' ); ?></div>
 	</div><!-- .comments -->
 	<?php return;
 		endif;
@@ -75,16 +75,16 @@ endif; // ends check for handcraftedwp_comment()
 	<?php if ( have_comments() ) : ?>
 		<h2 id="comments-title">
 			<?php
-			    printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'themename' ),
+			    printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'presstige' ),
 			        number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 			?>
 		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" role="article">
-			<h1 class="section-heading"><?php _e( 'Comment navigation', 'themename' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'themename' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'themename' ) ); ?></div>
+			<h1 class="section-heading"><?php _e( 'Comment navigation', 'presstige' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'presstige' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'presstige' ) ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
@@ -94,9 +94,9 @@ endif; // ends check for handcraftedwp_comment()
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below" role="article">
-			<h1 class="section-heading"><?php _e( 'Comment navigation', 'themename' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'themename' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'themename' ) ); ?></div>
+			<h1 class="section-heading"><?php _e( 'Comment navigation', 'presstige' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'presstige' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'presstige' ) ); ?></div>
 		</nav>
 		<?php endif; // check for comment navigation ?>
 
@@ -112,7 +112,7 @@ endif; // ends check for handcraftedwp_comment()
 			 */
 			if ( ! comments_open() && ! is_page() ) :
 			?>
-			<p class="nocomments"><?php _e( 'Comments are closed.', 'themename' ); ?></p>
+			<p class="nocomments"><?php _e( 'Comments are closed.', 'presstige' ); ?></p>
 			<?php endif; // end ! comments_open() && ! is_page() ?>
 
 
@@ -122,11 +122,11 @@ endif; // ends check for handcraftedwp_comment()
 
 	<?php comment_form(
 	     array(
-		     'cancel_reply_link' => __( 'Cancel reply', 'themename' ),
-		     'title_reply' => __( 'Leave a Reply', 'themename' ),
-		     'comment_notes_before' =>  __( 'Your email address will not be published. Required fields are marked *', 'themename' ),
-		     'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ,'themename'), admin_url( 'profile.php' ), $user_identity, wp_logout_url( get_permalink() ) ) . '</p>',
-		     'label_submit' => __( 'Post a comment', 'themename' )
+		     'cancel_reply_link' => __( 'Cancel reply', 'presstige' ),
+		     'title_reply' => __( 'Leave a Reply', 'presstige' ),
+		     'comment_notes_before' =>  __( 'Your email address will not be published. Required fields are marked *', 'presstige' ),
+		     'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ,'presstige'), admin_url( 'profile.php' ), $user_identity, wp_logout_url( get_permalink() ) ) . '</p>',
+		     'label_submit' => __( 'Post a comment', 'presstige' )
 		)
 	); ?>
 

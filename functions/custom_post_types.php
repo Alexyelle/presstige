@@ -4,16 +4,16 @@
 add_action( 'init', 'add_cpt' );
 function add_cpt() {
   $labels = array(
-    'name' => _('Name', 'themename'),
-    'singular_name' => _('Name', 'themename'),
-    'add_new' => _('Add a ... ', 'themename'),
-    'add_new_item' => __('Add a new ... ', 'themename'),
-    'edit_item' => __('Edit the ... ', 'themename'),
-    'new_item' => __('New ', 'themename'),
-    'view_item' => __('See the', 'themename'),
-    'search_items' => __('Find a ... ', 'themename'),
-    'not_found' =>  __('No ... found', 'themename'),
-    'not_found_in_trash' => __('No ... found in trash', 'themename'),
+    'name' => _('Name', 'presstige'),
+    'singular_name' => _('Name', 'presstige'),
+    'add_new' => _('Add a ... ', 'presstige'),
+    'add_new_item' => __('Add a new ... ', 'presstige'),
+    'edit_item' => __('Edit the ... ', 'presstige'),
+    'new_item' => __('New ', 'presstige'),
+    'view_item' => __('See the', 'presstige'),
+    'search_items' => __('Find a ... ', 'presstige'),
+    'not_found' =>  __('No ... found', 'presstige'),
+    'not_found_in_trash' => __('No ... found in trash', 'presstige'),
     'parent_item_colon' => ''
   );
 
@@ -43,16 +43,16 @@ function create_type_taxonomies()
   // Add new taxonomy, make it hierarchical (like categories)
   $labels = array(
     'name' => _x( 'Name  ', 'taxonomy general name' ),
-    'singular_name' => _x( 'Name ', 'taxonomy singular name' , 'themename'),
-    'search_items' =>  __( 'Search item  ' , 'themename'),
-    'all_items' => __( ' All items  ', 'themename' ),
-    'parent_item' => __( 'Parent item ', 'themename' ),
-    'parent_item_colon' => __( 'Parent item colon ' , 'themename'),
-    'edit_item' => __( 'Edit item ' , 'themename'), 
-    'update_item' => __( 'Update item', 'themename' ),
-    'add_new_item' => __( 'Add new item' , 'themename'),
-    'new_item_name' => __( 'New item name', 'themename' ),
-    'menu_name' => __( 'Menu name', 'themename' ),
+    'singular_name' => _x( 'Name ', 'taxonomy singular name' , 'presstige'),
+    'search_items' =>  __( 'Search item  ' , 'presstige'),
+    'all_items' => __( ' All items  ', 'presstige' ),
+    'parent_item' => __( 'Parent item ', 'presstige' ),
+    'parent_item_colon' => __( 'Parent item colon ' , 'presstige'),
+    'edit_item' => __( 'Edit item ' , 'presstige'), 
+    'update_item' => __( 'Update item', 'presstige' ),
+    'add_new_item' => __( 'Add new item' , 'presstige'),
+    'new_item_name' => __( 'New item name', 'presstige' ),
+    'menu_name' => __( 'Menu name', 'presstige' ),
   ); 	
 
   register_taxonomy('type',array('nom'), 
