@@ -5,8 +5,6 @@
 <!--[if IE 9 ]>    <html <?php language_attributes(); ?> class="lteie9 ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
 
 <title><?php
 	/*
@@ -29,6 +27,8 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'presstige' ), max( $paged, $page ) );
 
 	?></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!--  Mobile Viewport Fix -->
