@@ -249,7 +249,8 @@ function presstige_form_field_fn($args = array()) {
 			$delete = "delete_".$id;
 			echo "<input id='$id' name='$id' type='file' /><label for='$id'><img height='16' src='". $options[$id] ."' />" . __( '(preferably .ico)', 'presstige' ) . "</label>";
 			if ( '' != $options[$id] ):
-	            echo "<input id='" . $delete . " name='" . $presstige_option_name . "[".$delete."]' type='submit' class='button-primary' value='". __( 'Delete Favicon', 'presstige' )."' />";
+	            // echo "<input id='" . $delete . "' name='" . $presstige_option_name . "[".$delete."]' type='submit' class='button-primary' value='". __( 'Delete Favicon', 'presstige' )."' />";	            
+	            echo "<input id='" . $delete . "' name='" . $delete . "' type='submit' class='button-primary' value='". __( 'Delete Favicon', 'presstige' )."' />";
 	        endif; 
 		break;
 	}
@@ -571,10 +572,14 @@ function presstige_validate_options($input) {
 				break;
 
 				case 'file':
-					$delete =! empty($input['delete_'.$id.'']) ? true : false; 
+					// $delete =! empty($input['delete_'.$id.'']) ? true : false; 
 					$inputfile = $option['id'];
 					// favicon
-					if ($_FILES[$inputfile]['size'] > 0) {
+					if (isset($_POST['delete_presstige_favicon'])){
+						$option['id'] = $input[$option['id']]; 
+					    delete_image( $input[$option['id']] );  
+					    $option['id'] = '';  
+					}else if ($_FILES[$inputfile]['size'] > 0) {
 					    $overrides = array('test_form' => false); 
 					    $file = wp_handle_upload($_FILES[$inputfile], $overrides);
 					    $inputfile = $file['url'];
@@ -582,14 +587,7 @@ function presstige_validate_options($input) {
 					}else{
 						$options = get_option('presstige_options');
 						$valid_input[$option['id']] = $options['presstige_favicon'];
-					}
-
-					if ( $delete) { 
-						$option['id'] = $input[$option['id']]; 
-					    delete_image( $input[$option['id']] );  
-					    $option['id'] = '';  
-					} 
-
+					}	
 				break;
 				
 			}

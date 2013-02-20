@@ -59,8 +59,8 @@ if ( function_exists( 'add_theme_support' ) ) {
 	// images à la une 
 	add_theme_support( 'post-thumbnails' ); 
 	add_image_size( 'post-image', 500, 9999 ); //550 pixels wide (and unlimited height)
-	add_image_size( 'featured-image', 952, 200, true);
-	add_image_size( 'four-up-thumbnail', 200, 100, true);
+	add_image_size( 'big-image', 952, 200, true);
+	add_image_size( 'mini-image', 200, 100, true);
 
 	/*
 	//I have yet to have a good reason to support post formats. Disabling for now...
@@ -82,10 +82,10 @@ function scripts_styles() {
 	// AJOUT DES SCRIPTS
 	// paramètres => ('string:identifiant_unique', 'string:url', 'array:dépendances')
 	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('modernizr', get_template_directory_uri().'/js/modernizr.custom.js');
-	wp_enqueue_script('konami', get_template_directory_uri().'/js/konami.js', array('jquery'));
-	wp_enqueue_script('general', get_template_directory_uri().'/js/general.js', array('jquery'));	
+	wp_enqueue_script('jquery','/wp-includes/js/jquery/jquery.js','','',true);
+	wp_enqueue_script('modernizr', get_template_directory_uri().'/js/modernizr.custom.js', array('jquery'), false, true);
+	wp_enqueue_script('konami', get_template_directory_uri().'/js/konami.js', array('jquery'), false, true);
+	wp_enqueue_script('general', get_template_directory_uri().'/js/general.js', array('jquery'), false, true);
 }
 add_action('wp_enqueue_scripts', 'scripts_styles');
 

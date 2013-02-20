@@ -625,9 +625,9 @@ margin-left: -7px;
 
 /* inline-block and table-cell for IE6/IE7 */
 /* warning: .col needs width on IE6/IE7 */
-.ie67 .btn,
-.ie67 .col,
-.ie67 .inbl {
+.lteie7 .btn,
+.lteie7 .col,
+.lteie7 .inbl {
     display: inline;
     zoom: 1;
 }
