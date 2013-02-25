@@ -18,7 +18,7 @@
 					<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'presstige' ); ?>"   ><?php printf( __( 'Proudly powered by %s.', 'presstige' ), 'WordPress' ); ?></a>
 					<?php 
 						if ($options['presstige_copy'] != "")
-							echo "<p class='small'>".$options['presstige_copy']."</p>";			
+							echo "<p class='small'>".stripslashes($options['presstige_copy'])."</p>";			
 				 
 					?>	
 				</small>
