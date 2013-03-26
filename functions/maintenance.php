@@ -3,46 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title><?php bloginfo('name') ?> - site en construction</title>
-
-<style>
-body{ background:url('<?php bloginfo('template_url') ?>/img/bg_maintenance.png') repeat; }
-* {
-	margin:0;
-	padding:0;
-	color: #3a3a39;
-}
-header {
-	width:100%;
-	height:150px;
-	text-align:center;
-	margin-top: 20px;
-}
-section {
-	width:800px;
-	text-align:center;
-	margin:auto;
-	font-family:calibri;
-}
-section article {
-	margin-top:20px;
-}
-section article h1 {
-	text-align:center;	
-	font-size:25px;
-}
-</style>
-
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/maintenance.css" media="screen" />
+	<link href='http://fonts.googleapis.com/css?family=Coustard:400,900' rel='stylesheet' type='text/css'>
+	
+	<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 
 <body>
 <header>
-	<img src='<?php bloginfo('template_url') ?>/img/logo_company.png' />
+	<h1><img src='<?php bloginfo('template_url') ?>/img/logo_company.png' alt="<?php bloginfo('name') ?>" /></h1>
 </header>
 
 <section>
 	<article>
-    	<h1><?php bloginfo('name') ?></h1>
-        <p>Site actuellement en contruction. Merci de revenir plus tard.</p> 
+    	<h2>Maintenance</h2>
+        <p>Désolé mais notre site est en cours de maintenance.<br /><br />Merci de votre compréhension !</p> 
+        <a href="wp-login.php" title="Se connecter">Admin login</a>
     </article>
 </section>
 </body>

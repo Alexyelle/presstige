@@ -1,0 +1,1375 @@
+/* line 4, ../sass/style.scss */
+.transparent-background, .light-80, .light-60, .light-40, .light-20, .light-10 {
+  background-color: transparent;
+  zoom: 1;
+}
+
+/* line 15, ../sass/_variables.scss */
+.light-80 {
+  background-color: rgba(255, 255, 255, 0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF);
+}
+
+/* line 15, ../sass/_variables.scss */
+.light-60 {
+  background-color: rgba(255, 255, 255, 0.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF);
+}
+
+/* line 15, ../sass/_variables.scss */
+.light-40 {
+  background-color: rgba(255, 255, 255, 0.4);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF,endColorstr=#66FFFFFF);
+}
+
+/* line 15, ../sass/_variables.scss */
+.light-20 {
+  background-color: rgba(255, 255, 255, 0.2);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+}
+
+/* line 15, ../sass/_variables.scss */
+.light-10 {
+  background-color: rgba(255, 255, 255, 0.1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#1AFFFFFF,endColorstr=#1AFFFFFF);
+}
+
+/*
+Theme Name: Presstige
+Theme URI: 
+Author: O2Sources
+Author URI: http://www.o2sources.com
+Description: A blank theme for starting a WordPress project based on <a href="http://www.inpixelitrust.fr/blog/en/inpixelitrust-responsive-blank-theme-wordpress/">Inpixelitrust responsive blank theme</a>.
+Version: 2.0
+License: GPL
+License URI: http://codex.wordpress.org/License
+*/
+/* ----------------------------- */
+/* summary */
+/* ----------------------------- */
+/*
+/* 
+1- Reset  
+2- Baseline for elements
+3- Base Typography
+4- Layout and modules
+5- Hidding / unhidding content
+6- Forms
+7- Images
+8- WordPress alignement
+9- Fonts
+
+/* ----------------------------- */
+/* == Reset*/
+/* ----------------------------- */
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+/*  Uncomment for a hard reset  */
+/*
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    background: transparent;    
+    border: 0;  
+    margin: 0;  
+    padding: 0; 
+    vertical-align: baseline;
+}
+*/
+/* A softer reset */
+/* line 51, ../sass/_bases.scss */
+html,
+body,
+blockquote,
+ul,
+ol,
+form,
+p,
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 59, ../sass/_bases.scss */
+ul,
+ol {
+  padding-left: 2em;
+}
+
+/* line 62, ../sass/_bases.scss */
+blockquote {
+  quotes: none;
+  border-left: 4px solid #666;
+  padding: 5px 5px 5px 20px;
+  margin: 8px 0 8px 30px;
+  font-style: italic;
+  background: #eae9e9;
+  position: relative;
+}
+
+/* line 72, ../sass/_bases.scss */
+blockquote:before,
+blockquote:after {
+  content: ' ';
+  content: none;
+}
+
+/* line 76, ../sass/_bases.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+/* line 80, ../sass/_bases.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 84, ../sass/_bases.scss */
+a img {
+  border: none;
+}
+
+/* line 90, ../sass/_bases.scss */
+select,
+input,
+textarea,
+button {
+  font: 99% sans-serif;
+  color: #444;
+}
+
+/* line 97, ../sass/_bases.scss */
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace,sans-serif;
+}
+
+/* HTML 5 elements */
+/* line 108, ../sass/_bases.scss */
+header,
+nav,
+section,
+article,
+dialog,
+figure,
+aside,
+footer {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----------------------------- */
+/* == Baseline for elements */
+/* ----------------------------- */
+/* base font-size corresponds to 10px */
+/* line 119, ../sass/_bases.scss */
+html {
+  overflow-y: scroll;
+  font-size: 62.5%;
+}
+
+/* line 123, ../sass/_bases.scss */
+body {
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+/* line 128, ../sass/_bases.scss */
+::-moz-selection {
+  background: #ee868b;
+  text-shadow: none;
+}
+
+/* line 133, ../sass/_bases.scss */
+::selection {
+  background: #ee868b;
+  text-shadow: none;
+}
+
+/* line 141, ../sass/_bases.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: black;
+}
+
+/* line 145, ../sass/_bases.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 153, ../sass/_bases.scss */
+img {
+  vertical-align: middle;
+}
+
+/* line 156, ../sass/_bases.scss */
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ----------------------------- */
+/* == Base Typography */
+/* ----------------------------- */
+/* line 166, ../sass/_bases.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/*
+ * Addresses style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+/* line 173, ../sass/_bases.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/* font-sizing for content */
+/* line 181, ../sass/_bases.scss */
+p,
+td,
+th,
+textarea {
+  font-size: 1.4em;
+}
+
+/* http://soqr.fr/vertical-rhythm/ */
+/* line 185, ../sass/_bases.scss */
+h1, .h1-like {
+  font-size: 1.8571em;
+  /* equiv 26px */
+  line-height: 1.5076em;
+  margin: 1.5076em 0 .7538em 0;
+}
+
+/* line 190, ../sass/_bases.scss */
+h2, .h2-like {
+  font-size: 1.7143em;
+  /* equiv 24px */
+  line-height: 1.6334em;
+  margin: 1.6334em 0 .8167em 0;
+}
+
+/* line 195, ../sass/_bases.scss */
+h3, .h3-like {
+  font-size: 1.5714em;
+  /* equiv 22px */
+  line-height: 1.7818em;
+  margin: 1.7818em 0 .8909em 0;
+}
+
+/* line 200, ../sass/_bases.scss */
+h4, .h4-like {
+  font-size: 1.4286em;
+  /* equiv 20px */
+  line-height: 1.96em;
+  margin: 1.96em 0 .98em 0;
+}
+
+/* line 205, ../sass/_bases.scss */
+h5, .h5-like {
+  font-size: 1.2857em;
+  /* equiv 18px */
+  line-height: 1.0889em;
+  margin: 2.1778em 0  1.0889em 0;
+}
+
+/* line 210, ../sass/_bases.scss */
+h6, .h6-like {
+  font-size: 1.1429em;
+  /* equiv 16px */
+  line-height: 1.225em;
+  margin: 2.45em 0  1.225em 0;
+}
+
+/* line 215, ../sass/_bases.scss */
+.smaller {
+  font-size: .7143em;
+  /* equiv 10px */
+  line-height: 1.96em;
+  margin: 1.96em 0  1.96em 0;
+}
+
+/* line 220, ../sass/_bases.scss */
+.small {
+  font-size: .8571em;
+  /* equiv 12px */
+  line-height: 1.6333em;
+  margin: 1.6333em 0  1.6333em 0;
+}
+
+/* line 225, ../sass/_bases.scss */
+.big {
+  font-size: 1.1429em;
+  /* equiv 16px */
+  line-height: 1.225em;
+  margin: 1.225em 0  1.225em 0;
+}
+
+/* line 230, ../sass/_bases.scss */
+.bigger {
+  font-size: 1.2857em;
+  /* equiv 18px */
+  line-height: 1.0889em;
+  margin: 1.0889em 0  1.0889em 0;
+}
+
+/* line 235, ../sass/_bases.scss */
+.biggest {
+  font-size: 1.4286em;
+  /* equiv 20px */
+  line-height: 1.96em;
+  margin: .98em 0 .98em 0;
+}
+
+/* avoid collapsing margins */
+/* line 246, ../sass/_bases.scss */
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+p:first-child {
+  margin-top: 0;
+}
+
+/* avoid last paragraph bottom margin */
+/* line 250, ../sass/_bases.scss */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* max values */
+/* line 264, ../sass/_bases.scss */
+img,
+table,
+td,
+blockquote,
+code,
+pre,
+textarea,
+input,
+object,
+embed,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+/* line 268, ../sass/_bases.scss */
+iframe {
+  max-width: 100%;
+}
+
+/* you shall not pass */
+/* line 281, ../sass/_bases.scss */
+textarea,
+table,
+td,
+th,
+code,
+pre,
+samp,
+div,
+p {
+  word-wrap: break-word;
+}
+
+/* line 286, ../sass/_bases.scss */
+code,
+pre,
+samp {
+  white-space: pre-wrap;
+}
+
+/* line 292, ../sass/_bases.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+
+/* line 297, ../sass/_bases.scss */
+small {
+  font-size: 85%;
+}
+
+/* line 301, ../sass/_bases.scss */
+strong,
+th {
+  font-weight: bold;
+}
+
+/* line 305, ../sass/_bases.scss */
+td,
+td img {
+  vertical-align: top;
+}
+
+/* line 308, ../sass/_bases.scss */
+sub {
+  font-size: smaller;
+  vertical-align: sub;
+}
+
+/* line 312, ../sass/_bases.scss */
+sup {
+  font-size: smaller;
+  vertical-align: super;
+}
+
+/* line 317, ../sass/_bases.scss */
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+}
+
+/* line 321, ../sass/_bases.scss */
+pre {
+  padding: 15px;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+/* line 328, ../sass/_bases.scss */
+q {
+  quotes: none;
+}
+
+/* line 332, ../sass/_bases.scss */
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* Links */
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+/* line 342, ../sass/_bases.scss */
+a,
+a:active,
+a:visited {
+  color: #a0a09f;
+}
+
+/* line 345, ../sass/_bases.scss */
+a:hover {
+  color: #999999;
+}
+
+/* line 348, ../sass/_bases.scss */
+a:link {
+  -webkit-tap-highlight-color: #0088cc;
+}
+
+/* line 351, ../sass/_bases.scss */
+a img {
+  border: 0;
+}
+
+/*
+ * Addresses `outline` inconsistency between Chrome and other browsers.
+ */
+/* line 357, ../sass/_bases.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers.
+ */
+/* line 365, ../sass/_bases.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ----------------------------- */
+/* == Layout and modules */
+/* ----------------------------- */
+/* switching box model for all elements */
+/* line 374, ../sass/_bases.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* float layout */
+/* ----------- */
+/* block that can contains several .mod , can contains floats */
+/* module, contains floats */
+/* line 388, ../sass/_bases.scss */
+.mod {
+  padding: 1em;
+}
+
+/* generaly inside .mod, can contains .item */
+/* fluid, contains floats, can be placed next to a float */
+/* line 397, ../sass/_bases.scss */
+.item {
+  overflow: hidden;
+}
+
+/* table layout */
+/* ------------------ */
+/* line 403, ../sass/_bases.scss */
+.row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* line 409, ../sass/_bases.scss */
+.row > *,
+.col {
+  display: table-cell;
+  padding: 1em;
+}
+
+/* 1em gutter between elements if parent is .gut */
+/* line 415, ../sass/_bases.scss */
+.line.gut > * + * {
+  margin-left: 1em;
+}
+
+/* line 418, ../sass/_bases.scss */
+.row.gut > * + * {
+  border-left: 1em solid transparent;
+}
+
+/* line 421, ../sass/_bases.scss */
+.line.gut > .left {
+  margin-right: 14px;
+}
+
+/* line 422, ../sass/_bases.scss */
+.line.gut > .right {
+  margin-left: 14px;
+}
+
+/* "multicolumns" with % gutter */
+/* line 424, ../sass/_bases.scss */
+.line.gut2 > * {
+  width: 48%;
+}
+
+/* line 425, ../sass/_bases.scss */
+.line.gut2 > * + * {
+  margin-left: 2%;
+}
+
+/* line 426, ../sass/_bases.scss */
+.line.gut3 > * {
+  width: 30.333%;
+}
+
+/* line 427, ../sass/_bases.scss */
+.line.gut3 > * + * {
+  margin-left: 1em;
+}
+
+/* line 428, ../sass/_bases.scss */
+.line.gut4 > * {
+  width: 24%;
+}
+
+/* line 429, ../sass/_bases.scss */
+.line.gut4 > * + * {
+  margin-left: 1.333%;
+}
+
+/* blocks that needs to be placed under floats */
+/* line 434, ../sass/_bases.scss */
+.clear,
+.line,
+.row {
+  clear: both;
+}
+
+/* blocks that can contains floats */
+/* line 442, ../sass/_bases.scss */
+.clearfix:after,
+.line:after,
+.mod:after,
+.gallery:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* alignments (blocks and inline) */
+/* left and 1em gutter */
+/* line 450, ../sass/_bases.scss */
+.left {
+  float: left;
+  margin-right: 1em;
+}
+
+/* right and 1em gutter */
+/* line 455, ../sass/_bases.scss */
+.right {
+  float: right;
+  margin-left: 1em;
+}
+
+/* juste inline-block */
+/* line 460, ../sass/_bases.scss */
+.inbl {
+  display: inline-block;
+}
+
+/* blocks widths (percentage) */
+/* line 463, ../sass/_bases.scss */
+.w10 {
+  width: 10%;
+}
+
+/* line 464, ../sass/_bases.scss */
+.w20 {
+  width: 20%;
+}
+
+/* line 465, ../sass/_bases.scss */
+.w25 {
+  width: 25%;
+}
+
+/* line 466, ../sass/_bases.scss */
+.w30 {
+  width: 30%;
+}
+
+/* line 467, ../sass/_bases.scss */
+.w33 {
+  width: 33.33%;
+}
+
+/* line 468, ../sass/_bases.scss */
+.w40 {
+  width: 40%;
+}
+
+/* line 469, ../sass/_bases.scss */
+.w50 {
+  width: 50%;
+}
+
+/* line 470, ../sass/_bases.scss */
+.w60 {
+  width: 60%;
+}
+
+/* line 471, ../sass/_bases.scss */
+.w65 {
+  width: 65%;
+}
+
+/* line 472, ../sass/_bases.scss */
+.w70 {
+  width: 70%;
+}
+
+/* line 473, ../sass/_bases.scss */
+.w80 {
+  width: 80%;
+}
+
+/* line 474, ../sass/_bases.scss */
+.w90 {
+  width: 90%;
+}
+
+/* line 475, ../sass/_bases.scss */
+.w100 {
+  width: 100%;
+}
+
+/* blocks widths (pixel) */
+/* ----------------------------- */
+/* == Hidding / unhidding content */
+/* ----------------------------- */
+/* for image replacement */
+/* line 486, ../sass/_bases.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+
+/* line 493, ../sass/_bases.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+}
+
+/* Hide for both screenreaders and browsers 
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+/* line 503, ../sass/_bases.scss */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+/* line 506, ../sass/_bases.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
+/* line 511, ../sass/_bases.scss */
+.assistive-text,
+.visuallyhidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* line 517, ../sass/_bases.scss */
+a.assistive-text:active,
+a.assistive-text:focus {
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  color: #1982d1;
+  clip: auto !important;
+  font-size: 12px;
+  position: absolute;
+  text-decoration: underline;
+  top: 0;
+  left: 7.6%;
+}
+
+/* hiding content */
+/* line 530, ../sass/_bases.scss */
+.desktop-hidden {
+  display: none;
+}
+
+/* hidden on desktop */
+/* ----------------------------- */
+/* ==  Forms */
+/* ----------------------------- */
+/* line 536, ../sass/_bases.scss */
+legend {
+  border: 0;
+  white-space: normal;
+}
+
+/* line 537, ../sass/_bases.scss */
+form, fieldset {
+  border: none;
+}
+
+/* line 538, ../sass/_bases.scss */
+label {
+  cursor: pointer;
+}
+
+/* hand cursor on clickable input elements */
+/* webkit browsers add a 2px margin outside the chrome of form elements */
+/* line 545, ../sass/_bases.scss */
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+/* colors for form validity 
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { 
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red; 
+ -webkit-box-shadow: 0px 0px 5px red; 
+         box-shadow: 0px 0px 5px red;
+}
+*/
+/* line 557, ../sass/_bases.scss */
+button, input, select {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/* line 562, ../sass/_bases.scss */
+textarea {
+  overflow: auto;
+  min-height: 5em;
+  vertical-align: top;
+  resize: vertical;
+  font-size: 1em;
+}
+
+/* line 569, ../sass/_bases.scss */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+  *overflow: visible;
+}
+
+/* line 573, ../sass/_bases.scss */
+input[type="checkbox"], input[type="radio"] {
+  padding: 0;
+  *width: 13px;
+  *height: 13px;
+}
+
+/* line 576, ../sass/_bases.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/* line 582, ../sass/_bases.scss */
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+/* line 585, ../sass/_bases.scss */
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+
+/* line 588, ../sass/_bases.scss */
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+
+/* line 591, ../sass/_bases.scss */
+.ie6 input {
+  vertical-align: text-bottom;
+}
+
+/* 'x' appears on right of search input when text is entered. This removes it */
+/* line 598, ../sass/_bases.scss */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* Removes inner padding and border in FF3+ */
+/* line 607, ../sass/_bases.scss */
+button::-moz-focus-inner,
+input[type='button']::-moz-focus-inner,
+input[type='reset']::-moz-focus-inner,
+input[type='submit']::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* style the placeholder */
+/* line 613, ../sass/_bases.scss */
+::-webkit-input-placeholder {
+  color: #777;
+}
+
+/* line 614, ../sass/_bases.scss */
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #777;
+}
+
+/* line 617, ../sass/_bases.scss */
+.ie6 legend,
+.ie7 legend {
+  margin-left: -7px;
+}
+
+/* thnx ivannikolic! */
+/* haslayout for IE6/IE7 */
+/* line 622, ../sass/_bases.scss */
+.ie7 .clearfix, .ie7 .line, .ie7 .mod, .ie7 .row, .ie7 .col {
+  zoom: 1;
+}
+
+/* inline-block and table-cell for IE6/IE7 */
+/* warning: .col needs width on IE6/IE7 */
+/* line 630, ../sass/_bases.scss */
+.lteie7 .btn,
+.lteie7 .col,
+.lteie7 .inbl {
+  display: inline;
+  zoom: 1;
+}
+
+/* line 634, ../sass/_bases.scss */
+.ie8 img {
+  width: auto;
+  /* @bugfix for IE8 */
+}
+
+/* box-sizing for IE6/IE7 */
+/* @source https://github.com/Schepp/box-sizing-polyfill */
+/*
+.ie67 * {
+    behavior: url(/js/boxsizing.htc);
+}
+*/
+/* line 647, ../sass/_bases.scss */
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid {
+  background-color: #f0dddd;
+}
+
+/* Forms - Class for labelling required form items */
+/* line 650, ../sass/_bases.scss */
+.required {
+  color: #cc0033;
+}
+
+/* ----------------------------- */
+/* == Images */
+/* ----------------------------- */
+/*
+Resize images to fit the main content area.
+- Applies only to images uploaded via WordPress by targeting size-* classes.
+- Other images will be left alone. Use "size-auto" class to apply to other images.
+*/
+/* line 669, ../sass/_bases.scss */
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 673, ../sass/_bases.scss */
+img.alignleft {
+  margin-right: 1em;
+}
+
+/* line 676, ../sass/_bases.scss */
+img.alignright {
+  margin-left: 1em;
+}
+
+/* line 679, ../sass/_bases.scss */
+.wp-caption {
+  padding: .5em;
+  text-align: center;
+}
+
+/* line 683, ../sass/_bases.scss */
+.wp-caption img {
+  margin: .25em;
+}
+
+/* line 686, ../sass/_bases.scss */
+.wp-caption .wp-caption-text {
+  margin: .5em;
+}
+
+/* line 692, ../sass/_bases.scss */
+.gallery-item {
+  float: left;
+  margin-top: 10px;
+  text-align: center;
+  width: 33%;
+}
+
+/*
+ * Corrects overflow displayed oddly in IE 9.
+ */
+/* line 703, ../sass/_bases.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* bicubic resizing for non-native sized IMG: 
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+/* line 709, ../sass/_bases.scss */
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 711, ../sass/_bases.scss */
+.ie7 .title {
+  padding-top: 20px;
+}
+
+/* ----------------------------- */
+/* == WordPress alignement */
+/* ----------------------------- */
+/* Alignment */
+/* line 721, ../sass/_bases.scss */
+.alignleft {
+  display: inline;
+  float: left;
+}
+
+/* line 725, ../sass/_bases.scss */
+.alignright {
+  display: inline;
+  float: right;
+}
+
+/* line 729, ../sass/_bases.scss */
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------- */
+/* summary */
+/* ----------------------------- */
+/*
+
+A. Template structure
+    1-  General
+    2-  Header
+    3-  Menu
+    4-  Content
+    5-  Page/Blog
+    6-  Footer
+
+B. Media queries
+
+C. Print style
+
+*/
+/* ----- A. Template structure ----- */
+/* ----------------------------- */
+/* == General */
+/* ----------------------------- */
+/* line 49, ../sass/style.scss */
+.red {
+  color: #ff000d;
+}
+
+/* line 50, ../sass/style.scss */
+#container {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 14px;
+}
+
+/* ----------------------------- */
+/* == Header */
+/* ----------------------------- */
+/* line 60, ../sass/style.scss */
+.site-title {
+  font-weight: bold;
+  margin: .67em 0;
+}
+
+/* line 64, ../sass/style.scss */
+.site-description {
+  font-weight: normal;
+  margin: 0 0 1em;
+}
+
+/* ----------------------------- */
+/* == Menu */
+/* ----------------------------- */
+/* line 74, ../sass/style.scss */
+#site-header .menu {
+  background: #eee;
+  display: block;
+  float: left;
+  margin: 0 auto 1em;
+  width: 100%;
+}
+
+/* line 81, ../sass/style.scss */
+#site-header .menu ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+/* line 86, ../sass/style.scss */
+#site-header .menu li {
+  float: left;
+  position: relative;
+}
+
+/* line 90, ../sass/style.scss */
+#site-header .menu a {
+  display: block;
+  line-height: 2em;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+/* line 97, ../sass/style.scss */
+#site-header .menu a:hover,
+#site-header .menu ul > .current-menu-item a {
+  background: #333333;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 102, ../sass/style.scss */
+#site-header li:hover a {
+  background: #333333;
+  color: #fff;
+}
+
+/* line 106, ../sass/style.scss */
+#site-header li:hover ul li a:hover {
+  background: black;
+}
+
+/* ----------------------------- */
+/* == Content */
+/* ----------------------------- */
+/* nav */
+/* line 115, ../sass/style.scss */
+.content nav {
+  display: block;
+  overflow: hidden;
+}
+
+/* line 119, ../sass/style.scss */
+.content nav .nav-previous {
+  float: left;
+  width: 50%;
+}
+
+/* line 123, ../sass/style.scss */
+.content nav .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+
+/* line 128, ../sass/style.scss */
+.content #nav-above {
+  display: none;
+}
+
+/* line 132, ../sass/style.scss */
+.paged .content #nav-above,
+.single .content #nav-above {
+  display: block;
+}
+
+/* line 135, ../sass/style.scss */
+#nav-below {
+  margin: 1em 0 0;
+}
+
+/* line 138, ../sass/style.scss */
+.page-link {
+  margin: 0 0 1em;
+}
+
+/* table styling */
+/* line 145, ../sass/style.scss */
+.content table,
+.content td,
+.content th {
+  border: 1px solid #bfbfbe;
+}
+
+/* line 148, ../sass/style.scss */
+.content tbody tr:nth-child(odd) {
+  background: #eeeeee;
+}
+
+/* ----------------------------- */
+/* == Footer */
+/* ----------------------------- */
+/* ----------------------------- */
+/* == Media queries */
+/* ----------------------------- */
+/* Media queries for responsive design
+ These follow after primary styles so they will successfully override. 
+ */
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+/* quick tablet reset */
+@media (max-width: 768px) {
+  /* line 179, ../sass/style.scss */
+  .tablet-hidden {
+    display: none;
+  }
+
+  /* line 184, ../sass/style.scss */
+  [class*="mw"],
+  [class*="w9"],
+  [class*="w8"],
+  [class*="w7"],
+  [class*="w6"] {
+    width: auto;
+  }
+
+  /* line 188, ../sass/style.scss */
+  .t100 {
+    border: 0 none;
+    display: block !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+}
+/* quick smartphone reset */
+@media (max-width: 640px) {
+  /* line 202, ../sass/style.scss */
+  .phone-hidden {
+    display: none;
+  }
+
+  /* line 203, ../sass/style.scss */
+  .mod, .col {
+    display: block !important;
+    margin: 0 !important;
+    border: 0 !important;
+    float: none !important;
+    width: auto !important;
+  }
+
+  /* line 212, ../sass/style.scss */
+  [class*="mw"], [class*="w9"], [class*="w8"],
+  [class*="w7"], [class*="w6"], [class*="w5"],
+  [class*="w4"], [class*="w3"] {
+    width: auto;
+  }
+}
+/* ----------------------------- */
+/* == Print style */
+/* ----------------------------- */
+@media print {
+  /* line 227, ../sass/style.scss */
+  p, blockquote {
+    orphans: 2;
+    widows: 2;
+  }
+
+  /* line 228, ../sass/style.scss */
+  ul, ol {
+    page-break-inside: avoid;
+  }
+
+  /* line 229, ../sass/style.scss */
+  h1, h2, h3, caption {
+    page-break-after: avoid;
+  }
+
+  /* line 230, ../sass/style.scss */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* line 238, ../sass/style.scss */
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 242, ../sass/style.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 246, ../sass/style.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  /* line 256, ../sass/style.scss */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 261, ../sass/style.scss */
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 266, ../sass/style.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* line 271, ../sass/style.scss */
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* line 275, ../sass/style.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 285, ../sass/style.scss */
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 291, ../sass/style.scss */
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
