@@ -1,0 +1,147 @@
+@import "variables";
+
+// Mixin pour fond en opacité / http://blog.kaelig.fr/post/18548727019/une-echelle-dopacite-avec-sass
+.transparent-background {
+  background-color: transparent;
+  zoom: 1;
+}
+@include transparent-shades('light', #ffffff);
+
+@import "compass";
+@import "bases";
+
+/* ----------------------------- */
+/* summary */
+/* ----------------------------- */
+/*
+
+Template structure
+    1-  General
+    2-  Header
+    3-  Menu
+    4-  Content
+    5-  Footer
+    6-  Grids / responsive 
+*/
+
+/* ----------------------------- */
+/* == 1. General */
+/* ----------------------------- */
+.red { color:#ff000d;} //konami example
+#container{    
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0 14px;
+}
+
+/* ----------------------------- */
+/* == 2. Header */
+/* ----------------------------- */
+
+.site-title {
+    font-weight: bold;
+    margin: .67em 0;
+}
+.site-description {
+    font-weight: normal;
+    margin: 0 0 1em;
+}
+
+
+/* ----------------------------- */
+/* == 3. Menu */
+/* ----------------------------- */
+
+#site-header .menu {
+    background: $grayLighter;
+    display: block;
+    float: left;
+    margin: 0 auto 1em;
+    width: 100%;
+}
+#site-header .menu ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+#site-header .menu li {
+    float: left;
+    position: relative;
+}
+#site-header .menu a {    
+    display: block;
+    line-height: 2em;
+    padding: 0 1em;
+    text-decoration: none;
+}
+ #site-header .menu a:hover,
+ #site-header .menu ul > .current-menu-item a {
+    background: $grayLight;
+    color: #fff;
+    text-decoration: none;
+}
+#site-header li:hover a{ 
+    background:$grayLight;
+    color:#fff;
+}
+#site-header li:hover ul li a:hover{ 
+    background:#000;
+}
+
+
+/* ----------------------------- */
+/* == 4. Content */
+/* ----------------------------- */
+/* nav */
+.content nav {
+    display: block;
+    overflow: hidden;
+}
+.content nav .nav-previous {
+    float: left;
+    width: 50%;
+}
+.content nav .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+.content #nav-above {
+    display: none;
+}
+.paged .content #nav-above,
+.single .content #nav-above {
+    display: block;
+}
+#nav-below {
+    margin: 1em 0 0;
+}
+.page-link {
+    margin: 0 0 1em;
+}
+
+/* table styling */
+.content table,
+.content td,
+.content th{
+    border: 1px solid $grayLight;
+}
+.content tbody tr:nth-child(odd){
+    background:$grayLighter
+}
+
+
+/* ----------------------------- */
+/* == 5. Footer */
+/* ----------------------------- */
+
+
+
+
+/* ----------------------------- */
+/* == 6. Grids / responsive  */
+/* ----------------------------- */
+
+
+@import "grids";
+@import "responsive";

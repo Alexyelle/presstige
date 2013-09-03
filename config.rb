@@ -11,21 +11,19 @@ environment = :production
 # firesass = false
 firesass = true
 
-
 # Location of the your project's resources.
-css_dir         = ""
-sass_dir        = "sass"
-extensions_dir  = "sass-extensions"
-images_dir      = "img"
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "img"
 javascripts_dir = "js"
+
 
 # Set this to the root of your project. All resource locations above are
 # considered to be relative to this path.
-http_path = "."
+http_path = "../"
 
 # To use relative paths to assets in your compiled CSS files, set this to true.
 #relative_assets = true
-
 
 ##
 ## You probably don't need to edit anything below this.

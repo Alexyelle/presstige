@@ -1,0 +1,42 @@
+@import "compass";
+
+/*  The css for the login page ! */
+.login h1 a {
+	background:url(../img/logo_header.png) center no-repeat; 
+	width:230px; 
+	height:35px; 
+	margin: 20px auto;
+	background-size: auto;
+}
+body.login { 
+	background:url(../img/bg_maintenance.png) repeat;
+}
+
+/* Barre du haut - Lien */
+.login p#backtoblog a:link,.login p#backtoblog a:visited { color:#6c7880; }
+
+/* Barre du haut - Effet de survol*/
+.login p#backtoblog a:hover,.login p#backtoblog a:active { color:#6c7880; text-decoration:underline; }
+
+/* Modification de la taille du bloc "Connexion" */
+#login { 
+width:400px; 
+margin:0em auto; 
+}
+
+/* Modification de bouton "Se connecter" et des autres liens*/
+#login form .submit input { 
+	border-color:#bccad3!important; 
+	color:#FFF!important; 
+	font-weight:bold; 
+	background-color: #0BA1D7;
+	@include border-radius(3px);
+	@include text-shadow(rgba(0, 0, 0, 0.2) 0 1px 0);
+	@include background-image(linear-gradient(left top, #0BA1D7, #7DCBE8));  
+}
+#login form .submit input:hover { 
+	@include background-image(linear-gradient(left top, #7DCBE8, #0BA1D7));  
+	color:#FFFFFF!important; 
+}
+.login #nav a { color:#7c8991!important; }
+.login #nav a:hover { color:#6f7a81!important; }
