@@ -19,7 +19,7 @@ body {
 	color:$mainColor;
 	font-family: $baseFontFamily;
 	font-size: 1em;
-	line-height: 1.2;
+	line-height: 1.4;
 }
 
 /* font-sizing for content */
@@ -27,7 +27,6 @@ body {
 /* http://soqr.fr/vertical-rhythm/ */
 p, ul, ol, dl, blockquote, pre, td, th, label, textarea {
     font-size: 1em; /* equiv 10px */
-    line-height: 1.2em;
     margin: 1.2em 0;
 }
 h1, .h1-like{
@@ -91,7 +90,7 @@ label {
 }
 ul,
 ol {
-	padding-left: 2em;
+	padding-left: 1.5em;
 }
 ul.unstyled {
 	list-style: none;
@@ -188,21 +187,39 @@ a img { border: 0; }
 /* scripts */
 body > script {display: none !important;}
 
-/* skip-links */
-.skip-links {
-	position: absolute;
-}
-.skip-links a {
-	position: absolute;
-	left: -7000px;
-	padding: 0.5em;
-	background: #000;
-	color:#fff;
+/* Links */
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a,
+a:active,
+a:visited {
+    color: $grayDark;
 	text-decoration: none;
 }
-.skip-links a:focus {
-	position: static;
+a:hover {
+   color: $secondColor;
+	text-decoration: underline;
 }
+a:link {
+    -webkit-tap-highlight-color: $linkColor;
+}
+a img {
+    border: 0;
+}
+/*
+ * Addresses `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+    outline: thin dotted;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+    outline: 0;
+}
+
 
 /* ----------------------------- */
 /* ==layout and modules          */
@@ -210,9 +227,7 @@ body > script {display: none !important;}
 
 /* switching box model for all elements */
 * {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
+	@include box-sizing(border-box);
 }
 
 /* float layout */
@@ -393,6 +408,20 @@ a.assistive-text:focus {
     left: 7.6%;
 }
 
+/* for image replacement */
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
 
 /* skip-links */
 .skip-links {
@@ -442,6 +471,71 @@ a.assistive-text:focus {
 	behavior: url(/js/boxsizing.htc);
 }
 */
+-/* ----------------------------- */
+-/* ==Images */
+-/* ----------------------------- */
+-
+-/*
+-Resize images to fit the main content area.
+-- Applies only to images uploaded via WordPress by targeting size-* classes.
+-- Other images will be left alone. Use "size-auto" class to apply to other images.
+-*/
+
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img {
+    max-width: 100%;
+    height: auto; 
+}
+img.alignleft {
+    margin-right: 1em;
+}
+img.alignright {
+    margin-left: 1em;
+}
+.wp-caption {
+    padding: .5em;
+    text-align: center;
+}
+.wp-caption img {
+    margin: .25em;
+}
+.wp-caption .wp-caption-text {
+    margin: .5em;
+}
+.gallery-caption{
+}
+
+.gallery-item {
+	float: left;
+	margin-top: 10px;
+	text-align: center;
+	width: 33%;
+}
+
+/* ----------------------------- */
+/* ==WordPress alignement */
+/* ----------------------------- */
+
+/* Alignment */
+
+.alignleft {
+    display: inline;
+    float: left;
+}
+.alignright {
+  	display: inline;
+    float: right;
+}
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* ----------------------------- */
 /* ==print                       */
