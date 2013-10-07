@@ -192,7 +192,7 @@ body > script {display: none !important;}
 a,
 a:active,
 a:visited {
-    color: $grayDark;
+    color: $secondColor;
 	text-decoration: none;
 }
 a:hover {
@@ -471,11 +471,11 @@ a.assistive-text:focus {
 	behavior: url(/js/boxsizing.htc);
 }
 */
--/* ----------------------------- */
--/* ==Images */
--/* ----------------------------- */
--
--/*
+/* ----------------------------- */
+/* ==Images */
+/* ----------------------------- */
+
+/*
 -Resize images to fit the main content area.
 -- Applies only to images uploaded via WordPress by targeting size-* classes.
 -- Other images will be left alone. Use "size-auto" class to apply to other images.
