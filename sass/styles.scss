@@ -30,118 +30,29 @@ Template structure
 /* == 2. Header */
 /* ----------------------------- */
 
-h1.site-title {
+.site-title {
     font-weight: bold;
     margin: 15px auto 0;
     text-align: center;
     position: relative;
 }
-.bottom_logo{
-    bottom: -54px;
-    height: 54px;
-    position: absolute;
-    width: 100%;
-    background: url(../img/bottom_logo.png) no-repeat center bottom;
-}
-/*-- Déploiement recherche --*/
-.sb-search {
-    position: relative;
-    width: 32px;
-    min-width: 32px;
-    height: 31px;
-    float: right;
-    @include transition-property(width);
-    @include transition-duration(0.3s); 
-    -webkit-backface-visibility: hidden;
-}
-.sb-search-input-wrap{
-    height: 34px;
-    overflow: hidden;
-    position: absolute;
-    right: 34px;
-    @include transition-property(width);
-    @include transition-duration(200ms);
-    @include transition-timing-function(ease);
-    width: 0;
-}
-.sb-search-open .sb-search-input-wrap{ width: 200px; }
-.sb-search-input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: none;
-    outline: none;
-    background: #fff;
-    width: 100%;
-    height: 31px;
-    margin: 0;
-    z-index: 30;
-    padding: 5px 35px 5px 10px;
-}
-.sb-search-input::-webkit-input-placeholder { color: $secondColor; }
-.sb-search-input:-moz-placeholder { color: $secondColor; }
-.sb-search-input::-moz-placeholder { color:$secondColor; }
-.sb-search-input:-ms-input-placeholder { color: $secondColor;}
-.sb-icon-search,
-.sb-search-submit  {
-    width: 32px;
-    height: 31px;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0;
-    margin: 0;
-    line-height: 31px;
+.site-description {
+    font-weight: normal;
+    margin: 0 0 1em;
+    margin: 15px auto 0;
     text-align: center;
-    cursor: pointer;
-    background: url(../img/btn_search.png) no-repeat;
+    position: relative;
 }
-.sb-search-submit {
-    color: transparent;
-    border: none;
-    outline: none;
-    z-index: -1;
-}
-.sb-icon-search { z-index: 90; }
-
-/* Open state */
-
-.sb-search.sb-search-open .sb-icon-search,
-.no-js .sb-search .sb-icon-search {
-    background: #da6d0d;
-    color: #fff;
-    z-index: 11;
-}
-.sb-search.sb-search-open .sb-search-submit,
-.no-js .sb-search .sb-search-submit {
-    z-index: 90;
-}
-
-
-
 /* ----------------------------- */
 /* == 3. Menu */
 /* ----------------------------- */
 #site-header{
-    background: url(../img/bg_header.jpg) repeat-x center bottom;
-    .container{ position: relative; }
-    .shadow_menu{
-        background: url(../img/shadow_menu.png) no-repeat center bottom;
-        width: 100%;
-        height: 8px;
-        position: absolute;
-        z-index: 20;
-    }
-    nav > .menu {
-        background: #fff;
-        border: 1px solid #f1f1f1;
-        padding: 15px 20px 0;
-        font-size: 1.6em;
-        width: 100%;  
-    }
     .menu {
         display: block;
+        background: $grayLighter;
+        display: block;
+        float: left;
+        margin: 0 auto 1em;
         ul {
             list-style: none;
             margin: 0;
@@ -159,7 +70,6 @@ h1.site-title {
         }
         a:hover,
         ul > .current-menu-item a {
-            background: url(../img/actu_nav.png) no-repeat center bottom;
             color: $secondColor;
             text-decoration: none;
         }
@@ -171,189 +81,6 @@ h1.site-title {
 /* == 4. Content */
 /* ----------------------------- */
     
-/* Accueil */
-#banner{
-    border-bottom: 1px solid $grayLight;
-    position: relative;
-    background-color: $grayLighter;
-    min-height: 30px;
-    .container{ position: relative; }
-    h1{
-        border-left: 6px solid #fff;
-        color: #fff;
-        font-size: 1.8em;
-        font-weight: normal;
-        padding: 8px 0 8px 10px;
-        position: absolute;
-        right: 80px;
-        top: 65%;
-        font-family: $baseFontFamily;
-    }
-    .shadow{
-        position: absolute;
-        background: url(../img/shadow_banner.png) repeat-x left bottom transparent;
-        bottom:0;
-        height: 150px;
-        width: 100%;
-        z-index: 10;
-    }
-}
-
-#nav_subsite{
-    background: url(../img/bg_footer.jpg) repeat-x center bottom;
-    padding-bottom: 20px;
-    ul{
-        margin-top: 20px;
-        padding: 0 20px;
-        list-style: none;
-        display: block;
-        text-align: center;
-        li{ 
-            margin: 0 0.75%;
-            height: 215px;
-            @include inline-block;
-            @include border-radius(100%);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-            border:10px solid #fff;
-            max-width: 215px;
-        }  
-        &:after,
-        .ch-item:before {
-            content: '';
-            display: table;
-        }     
-        &:after {
-            clear: both;
-        }     
-        .ch-item {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            cursor: default;
-            border:10px solid $grayLighter;
-            @include border-radius(50%);
-            @include transition-property(all);
-            @include transition-duration(0.4s);
-            @include transition-timing-function(ease-in-out);
-            background-color:$grayDarker;
-            &:hover{ 
-                border:10px solid $grayDarker;
-                background-image: none;
-                background-color:$grayDark;
-            }
-        }
-        .ch-img-1 { background: url(../img/logo_cerclevert.png) center center no-repeat #ffffff; }
-        .ch-img-2 { background: url(../img/logo_cerclevertprestige.png) center center no-repeat #ffffff; }
-        .ch-img-3 { background: url(../img/logo_mrnet.png) center center no-repeat #ffffff; }
-        .ch-img-4 { background: url(../img/logo_mrnethygmed.png) center center no-repeat #ffffff; }
-        .ch-img-2 .ch-info h2{ margin-top: 15%; }
-        .ch-img-4 .ch-info h2{ margin-top: 13%; font-size: 1.5em; } 
-        .ch-info {
-            position: absolute;
-            background-color:$grayDark;
-            width: inherit;
-            height: inherit;
-            @include border-radius(50%);
-            @include opacity(0);
-            @include transition-property(all);
-            @include transition-duration(0.4s);
-            @include transition-timing-function(ease-in-out);
-            @include scale(0); 
-            h2 {
-                color: #fff;
-                text-transform: uppercase;
-                margin: 17% 0 0;
-                font-family: $baseFontFamily;
-                font-size: 1.9em;
-            }
-            p {
-                color: #fff;
-                padding: 10px 5px;
-                margin: 0 5%;
-                @include opacity(0);
-                font-size: 1.2em;
-                a {
-                    display: block;
-                    color: #fff;
-                    padding: 5px 0;
-                    border-bottom: 2px solid #fff;
-                    margin-bottom: 10px;
-                    padding: 0 0 10px;
-                    font-size: 1.2em;
-                    text-decoration: none;
-                    img{ margin-right: 5px; }
-                }  
-            }
-        } 
-        .ch-item:hover .ch-info {
-            @include scale(1);
-            @include opacity(1);
-            p { @include opacity(1); }
-        }
-    }
-}
-.home #partenaire{
-    background-color: $grayLighter;
-    border-bottom: 1px solid $grayLight;
-}
-#partenaire{
-    padding-top: 20px;
-    background: url(../img/bg_footer.jpg) repeat-x center bottom;
-    h2{
-        color:$secondColor;
-        text-align: center;
-        font-family: $baseFontFamily;
-        font-size: 2.8em;
-        padding: 10px 15px 0;
-        background-color: #fff;
-        margin: 0;
-        border-left: 1px solid $grayLighter;
-        border-right: 1px solid $grayLighter;
-        border-top: 1px solid $grayLighter;
-        span{
-            border-bottom: 1px solid $gray;
-            margin: 0 15px;
-            display: block;
-            padding-bottom: 10px;
-        }
-    }
-    .flexslider{
-        background: url(../img/shadow_partenaire.png) center bottom no-repeat transparent;
-        margin-bottom: 30px;
-        padding-bottom: 14px;
-        position: relative;        
-    }
-    .flex-viewport{
-        padding: 10px 0 10px 15px;
-        background-color: #fff;
-        border-left: 1px solid $grayLighter;
-        border-right: 1px solid $grayLighter;
-    }
-    .slides{
-        li{ text-align: center; }
-        a{ position: relative; display: block; }
-    }
-    .flex-control-nav{
-        position: absolute;
-        bottom:-20px;
-        text-align: center;
-        width: 100%;
-        left:0;
-        li{ @include inline-block; }
-        a{ 
-            background: url(../img/nav_partenaire.png) center top no-repeat;
-            @extend .visually-hidden;
-            display:block;
-            width: 24px;
-            height: 22px;
-            cursor: pointer;
-        }
-        a.flex-active, a:hover{ background-position: center bottom }
-    }
-}
 /* nav */
 .content nav {
     display: block;
