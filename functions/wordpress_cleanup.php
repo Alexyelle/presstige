@@ -1,5 +1,16 @@
 <?php
 
+// Customize the format dropdown items // Enlever la possibilité de mettre un autre H1
+if( !function_exists('base_custom_mce_format') ){
+  function base_custom_mce_format($init) {
+    // Add block format elements you want to show in dropdown
+    $init['theme_advanced_blockformats'] = 'p,h2,h3,h4,h5,h6,pre';
+    // Add elements not included in standard tinyMCE dropdown p,h1,h2,h3,h4,h5,h6
+    //$init['extended_valid_elements'] = 'code[*]';
+    return $init;
+  }
+  add_filter('tiny_mce_before_init', 'base_custom_mce_format' );
+}
 
  add_action('after_setup_theme','wpce_setup');
  
