@@ -40,6 +40,15 @@ register_nav_menus( array(
  */
 add_editor_style("/css/editor-style.css");
 
+/**
+ * Proper way to enqueue scripts and styles
+ */
+function presstige_styles() {
+	wp_enqueue_style( 'mainstyle', get_stylesheet_uri(),  false,   0.1 );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'presstige_styles' );
 
 
 /**** Add some theme support, uncomment what you need ****/
@@ -59,7 +68,6 @@ if ( function_exists( 'add_theme_support' ) ) {
 	// images à la une 
 	add_theme_support( 'post-thumbnails' ); 
 	add_image_size( 'post-image', 500, 9999 ); //550 pixels wide (and unlimited height)
-	add_image_size( 'big-image', 952, 200, true);
 	add_image_size( 'mini-image', 200, 100, true);
 
 	/*
@@ -92,100 +100,172 @@ add_action('wp_enqueue_scripts', 'scripts_styles');
 /**
  * Register widgetized area and update sidebar with default widgets
  */
-function handcraftedwp_widgets_init() {
-	register_sidebar( array (
-		'name' => __( 'Sidebar', 'presstige' ),
-		'id' => 'sidebar',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	) );
-	
-		// Area 3, located in the footer. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Footer', 'presstige' ),
-		'id' => 'footer-widget-area',
-		'description' => __( 'The footer area', 'presstige' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>',
-	) );
+
+if( !function_exists('handcraftedwp_widgets_init'))  {
+
+	function handcraftedwp_widgets_init() {
+		register_sidebar( array (
+			'name' => __( 'Sidebar', 'presstige' ),
+			'id' => 'sidebar',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s" role="complementary">',
+			'after_widget' => "</aside>",
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>',
+		) );
+		
+			// Area 3, located in the footer. Empty by default.
+		register_sidebar( array(
+			'name' => __( 'Footer', 'presstige' ),
+			'id' => 'footer-widget-area',
+			'description' => __( 'The footer area', 'presstige' ),
+			'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>',
+		) );
+	}
+
 }
 add_action( 'init', 'handcraftedwp_widgets_init' );
+
 
 
 // This theme uses wp_nav_menu() in one location.
 register_nav_menu( 'primary', __( 'Primary Menu', 'presstige' ) );
 
 
-/**************** Adding some html5 functionnalities to comments************/
-add_filter('comment_form_default_fields', 'twentytenfive_comments');
-function twentytenfive_comments() {
 
-$req = get_option('require_name_email');
+/* Change the lenght of the excerpt */
 
-$fields =  array(
-'author' => '<p>' . '<label for="author">' . __( 'Name','presstige' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-'<input id="author" name="author" type="text" value="' . '" size="30"' . ' placeholder ='.__( '"What shall we call you?"', 'presstige' ) . ( $req ? ' required' : '' ) . '/></p>',
+if( !function_exists('twentyeleven_excerpt_length'))  {
 
-'email'  => '<p><label for="email">' . __( 'Email','presstige' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-'<input id="email" name="email" type="email" value="' .'" size="30"' . ' placeholder ='.__( '"Leave us a valid email adress"', 'presstige' ) . ( $req ? ' required' : '' ) . ' /></p>',
-
-'url'    => '<p><label for="url">' . __( 'Website','presstige' ) . '</label>' .
-'<input id="url" name="url" type="url" value="' . '" size="30" placeholder='.__( '"Have you got a nice website ?"', 'presstige' ) . '/></p>'
-
-);
-return $fields;
+	function twentyeleven_excerpt_length( $length ) {
+		return 80;
+	}
 }
-add_filter('comment_form_field_comment', 'twentytenfive_commentfield');
 
-function twentytenfive_commentfield() {
-$commentArea = '<p><label for="comment">' . __( 'Comment', 'presstige') . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder ='.__( '"What\'s in your mind ?"', 'presstige').'  ></textarea></p>';
-return $commentArea;
+add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
+
+/**
+ * Returns a "Continue Reading" link for excerpts
+ */
+ 
+if( !function_exists('twentyeleven_continue_reading_link'))  {
+
+	function twentyeleven_continue_reading_link() {
+		return ' <span class="readmore"><a title="'.get_the_title().'" href="'. esc_url( get_permalink() ) . '"><span class="icon-arrow-right-3" > </span>' . __( 'Continue reading', 'presstige' ) . '</a></span>';
+	}
+}
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link()
+ */
+
+if( !function_exists('twentyeleven_auto_excerpt_more'))  {
+ 
+	function twentyeleven_auto_excerpt_more( $more ) {
+		return ' &hellip;' . twentyeleven_continue_reading_link();
+	}
+}
+
+add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
+
+/**
+ * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *
+ */
+ 
+if( !function_exists('twentyeleven_custom_excerpt_more'))  {
+ 
+	function twentyeleven_custom_excerpt_more( $output ) {
+		if ( has_excerpt() && ! is_attachment() ) {
+			$output .= twentyeleven_continue_reading_link();
+		}
+		return $output;
+	}
+}
+add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );
+
+
+/**************** Adding some html5 functionnalities to comments************/
+
+add_filter('comment_form_default_fields', 'twentytenfive_comments');
+if( !function_exists('twentytenfive_comments'))  {
+
+	function twentytenfive_comments() {
+
+	$req = get_option('require_name_email');
+
+	$fields =  array(
+	'author' => '<p>' . '<label for="author">' . __( 'Name','presstige' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+	'<input id="author" name="author" type="text" value="' . '" size="30"' . ' placeholder ='.__( '"What shall we call you?"', 'presstige' ) . ( $req ? ' required' : '' ) . '/></p>',
+
+	'email'  => '<p><label for="email">' . __( 'Email','presstige' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+	'<input id="email" name="email" type="email" value="' .'" size="30"' . ' placeholder ='.__( '"Leave us a valid email adress"', 'presstige' ) . ( $req ? ' required' : '' ) . ' /></p>',
+
+	'url'    => '<p><label for="url">' . __( 'Website','presstige' ) . '</label>' .
+	'<input id="url" name="url" type="url" value="' . '" size="30" placeholder='.__( '"Have you got a nice website ?"', 'presstige' ) . '/></p>'
+
+	);
+	return $fields;
+	}
+}
+
+add_filter('comment_form_field_comment', 'twentytenfive_commentfield');
+if( !function_exists('twentytenfive_commentfield'))  {
+
+	function twentytenfive_commentfield() {
+	$commentArea = '<p><label for="comment">' . __( 'Comment', 'presstige') . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required placeholder ='.__( '"What\'s in your mind ?"', 'presstige').'  ></textarea></p>';
+	return $commentArea;
+	}
 }
 
 /** Adding html5 functionnalities to searchform ***/
-function html5_search_form( $form ) {
-    $form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-    <p><label class="screen-reader-text" for="s">' . __('Search for:','presstige') . '</label>
-    <input type="search" value="' . get_search_query() . '" name="s" id="s"  autocomplete="on" placeholder ='.__( '"What are you looking for?"', 'presstige' ) . ' />
-    <input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
-    </p>
-    </form>';
-    return $form;
+if( !function_exists('html5_search_form'))  {
+	function html5_search_form( $form ) {
+		$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
+		<p><label class="visuallyhidden" for="s">' . __('Search for:','presstige') . '</label>
+		<input type="search" value="' . get_search_query() . '" name="s" id="s"  autocomplete="on" placeholder ="'.__( 'What are you looking for?', 'presstige' ) . '" />
+		<input type="submit" id="searchsubmit" value="'. esc_attr__('Ok') .'" />
+		</p>
+		</form>';
+		return $form;
+	}
 }
 
 add_filter( 'get_search_form', 'html5_search_form' );
 
-
 /** we need a second form not to duplicate ids on the search result page when there is no results */
-function get_search_form_HTML5_bis() {
-    echo '<form role="search" method="get" id="searchform_bis" action="' . home_url( '/' ) . '" >
-    <p><label class="screen-reader-text" for="s2">' . __('Search for:','presstige') . '</label>
-    <input type="search" value="' . get_search_query() . '" name="s" id="s2"  autocomplete="on" placeholder ='.__( '"What are you looking for?"', 'presstige' ) . ' />
-    <input type="submit" id="searchsubmit_bis" value="'. esc_attr__('Search','presstige') .'" />
-    </p>
-    </form>';
+if( !function_exists('get_search_form_HTML5_bis'))  {
+	function get_search_form_HTML5_bis() {
+		echo '<form role="search" method="get" id="searchform_bis" action="' . home_url( '/' ) . '" >
+		<p><label class="visuallyhidden" for="s2">' . __('Search for:','presstige') . '</label>
+		<input type="search" value="' . get_search_query() . '" name="s" id="s2"  autocomplete="on" placeholder ="'.__( 'What are you looking for?', 'presstige' ) . '" />
+		<input type="submit" id="searchsubmit_bis" value="'. esc_attr__('Ok','presstige') .'" />
+		</p>
+		</form>';
+	}
 }
-
-
 
 /*** Add a login stylesheet and a wordpress specifiq stylesheet------------
 Special thanks to Valentin Brandt :  
 http://www.geekeries.fr/snippet/personnaliser-interface-ui-wordpress-3-2/ 
 comment code if not needed -----------*/
 
-function gk_ui_wp32_login() {
-	echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory') . '/css/custom_login.css"/>';
+if( !function_exists('gk_ui_wp32_login'))  {
+	function gk_ui_wp32_login() {
+		echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory') . '/css/custom_login.css"/>';
+	}
 }
 
-function gk_ui_wp32_admin() {
-	echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory') . '/css/custom_admin.css"/>';
+if( !function_exists('gk_ui_wp32_admin'))  {
+	function gk_ui_wp32_admin() {
+		wp_enqueue_style( 'admin', get_bloginfo('template_directory') . '/css/custom_admin.css');
+	}
 }
+
 add_action('login_head', 'gk_ui_wp32_login');
-add_action('admin_head', 'gk_ui_wp32_admin');
+add_action('admin_enqueue_scripts', 'gk_ui_wp32_admin');
+
 
 
 /*----------------------------------------------------------------------- **/

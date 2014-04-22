@@ -1,6 +1,7 @@
 <?php
 
 get_header(); ?>
+
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<nav class="nav-single">
@@ -32,25 +33,12 @@ get_header(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'presstige' ), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
 
-					<footer class="entry-meta">
-						<?php
-							$tag_list = get_the_tag_list( '', ', ' );
-							if ( '' != $tag_list ) {
-								$utility_text = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'presstige' );
-							} else {
-								$utility_text = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'presstige' );
-							}
-							printf(
-								$utility_text,
-								get_the_category_list( ', ' ),
-								$tag_list,
-								get_permalink(),
-								the_title_attribute( 'echo=0' )
-							);
-						?>
-
-						<?php edit_post_link( __( 'Edit', 'presstige' ), '<span class="edit-link">', '</span>' ); ?>
-					</footer><!-- .entry-meta -->
+					
+					<footer class="entry-meta">			
+						<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'presstige' ) . '</span>', ', ', '<span class="meta-sep"> - </span>' ); ?>
+						<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'presstige' ), __( '1 Comment', 'presstige' ), __( '% Comments', 'presstige' ) ); ?></span>
+						<?php edit_post_link( __( 'Edit', 'presstige' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+					</footer><!-- #entry-meta -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 
 				<nav class="nav-single">

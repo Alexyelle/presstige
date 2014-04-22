@@ -5,7 +5,7 @@
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<nav id="nav-above" role="article">
-		<h1 class="section-heading"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
+		<h1 class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
 		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'presstige' ) ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?></div>
 	</nav><!-- #nav-above -->
@@ -32,16 +32,17 @@
 			</div><!-- .entry-meta -->
 		</header><!-- .entry-header -->
 
-		<?php if ( is_archive() || is_search() ) : // Only display Excerpts for archives & search ?>
+		<?php if ( is_home() || is_front_page() || is_archive() || is_search() )  { ?>
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
-		<?php else : ?>
+		<?php }
+		else { ?>
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'presstige' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
-		<?php endif; ?>
+		<?php } ?>
 
 		<footer class="entry-meta">
 			<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'presstige' ); ?></span> </span>
@@ -59,7 +60,7 @@
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
 	<nav id="nav-below" role="article">
-		<h1 class="section-heading"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
+		<h1 class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
 		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'presstige' ) ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?></div>
 	</nav><!-- #nav-below -->

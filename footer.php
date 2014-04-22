@@ -14,8 +14,7 @@
 		
 			<div class="copyright">
 				<small>
-					&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>
-					<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'presstige' ); ?>"   ><?php printf( __( 'Proudly powered by %s.', 'presstige' ), 'WordPress' ); ?></a>
+					&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>					
 					<?php 
 						if ($options['presstige_copy'] != "")
 							echo "<p class='small'>".stripslashes($options['presstige_copy'])."</p>";			
@@ -31,7 +30,15 @@
 	jQuery(document).ready(function($) { 
 		jQuery(window).konami(function(){ $("#container").addClass('red'); }); // Replace to put your own changes!
 	});
-	</script>
+</script>
+
+<!-- A supprimer si déploiement recherche non utilisé -->
+<script src="<?php echo get_template_directory_uri(); ?>/js/classie.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/uisearch.js"></script>
+<script>
+new UISearch( document.getElementById( 'sb-search' ) );
+</script>
+<!-- END déploiement recherche  -->
 
 </body>
 </html>

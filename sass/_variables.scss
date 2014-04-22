@@ -1,14 +1,12 @@
-@import "compass/css3";
-
 // Global values
 // --------------------------------------------------
 
 $selectionColor:#b8dce5;//bleu clair
-$mainColor:#595959; //gris clair
-$secondColor:#24a54f; //Vert
+$mainColor:#000; //Noir
+$secondColor:#bbb; //gris
 $thirdColor:#666;
 $mainColorLighter: lighten($mainColor, 25%) !default;
-$secondColor: lighten($secondColor, 25%) !default;
+$secondColorlighter: lighten($secondColor, 25%) !default;
 $thirdColor: lighten($thirdColor, 25%) !default;
 $mainColorDarker:  darken($mainColor, 15%) !default;
 $secondColorDarker:  darken($secondColor, 15%) !default;
@@ -32,10 +30,3 @@ $required: #cc0033 !default;
 // -------------------------
 $linkColor: #08c !default;
 $linkColorHover:  darken($linkColor, 15%) !default;
-
-
-// Typography
-// -------------------------
-$baseFontFamily:  Verdana, Helvetica, Arial, sans-serif !default;
-$titleFontFamily: Verdana, Helvetica, Arial, sans-serif !default;
-$secondFontFamily:  Verdana, Helvetica, Arial, sans-serif !default;

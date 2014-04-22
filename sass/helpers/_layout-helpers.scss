@@ -1,0 +1,254 @@
+/*----------------------------*\
+ * Helpers                    *
+\*----------------------------*/
+
+/**
+ * .{SIZE}-hidden and .{SIZE}-visible helpers
+ */
+$breakpoints: large, small, tiny;
+
+@each $size in $breakpoints {
+  .#{$size}-hidden {
+    @include mq($size) {
+      display: none;
+    }
+  }
+
+  .#{$size}-visible {
+    display: block;
+
+    @include mq($size) {
+      display: block;
+    }
+  }
+}
+
+
+/**
+ * Clearfix
+ */
+.clearfix {
+  &:after {
+	content: '';
+	clear: both;
+	display: table;
+  }
+
+  @if $legacy-support-for-ie {
+    *zoom: 1;
+  }
+}
+
+/**
+ * Hidden yet accessible content
+ */
+.visuallyhidden, .assistive-text {
+  clip: rect(0 0 0 0);
+  width:   1px;
+  height:  1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  border:  0;
+  position: absolute;
+}
+
+/* for image replacement */
+
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+
+
+/* Hide for both screenreaders and browsers 
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden {
+  display: none;
+  visibility: hidden;
+} 
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden;
+}
+
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
+.assistive-text, 
+.visually-hidden {
+  position: absolute !important;
+  left: -7000px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/**
+ * Prevent long strings to break out of their container
+ */
+.wrap {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+/**
+ * Skip links
+ */
+.skip-link{
+  position: absolute;
+
+  a {
+    position: absolute;
+    left: -7000px;
+    padding: 0.5em;
+    background: #000;
+    color:#fff;
+    text-decoration: none;
+
+    &:focus {
+      position: static;
+    }
+  }
+}
+
+/**
+ * Float layout
+ * module, contains floats (.item is the same)
+ */
+.mod,
+.item {
+  overflow: hidden;
+}
+
+/**
+ * Blocks that needs to be placed under floats
+ */
+.clear,
+.line,
+.row {
+  clear: both;
+}
+
+/**
+ * Blocks that must contain floats
+ */
+.clearfix,
+.line,
+.mod {
+  @extend .clearfix;
+}
+
+/**
+ * Table layout
+ */
+.row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.row > *,
+.col {
+  display: table-cell;
+  vertical-align: top;
+}
+
+/**
+ * Inline-blocks
+ */
+.inbl {
+  @include inline-block(top);
+  margin-right: -.25em;
+}
+
+/* Alignments (blocks and inline) */
+/* ------------------------------ */
+
+.left  { float: left;  }
+.right { float: right; }
+
+img.left { margin-right: 1em; }
+img.right { margin-left: 1em; }
+
+img.left,
+img.right { margin-bottom: 5px; }
+
+.center    { margin-left: auto; margin-right: auto; }
+.txtleft   { text-align: left; }
+.txtright  { text-align: right; }
+.txtcenter { text-align: center; }
+
+
+/* Images */
+/* ------------------------------ */
+
+/*
+-Resize images to fit the main content area.
+-- Applies only to images uploaded via WordPress by targeting size-* classes.
+-- Other images will be left alone. Use "size-auto" class to apply to other images.
+-*/
+
+img.size-auto,
+img.size-full,
+img.size-large,
+img.size-medium,
+.attachment img,
+.widget-area img {
+    max-width: 100%;
+    height: auto; 
+}
+img.alignleft {
+    margin-right: 1em;
+}
+img.alignright {
+    margin-left: 1em;
+}
+.wp-caption {
+    padding: .5em;
+    text-align: center;
+}
+.wp-caption img {
+    margin: .25em;
+}
+.wp-caption .wp-caption-text {
+    margin: .5em;
+}
+.gallery-caption{
+}
+
+.gallery-item {
+  float: left;
+  margin-top: 10px;
+  text-align: center;
+  width: 33%;
+}
+
+
+/* WordPress alignement */
+/* ----------------------------- */
+
+/* Alignment */
+
+.alignleft {
+    display: inline;
+    float: left;
+}
+.alignright {
+    display: inline;
+    float: right;
+}
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

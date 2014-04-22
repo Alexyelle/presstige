@@ -3,6 +3,7 @@
 
 get_header(); ?>
 <?php the_post(); ?>
+<section class=" content mod item full-width ">
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 					<header class="entry-header">
@@ -16,8 +17,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 
-				<?php comments_template( '', true ); ?>
+				<?php // comments_template( '', true ); ?>
 </section>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

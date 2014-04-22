@@ -8,8 +8,8 @@ Presstige is a blank theme for starting a WordPress project based on <a href="ht
 
 * HTML5
 * Uses Paul Irish's conditionnal tags for IE
-* Uses <a href="http://knacss.com/">Raphael Goetter's knacss</a> for the basic layout
-* Default right sidebar, one full screen template with no sidebar and a left sidebar template 
+* Uses <a href="https://github.com/HugoGiraudel/KNACSS-Sass">the Sass port</a> of <a href=="https://github.com/RaphaelGoetter">@RaphaelGoetter's</a> KNACSS framework for the basic layout
+* Default full screen template with no sidebar and a left sidebar template 
 * Embeds the <a href="https://github.com/inpixelitrust/WP-cleanup-enhanced">Wp-cleanup-enhanced code </a> (you can't use both plugin version and in template, so if you use the plugin please comment the line that calls the functions/wordpress_cleanup.php in functions.php)
 * Embeds <a href="http://wpengineer.com/2230/removing-comments-absolutely-wordpress/">the Remove comments absolute plugin</a> (you can comment the line that calls unctions/remove-comments-absolute.php in functions.php to disable it)
 * Embeds ready to use script clean up functions functions/script_style_cleanups.php
@@ -21,7 +21,8 @@ Presstige is a blank theme for starting a WordPress project based on <a href="ht
 
 *Additions Presstige*
 
-* Somes functions (essential konami code)
-* Specifications options page (favicon - analytics - maintenance)
-* SASS
+* Specifications options page (favicon - analytics - maintenance - social media links)
+* Header Search : http://tympanus.net/codrops/2013/06/26/expanding-search-bar-deconstructed/
+* Icons font - example with a webfont from fontello 
 * Some additions css from h5bp.com
+* Konami code

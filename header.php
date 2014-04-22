@@ -5,7 +5,7 @@
 <!--[if IE 9 ]>    <html <?php language_attributes(); ?> class="lteie9 ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-
+<meta charset="<?php bloginfo( 'charset' ); ?>">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -26,57 +26,64 @@
 	if ( $paged >= 2 || $page >= 2 )
 		echo ' | ' . sprintf( __( 'Page %s', 'presstige' ), max( $paged, $page ) );
 
-	?></title>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	?>
+</title>
 	<!--  Mobile Viewport Fix -->
-	<meta name="viewport" content="initial-scale=1.0">
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
     
 	<!-- Place favicon.ico and apple-touch-icon.png in the images folder -->
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon.png"><!--60X60-->
-	
+	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon.png"><!--60X60-->	
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" media="screen, projection">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	
 	<!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>	
 	
 	<?php wp_head(); ?>
+	
 
 	<!-- To use the options  -->
 	<?php $options = presstige_get_global_options(); ?>
 	
 	</head>
 
-<body <?php body_class(); ?> >
-	
-	<div class="hfeed" id="container">
+<body <?php body_class(); ?> >	
+
+	<div class="hfeed container">
 		<header role="banner" id="site-header">
 			<hgroup>
 				<h1 class="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 
-			<nav>
+			<nav class="main-menu" id="menu" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Main menu', 'presstige' ); ?></h3>
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
 				
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'presstige' ); ?>"><?php _e( 'Skip to secondary content', 'presstige' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>				
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'container'=> 'div' )); ?>
+				<?php wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary' ) ); ?>
 			</nav>
+
+			<!-- A supprimer si déploiement recherche non utilisé -->
+			<div id="sb-search" class="sb-search">
+				<form role="search" action="<?php bloginfo('url'); ?>/" method="get" >
+					<div class="sb-search-input-wrap"><input class="sb-search-input" placeholder="Rechercher..." type="text" value="" name="s"  id="search"></div>
+					<input class="sb-search-submit icon icon-search" type="submit" value="">
+					<span class="sb-icon-search icon icon-search"></span>
+				</form>
+			</div>
+			<!-- END déploiement recherche  -->
 		</header>
 
 		<div class="line gut">
-			<?php if ( !( is_page_template('left-sidebar-page.php') || is_page_template('full-width-page.php'))	){ ?>
-				<section id="content" role="region" class="content mod left w70">
-			<?php } ?>
+			<?php 
+			//  If it's not a page (= a blog post, archive, etc) we display the sidebar on the right side 
+			if (!(is_page())){?>
+			<section id="content" role="region" class="content mod left w70">
+			<?php } 
+			

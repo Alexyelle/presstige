@@ -1,7 +1,3 @@
-@import "variables";
-@import "compass";
-@import "includes/bases";
-
 /* ----------------------------- */
 /* summary */
 /* ----------------------------- */
@@ -13,12 +9,52 @@ Template structure
     3-  Menu
     4-  Content
     5-  Footer
-    6-  Grids / responsive 
+    6-  Responsive
 */
 
 /* ----------------------------- */
 /* == 1. General */
 /* ----------------------------- */
+/**
+ * 1. Enable support for old browsers (IE8-, Firefox 3.6)
+ * 2. Enable print stylesheet
+ * 3. Gutter value for grid layouts
+ * 4. Base font size: must be unitless
+ * 5. Font stacks
+ */
+$legacy-support-for-ie: true        !default; /* 1 */
+$legacy-support-for-mozilla: true   !default; /* 1 */
+
+$print-stylesheet: true             !default; /* 2 */
+
+$gutter: 20px                       !default; /* 3 */
+
+$base-font-size: 10                 !default; /* 4 */
+
+$regular-font-stack: "Helvetica", "Arial", sans-serif; /* 5 */
+$monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 5 */
+
+@import "helpers/mixins";          // Sass only
+@import "helpers/reset";           // Home made reset
+@import "helpers/spacing-helpers"; // A couple of spacing-related helper classes
+@import "helpers/layout-helpers";  // A couple of layout-related helper classes and Sass placeholder 
+@import "helpers/block-helpers";   // A couple of block-related helper classes
+
+@import "modules/grids";           // Small grid system
+@import "modules/tables";          // Tables
+@import "modules/forms";           // Forms
+@import "modules/icons";           // Icons (unicode based) and bullets
+@import "modules/layout";          // Layout
+@import "modules/flexbox";         // Flexbox helpers
+@import "modules/typography";      // Typography baseline and vertical rythm
+
+@import "partials/iefix";          // Some IE fixes
+@import "partials/print";          // Print stylesheet
+@import "partials/rwd";           // Responsive stylesheet
+
+@import "variables";
+@import "compass";
+
 .red { color:#ff000d;} //konami example
 .container{    
     margin: 0 auto;
@@ -30,49 +66,168 @@ Template structure
 /* == 2. Header */
 /* ----------------------------- */
 
+#site-header{
+    position: relative;
+}
 .site-title {
     font-weight: bold;
-    margin: 15px auto 0;
-    text-align: center;
     position: relative;
 }
 .site-description {
     font-weight: normal;
-    margin: 0 0 1em;
-    margin: 15px auto 0;
-    text-align: center;
     position: relative;
 }
+
+/*-- A supprimer si déploiement recherche non utilisé --*/
+.sb-search {
+    position: absolute;
+    width: 32px;
+    min-width: 32px;
+    height: 31px;
+    right:20px;
+    top:15px;
+    @include transition-property(width);
+    @include transition-duration(0.3s); 
+    -webkit-backface-visibility: hidden;
+}
+.sb-search-input-wrap{
+    height: 34px;
+    overflow: hidden;
+    position: absolute;
+    right: 34px;
+    z-index: 200;
+    @include transition-property(width);
+    @include transition-duration(200ms);
+    @include transition-timing-function(ease);
+    width: 0;
+}
+.sb-search-open .sb-search-input-wrap{ width: 200px; }
+.sb-search-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    outline: none;
+    width: 100%;
+    height: 31px;
+    margin: 0;
+    z-index: 30;
+    padding: 5px 35px 5px 10px;
+}
+.sb-search-input::-webkit-input-placeholder { color: $secondColor; }
+.sb-search-input:-moz-placeholder { color: $secondColor; }
+.sb-search-input::-moz-placeholder { color:$secondColor; }
+.sb-search-input:-ms-input-placeholder { color: $secondColor;}
+.sb-icon-search,
+form .sb-search-submit  {
+    width: 32px;
+    height: 31px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 31px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+}
+form .sb-search-submit {
+    border: none;
+    outline: none;
+    z-index: -1;
+    &:hover{ background-color: transparent; }
+}
+.sb-icon-search { z-index: 90; }
+
+/* Open state */
+.sb-search.sb-search-open .sb-icon-search,
+.no-js .sb-search .sb-icon-search {
+    background-color: transparent;
+    color: #fff;
+    z-index: 20;
+}
+.sb-search.sb-search-open .sb-search-submit,
+.no-js .sb-search .sb-search-submit {
+    z-index: 90;
+}
+/* END déploiement recherche */
+
 /* ----------------------------- */
 /* == 3. Menu */
 /* ----------------------------- */
-#site-header{
-    .menu {
-        display: block;
-        background: $grayLighter;
-        display: block;
+
+.main-menu {
+    display: block;
+    background-color: $secondColor;
+    display: block;
+    float: left;
+    margin: 0 auto 1em;
+    @include rem(13);
+    ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+    } 
+    a:hover,
+    a:focus,
+    .current-menu-item a,
+    .current-menu-ancestor a,
+    .current_page_item a{
+        text-decoration: none;
+        color: $secondColor;
+        background-color: $thirdColor;
+    }
+
+    li {
+        position: relative;
         float: left;
-        margin: 0 auto 1em;
-        ul {
-            list-style: none;
-            margin: 0;
-            padding-left: 0;
-        }
-        li {
-            float: left;
-            position: relative;
-        }
-        a {    
-            display: block;
-            line-height: 2em;
-            padding: 0 1em 10px;
-            text-decoration: none;
-        }
-        a:hover,
-        ul > .current-menu-item a {
-            color: $secondColor;
-            text-decoration: none;
-        }
+    }
+    a {
+        display: block;
+        line-height: 2em;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        color: $thirdColor;
+    }
+    .sub-menu,
+    .children {
+        position: absolute;
+        max-height: 0;
+        overflow: hidden;
+        list-style: none outside none;
+        background: $mainColor;
+    }
+    .sub-menu li,
+    .children li {
+        float: none;
+    }
+
+    .sub-menu a,
+    .children a {
+        white-space: nowrap;
+        color: #fff;
+    }
+
+    /* unhide the 2nd level */
+    li:hover .sub-menu,
+    li:hover .children,
+    li.hover .sub-menu,
+    li.hover .children {
+        max-height: 30em;
+    }
+
+    li:hover a {
+        color: #fff;
+        background: $mainColor;
+    }
+
+    .sub-menu a:hover,
+    .children a:hover,
+    .sub-menu a:focus,
+    .children a:focus {
+        color: #fff;
+        background: $mainColor;
     }
 }
 
@@ -80,92 +235,73 @@ Template structure
 /* ----------------------------- */
 /* == 4. Content */
 /* ----------------------------- */
-    
+.lteie8 .container {
+    width: 1024px;
+}
+
 /* nav */
 .content nav {
     display: block;
     overflow: hidden;
-}
-.content nav .nav-previous {
-    float: left;
-    width: 50%;
-}
-.content nav .nav-next {
-    float: right;
-    text-align: right;
-    width: 50%;
+    .nav-previous {
+        float: left;
+        width: 50%;
+    }
+    .nav-next {
+        float: right;
+        width: 50%;
+        text-align: right;
+    }
 }
 .content #nav-above {
     display: none;
 }
+
 .paged .content #nav-above,
 .single .content #nav-above {
     display: block;
 }
+
 #nav-below {
     margin: 1em 0 0;
 }
+
 .page-link {
     margin: 0 0 1em;
 }
 
 /* table styling */
+
 .content table,
 .content td,
-.content th{
-    border: 1px solid $grayLight;
+.content th {
+    border: 1px solid rgb(191, 191, 190);
 }
-.content tbody tr:nth-child(odd){
-    background:$grayLighter
+
+.content tbody tr:nth-child(odd) {
+    background: #eee;
+}
+
+.entry-meta {
+    font-size: 0.9em;
+    font-style: italic;
 }
 
 /* Page */
-article.container{
+article{
     padding-top:15px;
-    .entry-header{
-        h1{
-            color:$secondColor;
-            font-size: 3.2em;
-            font-family: $baseFontFamily;
-        }        
-    }
-    .entry-content{
-        p,ul,ol{ font-size: 1.3em; }
-    } 
-    aside{
-        padding: 20px;
-        .entry-content h1{            
-            color:$secondColor;
-            font-size: 1.6em;
-        }
+    .entry-content, .entry-summary{
+        p,ul,ol{ @include rem(13); }
     }
 }
+
 
 /* ----------------------------- */
 /* == 5. Footer */
 /* ----------------------------- */
 
-.hfeed > footer.container{
-    text-align: center;
-    padding: 10px;
-    font-size: 1.2em;
-}
-#menu-pied-de-page{
-    li{ 
-        @include inline-block;
-        margin: 0 5px 0 0;
-    }
-    a{ 
-        text-decoration: none;
-        padding: 0 0 0 5px;
-    }
-}
+
 
 /* ----------------------------- */
-/* == 6. Grids / responsive  */
+/* == 6. Responsive */
 /* ----------------------------- */
-@import "includes/grids";
-@import "includes/tables";
-@import "includes/forms";
-@import "includes/icons";
-@import "includes/responsive";
