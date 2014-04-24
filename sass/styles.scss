@@ -119,15 +119,13 @@ $monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 
 .sb-search-input:-ms-input-placeholder { color: $secondColor;}
 .sb-icon-search,
 form .sb-search-submit  {
-    width: 32px;
-    height: 31px;
+    @include rem(20);
     display: block;
     position: absolute;
     right: 0;
     top: 0;
     padding: 0;
     margin: 0;
-    line-height: 31px;
     text-align: center;
     cursor: pointer;
     background-color: transparent;
@@ -144,7 +142,6 @@ form .sb-search-submit {
 .sb-search.sb-search-open .sb-icon-search,
 .no-js .sb-search .sb-icon-search {
     background-color: transparent;
-    color: #fff;
     z-index: 20;
 }
 .sb-search.sb-search-open .sb-search-submit,
@@ -152,6 +149,21 @@ form .sb-search-submit {
     z-index: 90;
 }
 /* END déploiement recherche */
+
+
+/*-- A supprimer si option réseaux sociaux non utilisé --*/
+.social{
+    clear:both;
+    padding: 0;
+    li{
+        @include inline-block(top);
+        @include rem(24);
+    }
+    a{ color:$secondColor; }
+    a:hover{ color:$secondColorlighter; text-decoration: none; }
+}
+/* END option réseaux sociaux */
+
 
 /* ----------------------------- */
 /* == 3. Menu */
@@ -163,7 +175,9 @@ form .sb-search-submit {
     display: block;
     float: left;
     margin: 0 auto 1em;
-    @include rem(13);
+    @include rem(13);;
+    position: relative;
+    z-index: 1000;
     ul {
         margin: 0;
         padding-left: 0;
@@ -175,7 +189,7 @@ form .sb-search-submit {
     .current-menu-ancestor a,
     .current_page_item a{
         text-decoration: none;
-        color: $secondColor;
+        color: #fff;
         background-color: $thirdColor;
     }
 
@@ -188,7 +202,7 @@ form .sb-search-submit {
         line-height: 2em;
         padding: 0.5em 1em;
         text-decoration: none;
-        color: $thirdColor;
+        color: $mainColor;
     }
     .sub-menu,
     .children {

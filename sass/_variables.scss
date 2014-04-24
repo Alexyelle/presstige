@@ -2,24 +2,24 @@
 // --------------------------------------------------
 
 $selectionColor:#b8dce5;//bleu clair
-$mainColor:#000; //Noir
-$secondColor:#bbb; //gris
-$thirdColor:#666;
-$mainColorLighter: lighten($mainColor, 25%) !default;
-$secondColorlighter: lighten($secondColor, 25%) !default;
-$thirdColor: lighten($thirdColor, 25%) !default;
-$mainColorDarker:  darken($mainColor, 15%) !default;
-$secondColorDarker:  darken($secondColor, 15%) !default;
-$thirdColorDarker:  darken($thirdColor, 15%) !default;
+$mainColor:#003333; //Vert foncé
+$secondColor:#009999; //Vert
+$thirdColor:#006666; //Vert clair
+$mainColorLighter: lighten($mainColor, 10%) !default;
+$secondColorlighter: lighten($secondColor, 10%) !default;
+$thirdColor: lighten($thirdColor, 10%) !default;
+$mainColorDarker:  darken($mainColor, 10%) !default;
+$secondColorDarker:  darken($secondColor, 10%) !default;
+$thirdColorDarker:  darken($thirdColor, 10%) !default;
 
 
 // Grays
 // -------------------------
-$grayDark:  #484848 !default;
-$grayDarker:  #3f3f3f !default;
-$gray:#919191 !default;
-$grayLight: #d0d0d0 !default;
-$grayLighter: #ebebeb !default;
+$grayDarker:  #262626 !default;
+$grayDark:  #333 !default;
+$gray:#666 !default;
+$grayLight: #999 !default;
+$grayLighter: #ccc !default;
 
 // Alert
 // -------------------------

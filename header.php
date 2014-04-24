@@ -77,13 +77,22 @@
 					<span class="sb-icon-search icon icon-search"></span>
 				</form>
 			</div>
-			<!-- END déploiement recherche  -->
+			<!-- END déploiement recherche  -->			
+
+			<!-- A supprimer si option réseaux sociaux non utilisé -->			
+			<ul class="social">
+				<?php if ($options['presstige_icon_social']['txt_input1'] != "") echo "<li><a class='icon-facebook icon' href='".$options['presstige_icon_social']['txt_input1']."'><span class='visuallyhidden'>Facebook</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input2'] != "") echo "<li><a class='icon-twitter icon' href='".$options['presstige_icon_social']['txt_input2']."'><span class='visuallyhidden'>Twitter</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input3'] != "") echo "<li><a class='icon-gplus icon' href='".$options['presstige_icon_social']['txt_input3']."'><span class='visuallyhidden'>Google Plus</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input4'] != "") echo "<li><a class='icon-linkedin icon' href='".$options['presstige_icon_social']['txt_input4']."'><span class='visuallyhidden'>Linkedin</span></a></li>"; ?>
+			</ul>
+			<!-- END option réseaux sociaux  -->
 		</header>
 
 		<div class="line gut">
 			<?php 
 			//  If it's not a page (= a blog post, archive, etc) we display the sidebar on the right side 
 			if (!(is_page())){?>
-			<section id="content" role="region" class="content mod left w70">
+			<section id="content" role="region" class="content mod left w70 mr3">
 			<?php } 
 			
