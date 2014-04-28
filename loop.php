@@ -1,7 +1,3 @@
-<?php
-  
-?>
-
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<nav id="nav-above" role="article">
@@ -46,14 +42,23 @@
 
 		<footer class="entry-meta">
 			<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'presstige' ); ?></span> </span>
-			<span class="meta-sep"> | </span>
 			<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'presstige' ) . '</span>', ', ', '<span class="meta-sep"> | </span>' ); ?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'presstige' ), __( '1 Comment', 'presstige' ), __( '% Comments', 'presstige' ) ); ?></span>
+
+			<?php if (! class_exists( 'Remove_Comments_Absolute' )) { ?>
+
+				<span class="meta-sep"> | </span>
+				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'presstige' ), __( '1 Comment', 'presstige' ), __( '% Comments', 'presstige' ) ); ?></span>
+
+			<?php } ?>
+
 			<?php edit_post_link( __( 'Edit', 'presstige' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 		</footer><!-- #entry-meta -->
 	</article><!-- #post-<?php the_ID(); ?> -->
-
-	<?php comments_template( '', true ); ?>
+	<?php
+		if (! class_exists( 'Remove_Comments_Absolute' )) {
+			comments_template( '', true );
+		}
+	?>
 
 <?php endwhile; ?>
 
