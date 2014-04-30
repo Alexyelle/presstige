@@ -1,6 +1,6 @@
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
-	<nav id="nav-above" role="article">
+	<nav id="nav-above">
 		<h1 class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
 		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'presstige' ) ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?></div>
@@ -64,7 +64,7 @@
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
-	<nav id="nav-below" role="article">
+	<nav id="nav-below">
 		<h1 class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></h1>
 		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'presstige' ) ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?></div>

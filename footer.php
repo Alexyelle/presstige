@@ -28,7 +28,7 @@
 <?php wp_footer(); ?>
 <script type="text/javascript">
 	jQuery(document).ready(function($) { 
-		jQuery(window).konami(function(){ $("#container").addClass('red'); }); // Replace to put your own changes!
+		jQuery(window).konami(function(){ $("#main").addClass('red'); }); // Replace to put your own changes!
 	});
 </script>
 

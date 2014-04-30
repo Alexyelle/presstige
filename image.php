@@ -25,7 +25,7 @@ get_header(); ?>
 							<?php edit_post_link( __( 'Edit', 'presstige' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 						</div><!-- .entry-meta -->
 
-						<nav id="image-navigation" role="article">
+						<nav id="image-navigation">
 							<span class="previous-image"><?php previous_image_link( false, __( '&larr; Previous' , 'presstige' ) ); ?></span>
 							<span class="next-image"><?php next_image_link( false, __( 'Next &rarr;' , 'presstige' ) ); ?></span>
 						</nav><!-- #image-navigation -->

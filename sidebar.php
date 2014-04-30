@@ -16,7 +16,7 @@
 		
 			<?php if ( ! dynamic_sidebar( 'sidebar' ) ) : ?>
 
-				<aside id="search" class="widget widget_search" role="complementary">
+				<aside class="widget widget_search" role="complementary">
 					<?php get_search_form(); ?>
 				</aside>
 
@@ -31,7 +31,7 @@
 					<h2 class="widget-title"><?php _e( 'Meta', 'presstige' ); ?></h2>
 					<ul>
 						<?php wp_register(); ?>
-						<aside role="complementary"><?php wp_loginout(); ?></aside>
+						<li><?php wp_loginout(); ?></li>
 						<?php wp_meta(); ?>
 					</ul>
 				</aside>

@@ -81,7 +81,7 @@ endif; // ends check for handcraftedwp_comment()
 		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-above" role="article">
+		<nav id="comment-nav-above">
 			<h1 class="section-heading"><?php _e( 'Comment navigation', 'presstige' ); ?></h1>
 			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'presstige' ) ); ?></div>
 			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'presstige' ) ); ?></div>
@@ -93,7 +93,7 @@ endif; // ends check for handcraftedwp_comment()
 		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-below" role="article">
+		<nav id="comment-nav-below">
 			<h1 class="section-heading"><?php _e( 'Comment navigation', 'presstige' ); ?></h1>
 			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'presstige' ) ); ?></div>
 			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'presstige' ) ); ?></div>

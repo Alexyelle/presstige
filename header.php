@@ -55,10 +55,9 @@
 
 	<div class="hfeed container">
 		<header role="banner" id="site-header">
-			<hgroup>
-				<h1 class="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</hgroup>
+			
+			<h1 class="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 
 			<nav class="main-menu" id="menu" role="navigation">
 				<h3 class="assistive-text"><?php _e( 'Main menu', 'presstige' ); ?></h3>
@@ -66,7 +65,16 @@
 				
 				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>				
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
-				<?php wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary' ) ); ?>
+				<?php wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary' ) ); ?>				
+
+<?php 
+$mobile_browser = 0;
+  
+if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android|iemobile)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+    echo "test";
+}
+?>
+
 			</nav>
 
 			<!-- A supprimer si déploiement recherche non utilisé -->
@@ -89,7 +97,7 @@
 			<!-- END option réseaux sociaux  -->
 		</header>
 
-		<div class="line gut">
+		<div id="main" class="line gut">
 			<?php 
 			//  If it's not a page (= a blog post, archive, etc) we display the sidebar on the right side 
 			if (!(is_page())){?>
