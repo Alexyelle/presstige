@@ -76,6 +76,7 @@ $monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 
 .site-description {
     font-weight: normal;
     position: relative;
+    margin: 0 0 10px 0;
 }
 
 /*-- A supprimer si déploiement recherche non utilisé --*/
@@ -170,12 +171,9 @@ form .sb-search-submit {
 /* ----------------------------- */
 
 .main-menu {
-    display: block;
     background-color: $secondColor;
-    display: block;
-    float: left;
     margin: 0 auto 1em;
-    @include rem(13);;
+    @include rem(13);
     position: relative;
     z-index: 1000;
     ul {
@@ -192,10 +190,16 @@ form .sb-search-submit {
         color: #fff;
         background-color: $thirdColor;
     }
-
     li {
         position: relative;
-        float: left;
+        @include mq(medium){
+            @include inline-block(top);
+        }
+    }
+    //Effacer le white-space du au inline-block
+    @include mq(medium){        
+        #nav{ font-size: 0; }
+        #nav li{ @include rem(13); }
     }
     a {
         display: block;
@@ -245,6 +249,45 @@ form .sb-search-submit {
     }
 }
 
+/*-- Menu simple css3 --*/
+#nav .top{
+    display: none;
+    &:hover a{background-color: transparent;}
+}
+.main-menu .nav-toggle{
+    @include mq(medium){ display: none; }
+    @include mq(small){ float:right; }
+}
+@include mq(small) {    
+    .nav-toggle:after{ padding-left:5px; font-family: "presstige"; content: "\6d"; }
+    #nav{
+        max-height: 0;
+        overflow: hidden;
+        @include transition-property(max-height);
+        @include transition-duration(0.8s);
+        @include transition-timing-function(ease-out);
+        @include transition-delay(0s);
+    }
+    #nav:target{max-height:20em;}
+    #nav:target .top{
+        bottom: 0;
+        display: block;
+        position: absolute;
+        right: 0;
+        text-indent: -99999em;
+        width: 5em;
+    }
+    .main-menu{
+        li{ border-bottom:1px solid $secondColor; }
+        .sub-menu{ 
+            border-top:1px solid $secondColor;
+            li a{ padding-left: 30px; }
+        }
+        li:last-child{ border-bottom: none; }
+        .sub-menu, .children{ position: relative; max-height: 100%;}
+    }
+}
+/* END Menu simple css3 */
 
 /* ----------------------------- */
 /* == 4. Content */

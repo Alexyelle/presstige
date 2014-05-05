@@ -7,6 +7,7 @@ $secondColor:#009999; //Vert
 $thirdColor:#006666; //Vert clair
 $mainColorLighter: lighten($mainColor, 10%) !default;
 $secondColorlighter: lighten($secondColor, 10%) !default;
+$thirdColorlighter: lighten($secondColor, 10%) !default;
 $thirdColor: lighten($thirdColor, 10%) !default;
 $mainColorDarker:  darken($mainColor, 10%) !default;
 $secondColorDarker:  darken($secondColor, 10%) !default;
