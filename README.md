@@ -22,7 +22,7 @@ Presstige is a blank theme for starting a WordPress project based on <a href="ht
 *Additions Presstige*
 
 * Specifications options page (favicon - analytics - maintenance - social media links)
-* <a href="http://tympanus.net/codrops/2013/06/26/expanding-search-bar-deconstructed/>Expanding search bar deconstructed</a> in header
+* <a href="http://tympanus.net/codrops/2013/06/26/expanding-search-bar-deconstructed/">Expanding search bar deconstructed</a> in header
 * Icons font - example with a webfont from <a href="http://fontello.com/">fontello </a>
 * Some additions css from h5bp.com
 * Konami code
