@@ -15,44 +15,24 @@ Template structure
 /* ----------------------------- */
 /* == 1. General */
 /* ----------------------------- */
-/**
- * 1. Enable support for old browsers (IE8-, Firefox 3.6)
- * 2. Enable print stylesheet
- * 3. Gutter value for grid layouts
- * 4. Base font size: must be unitless
- * 5. Font stacks
- */
-$legacy-support-for-ie: true        !default; /* 1 */
-$legacy-support-for-mozilla: true   !default; /* 1 */
+// Sass config file
+@import "_00-config";
 
-$print-stylesheet: true             !default; /* 2 */
+// Sass base styles
+@import "_01-base";
 
-$gutter: 20px                       !default; /* 3 */
-
-$base-font-size: 10                 !default; /* 4 */
-
-$regular-font-stack: "Helvetica", "Arial", sans-serif; /* 5 */
-$monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 5 */
-
-@import "helpers/mixins";          // Sass only
-@import "helpers/reset";           // Home made reset
-@import "helpers/spacing-helpers"; // A couple of spacing-related helper classes
-@import "helpers/layout-helpers";  // A couple of layout-related helper classes and Sass placeholder 
-@import "helpers/block-helpers";   // A couple of block-related helper classes
-
-@import "modules/grids";           // Small grid system
-@import "modules/tables";          // Tables
-@import "modules/forms";           // Forms
-@import "modules/icons";           // Icons (unicode based) and bullets
-@import "modules/layout";          // Layout
-@import "modules/flexbox";         // Flexbox helpers
-@import "modules/typography";      // Typography baseline and vertical rythm
-
-@import "partials/iefix";          // Some IE fixes
-@import "partials/print";          // Print stylesheet
-@import "partials/rwd";           // Responsive stylesheet
-
-@import "variables";
+// Sass files : chose the ones you need
+@import "_02-grids";
+@import "_03-tables"; 
+@import "_04-forms";
+@import "_05-icons";
+@import "_06-rwd";
+@import "_07-flexbox"; 
+@import "_08-print";
+@import "_09-booleans";
+@import "_10-gmaps";
+@import "_11-ie";
+@import "_12-styling";
 @import "compass";
 
 .red { color:#ff000d;} //konami example
@@ -61,7 +41,6 @@ $monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 
     max-width: 980px;
     padding: 0 20px;
 }
-
 /* ----------------------------- */
 /* == 2. Header */
 /* ----------------------------- */
@@ -85,7 +64,7 @@ $monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 
     width: 32px;
     min-width: 32px;
     height: 31px;
-    right:20px;
+    right:0;
     top:15px;
     @include transition-property(width);
     @include transition-duration(0.3s); 
@@ -114,13 +93,13 @@ $monospace-font-stack: "Consolas", "DejaVu Sans Mono", "Courier", monospace; /* 
     z-index: 30;
     padding: 5px 35px 5px 10px;
 }
-.sb-search-input::-webkit-input-placeholder { color: $secondColor; }
-.sb-search-input:-moz-placeholder { color: $secondColor; }
-.sb-search-input::-moz-placeholder { color:$secondColor; }
-.sb-search-input:-ms-input-placeholder { color: $secondColor;}
+.sb-search-input::-webkit-input-placeholder { color: $primary-color; }
+.sb-search-input:-moz-placeholder { color: $primary-color; }
+.sb-search-input::-moz-placeholder { color:$primary-color; }
+.sb-search-input:-ms-input-placeholder { color: $primary-color;}
 .sb-icon-search,
 form .sb-search-submit  {
-    @include rem(20);
+    @include rem(2);
     display: block;
     position: absolute;
     right: 0;
@@ -158,10 +137,10 @@ form .sb-search-submit {
     padding: 0;
     li{
         @include inline-block(top);
-        @include rem(24);
+        @include rem(2);
     }
-    a{ color:$secondColor; }
-    a:hover{ color:$secondColorlighter; text-decoration: none; }
+    a{ color:$primary-color; }
+    a:hover{ color:$primary-color-darker; }
 }
 /* END option réseaux sociaux */
 
@@ -171,9 +150,9 @@ form .sb-search-submit {
 /* ----------------------------- */
 
 .main-menu {
-    background-color: $secondColor;
+    background-color: $primary-color;
     margin: 0 auto 1em;
-    @include rem(13);
+    @include rem(1.3);
     position: relative;
     z-index: 1000;
     ul {
@@ -188,25 +167,17 @@ form .sb-search-submit {
     .current_page_item a{
         text-decoration: none;
         color: #fff;
-        background-color: $thirdColor;
+        background-color: $secondary-color;
     }
     li {
         position: relative;
-        @include mq(medium){
-            @include inline-block(top);
-        }
-    }
-    //Effacer le white-space du au inline-block
-    @include mq(medium){        
-        #nav{ font-size: 0; }
-        #nav li{ @include rem(13); }
+        float: left;
     }
     a {
         display: block;
         line-height: 2em;
         padding: 0.5em 1em;
         text-decoration: none;
-        color: $mainColor;
     }
     .sub-menu,
     .children {
@@ -214,7 +185,7 @@ form .sb-search-submit {
         max-height: 0;
         overflow: hidden;
         list-style: none outside none;
-        background: $mainColor;
+        background: $primary-color;
     }
     .sub-menu li,
     .children li {
@@ -237,7 +208,7 @@ form .sb-search-submit {
 
     li:hover a {
         color: #fff;
-        background: $mainColor;
+        background: $primary-color-darker;
     }
 
     .sub-menu a:hover,
@@ -245,49 +216,29 @@ form .sb-search-submit {
     .sub-menu a:focus,
     .children a:focus {
         color: #fff;
-        background: $mainColor;
+        background: $secondary-color;
+    }
+    .navtoggle {
+        width: 100%;
+        padding: .8em 1em;
+        text-align: right;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 }
 
-/*-- Menu simple css3 --*/
-#nav .top{
+/* Styling the toggle menu link and hiding it */
+.navtoggle,
+.toggle-link {
     display: none;
-    &:hover a{background-color: transparent;}
 }
-.main-menu .nav-toggle{
-    @include mq(medium){ display: none; }
-    @include mq(small){ float:right; }
+
+.navtoggle:before {
+    content: '\2630';
+    padding-right: .5em;
+    font-size: 1em;
 }
-@include mq(small) {    
-    .nav-toggle:after{ padding-left:5px; font-family: "presstige"; content: "\6d"; }
-    #nav{
-        max-height: 0;
-        overflow: hidden;
-        @include transition-property(max-height);
-        @include transition-duration(0.8s);
-        @include transition-timing-function(ease-out);
-        @include transition-delay(0s);
-    }
-    #nav:target{max-height:20em;}
-    #nav:target .top{
-        bottom: 0;
-        display: block;
-        position: absolute;
-        right: 0;
-        text-indent: -99999em;
-        width: 5em;
-    }
-    .main-menu{
-        li{ border-bottom:1px solid $secondColor; }
-        .sub-menu{ 
-            border-top:1px solid $secondColor;
-            li a{ padding-left: 30px; }
-        }
-        li:last-child{ border-bottom: none; }
-        .sub-menu, .children{ position: relative; max-height: 100%;}
-    }
-}
-/* END Menu simple css3 */
 
 /* ----------------------------- */
 /* == 4. Content */
@@ -348,7 +299,7 @@ form .sb-search-submit {
 article{
     padding-top:15px;
     .entry-content, .entry-summary{
-        p,ul,ol{ @include rem(13); }
+        p,ul,ol{ @include rem(1.3); }
     }
 }
 
@@ -362,3 +313,104 @@ article{
 /* ----------------------------- */
 /* == 6. Responsive */
 /* ----------------------------- */
+ /* Responsive Menu */
+
+ @media (max-width: $medium-screen) {
+    .navtoggle,
+    .toggle-link {
+        display: block;
+    }
+
+    .js .menu > ul {
+        overflow: hidden;
+        max-height: 0em;
+    }
+
+    .main-menu{
+        .menu  li {
+            float: none;
+            margin: 0;
+        }
+        .active + ul,
+        .keyboardactive + ul {
+            max-height: 90em;
+        }
+        /* arrow to indicate that we have subnav*/
+        .menu .has-subnav > .toggle-link:after {
+            content: "+";
+            font-size: 16px;
+            position: absolute;
+            width: 20px;
+            top: 10px;
+            bottom: 0px;
+            right: 10px;
+            font-weight: bold;
+            color: $primary-color-darker;
+            text-align: center;
+        }
+
+        .menu .has-subnav  > .toggle-link.active:after {
+            content: "-";
+        }
+        
+        ul.menu, div.menu > ul ul{        
+            @include transition-property(all);
+            @include transition-duration(400ms);
+            @include transition-timing-function(ease-out);
+        }
+
+        /* Hide the Sub menu */
+        li:hover .sub-menu,
+        li:hover .children {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        /* Open the Sub menu ! */
+        li .sub-menu.active,
+        li.hover .sub-menu,
+        li .children.active,
+        li.hover .children {
+            max-height: 30em;
+            overflow: visible;
+            position: relative;
+        }
+
+        /* Sub menu styling*/
+        .sub-menu, 
+        .children {
+            background: none;
+        }
+
+        .sub-menu a,
+        .children a {
+            color: $base-color;
+        }
+
+        .sub-menu .current-menu-item a,
+        .children .current-menu-item a {
+            color: #fff;
+        }
+
+        .sub-menu li a,
+        .children li a {
+            padding-left: 30px;
+        }
+    }
+
+  
+    /* styling the toggle menu */
+    .toggle-link {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        height: 42px;
+        width: 40px;
+        border: none;
+        z-index: 200;
+        font-size: 0em;
+        background: rgba(255, 255, 255,0.1);
+        cursor: pointer;
+    }
+    
+}

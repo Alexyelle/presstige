@@ -1,15 +1,28 @@
-@import "compass";
+@import "compass/css3";
 
 /*  The css for the login page ! */
+
+.login #login_error{ 
+    //if login error information removed for security with wordpress_cleanup.php
+    padding: 0;
+    margin: 0;
+    background: none;
+    @include box-shadow(0);
+}
+
 .login h1 a {
-	background:url(../img/logo_header.png) center no-repeat; 
-	width:230px; 
-	height:35px; 
+	background: {
+	  image: image-url("logo_company.png");
+	  repeat: no-repeat;
+	  position: top left;
+	};
+	@include background-size(cover);
+	width:270px; 
+	height:50px; 
 	margin: 20px auto;
-	background-size: auto;
 }
 body.login { 
-	background:url(../img/bg_maintenance.png) repeat;
+	background:image-url("bg_maintenance.png") repeat;
 }
 
 /* Barre du haut - Lien */

@@ -37,6 +37,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+	<script src="<?php echo get_template_directory_uri(); ?>/js/modernizr.custom.js"></script>
 	<!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -60,18 +61,17 @@
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 
 			<nav class="main-menu clearfix" id="menu" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'presstige' ); ?></h3>
+				<h3 class="visually-hidden"><?php _e( 'Main menu', 'presstige' ); ?></h3>
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
 				
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>				
+				<div class="skip-links"><a class="visually-hidden" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>				
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
 				<?php //wp_nav_menu( array( 'container' => '', 'theme_location' => 'primary', 'menu_id' => 'nav') ); ?>	
 				
-
-				<!-- Menu simple css3 -->
-				<?php wp_nav_menu( array( 'container' => '', 'theme_location' => 'primary', 'menu_id' => 'nav', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li class="top"><a href="#site-header">Top</a></li></ul>') ); ?>
-				<a class="nav-toggle" href="#nav">Menu</a>		
-				<!-- END Menu simple css3	 -->
+				<?php   
+					// wp_nav_menu( array( 'container_class' => 'menu main-navigation', 'theme_location' => 'primary','walker' => new Has_Subnav_Walker() ) ); 					 
+					wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary' ) );
+				?>
 
 			</nav>
 
@@ -87,10 +87,10 @@
 
 			<!-- A supprimer si option réseaux sociaux non utilisé -->			
 			<ul class="social">
-				<?php if ($options['presstige_icon_social']['txt_input1'] != "") echo "<li><a class='icon-facebook icon' href='".$options['presstige_icon_social']['txt_input1']."'><span class='visuallyhidden'>Facebook</span></a></li>"; ?>
-				<?php if ($options['presstige_icon_social']['txt_input2'] != "") echo "<li><a class='icon-twitter icon' href='".$options['presstige_icon_social']['txt_input2']."'><span class='visuallyhidden'>Twitter</span></a></li>"; ?>
-				<?php if ($options['presstige_icon_social']['txt_input3'] != "") echo "<li><a class='icon-gplus icon' href='".$options['presstige_icon_social']['txt_input3']."'><span class='visuallyhidden'>Google Plus</span></a></li>"; ?>
-				<?php if ($options['presstige_icon_social']['txt_input4'] != "") echo "<li><a class='icon-linkedin icon' href='".$options['presstige_icon_social']['txt_input4']."'><span class='visuallyhidden'>Linkedin</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input1'] != "") echo "<li><a class='icon-facebook icon' href='".$options['presstige_icon_social']['txt_input1']."'><span class='visually-hidden'>Facebook</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input2'] != "") echo "<li><a class='icon-twitter icon' href='".$options['presstige_icon_social']['txt_input2']."'><span class='visually-hidden'>Twitter</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input3'] != "") echo "<li><a class='icon-gplus icon' href='".$options['presstige_icon_social']['txt_input3']."'><span class='visually-hidden'>Google Plus</span></a></li>"; ?>
+				<?php if ($options['presstige_icon_social']['txt_input4'] != "") echo "<li><a class='icon-linkedin icon' href='".$options['presstige_icon_social']['txt_input4']."'><span class='visually-hidden'>Linkedin</span></a></li>"; ?>
 			</ul>
 			<!-- END option réseaux sociaux  -->
 		</header>

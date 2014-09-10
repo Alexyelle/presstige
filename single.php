@@ -5,7 +5,7 @@ get_header(); ?>
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<nav class="nav-single">
-						<p class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></p>
+						<p class="visually-hidden"><?php _e( 'Post navigation', 'presstige' ); ?></p>
 						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'presstige' ) ); ?></span>
 						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'presstige' ) ); ?></span>
 				</nav><!-- #nav-single -->
@@ -13,19 +13,13 @@ get_header(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
-
-						<div class="entry-meta">
-							<?php
-								printf( __( '<span class="meta-prep meta-prep-author">Posted on </span><a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s">%3$s</time></a> <span class="meta-sep"> by </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s">%6$s</a></span>', 'presstige' ),
-									get_permalink(),
-									get_the_date( 'c' ),
-									get_the_date(),
-									get_author_posts_url( get_the_author_meta( 'ID' ) ),
-									sprintf( esc_attr__( 'View all posts by %s', 'presstige' ), get_the_author() ),
-									get_the_author()
-								);
-							?>
-						</div><!-- .entry-meta -->
+						
+						<div class="entry-meta entry-header">                            
+				                <span class="published"><?php _e('Published on', 'themename') ?> <strong><?php the_time( get_option('date_format') ); ?></strong></span>
+				                <span class="author"><?php _e('by', 'themename') ?> <?php the_author_posts_link(); ?></span>
+								<span class="entry-categories"><?php _e('in', 'themename') ?> <?php the_category(', ') ?></span> -  <span class="comment-count"> <?php comments_popup_link(__('No Comments', 'themename'), __('1 Comment', 'themename'), __('% Comments', 'themename')); ?></span> - 
+								<span class="permalink"><a title="<?php printf(__('Permanent Link to %s', 'themename'), get_the_title()); ?>" href="<?php the_permalink(); ?>"><?php _e('Permalink', 'themename') ?></a></span>                   		
+			          	</div><!-- .entry-meta -->
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
@@ -42,7 +36,7 @@ get_header(); ?>
 				</article><!-- #post-<?php the_ID(); ?> -->
 
 				<nav class="nav-single">
-						<p class="assistive-text"><?php _e( 'Post navigation', 'presstige' ); ?></p>
+						<p class="visually-hidden"><?php _e( 'Post navigation', 'presstige' ); ?></p>
 						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'presstige' ) ); ?></span>
 						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'presstige') ); ?></span>
 				</nav><!-- #nav-single -->

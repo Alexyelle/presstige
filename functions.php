@@ -223,7 +223,7 @@ if( !function_exists('twentytenfive_commentfield'))  {
 if( !function_exists('html5_search_form'))  {
 	function html5_search_form( $form ) {
 		$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-		<p><label class="visuallyhidden" for="s">' . __('Search for:','presstige') . '</label>
+		<p><label class="visually-hidden" for="s">' . __('Search for:','presstige') . '</label>
 		<input type="search" value="' . get_search_query() . '" name="s" id="s"  autocomplete="on" placeholder ="'.__( 'What are you looking for?', 'presstige' ) . '" />
 		<input type="submit" id="searchsubmit" value="'. esc_attr__('Ok') .'" />
 		</p>
@@ -238,7 +238,7 @@ add_filter( 'get_search_form', 'html5_search_form' );
 if( !function_exists('get_search_form_HTML5_bis'))  {
 	function get_search_form_HTML5_bis() {
 		echo '<form role="search" method="get" id="searchform_bis" action="' . home_url( '/' ) . '" >
-		<p><label class="visuallyhidden" for="s2">' . __('Search for:','presstige') . '</label>
+		<p><label class="visually-hidden" for="s2">' . __('Search for:','presstige') . '</label>
 		<input type="search" value="' . get_search_query() . '" name="s" id="s2"  autocomplete="on" placeholder ="'.__( 'What are you looking for?', 'presstige' ) . '" />
 		<input type="submit" id="searchsubmit_bis" value="'. esc_attr__('Ok','presstige') .'" />
 		</p>
