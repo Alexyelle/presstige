@@ -26,8 +26,7 @@
 	}
 }
 
-
-@include font-face("Presstige", font-files("presstige.ttf", "presstige.woff", "presstige.eot", "presstige.svg"));
+@include font-face('Presstige', font-files('presstige.woff', 'woff','presstige.ttf', 'truetype','presstige.svg', 'svg'),'presstige.eot');
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "presstige";
   font-style: normal;
