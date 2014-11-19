@@ -1,16 +1,15 @@
 <?php
 
+
 // Customize the format dropdown items // Enlever la possibilité de mettre un autre H1
-if( !function_exists('base_custom_mce_format') ){
   function base_custom_mce_format($init) {
     // Add block format elements you want to show in dropdown
-    $init['theme_advanced_blockformats'] = 'p,h2,h3,h4,h5,h6,pre';
+    $init['block_formats'] = 'Paragraph=p;Titre 2=h2;Titre 3=h3;Titre 4=h4;Titre 5=h5;Titre 6=h6;Pre=pre;Citation=blockquote';
     // Add elements not included in standard tinyMCE dropdown p,h1,h2,h3,h4,h5,h6
     //$init['extended_valid_elements'] = 'code[*]';
     return $init;
   }
   add_filter('tiny_mce_before_init', 'base_custom_mce_format' );
-}
 
  add_action('after_setup_theme','wpce_setup');
   if( !function_exists('wpce_setup'))  {

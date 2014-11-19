@@ -38,7 +38,7 @@ register_nav_menus( array(
 /**
  *	This theme supports editor styles
  */
-add_editor_style("/css/editor-style.css");
+add_editor_style("css/editor-style.css");
 
 /**
  * Proper way to enqueue scripts and styles
