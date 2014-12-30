@@ -118,10 +118,8 @@ function presstige_add_menu(){
 	
 	// Display Settings Page link under the "Appearance" Admin Menu
 	$presstige_settings_page = add_theme_page(__('Theme Options'), __('Theme Options','presstige'), 'manage_options', PRESSTIGE_PAGE_BASENAME, 'presstige_settings_page_fn');
-		// contextual help
-		if ($presstige_settings_page) {
-			add_contextual_help( $presstige_settings_page, $presstige_contextual_help );
-		}
+
+		
 }
 
 // ************************************************************************************************************
@@ -626,7 +624,9 @@ function presstige_show_msg($message, $msgclass = 'info') {
 function presstige_admin_msgs() {
 	
 	// check for our settings page - need this in conditional further down
-	$presstige_settings_pg = strpos($_GET['page'], PRESSTIGE_PAGE_BASENAME);
+	// $presstige_settings_pg = strpos($_GET['page'], PRESSTIGE_PAGE_BASENAME);
+	
+	$presstige_settings_pg = get_current_screen();
 	// collect setting errors/notices: //http://codex.wordpress.org/Function_Reference/get_settings_errors
 	$set_errors = get_settings_errors(); 
 	
@@ -648,6 +648,8 @@ function presstige_admin_msgs() {
 	}
 }
 
+
 // admin messages hook!
 add_action('admin_notices', 'presstige_admin_msgs');
+
 ?>

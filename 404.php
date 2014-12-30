@@ -28,6 +28,7 @@ get_header(); ?>
 					?>
 
 					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+				</div>
 <!-- .entry-content -->
 </article>
 </section>
