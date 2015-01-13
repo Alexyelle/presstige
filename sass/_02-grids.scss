@@ -31,6 +31,8 @@
 /* whitespace fixing for modern browsers including IE9+ */
 :root .grid {
 	font-size: 0;
+	/* Safari */
+	letter-spacing: -4px;
 	/* fallback for IE9+ */
 	text-justify: distribute-all-lines;
 }
@@ -39,6 +41,8 @@
 	/* fallback for Opera Mini */
 	font-size: $base-font-size;
 	font-size: ($base-font-size / 10px) + rem;
+	/* Safari */
+	letter-spacing: normal;
 }
 
 /* Opera hack */
