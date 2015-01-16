@@ -1,27 +1,23 @@
-<?php
-  global $options;
-?>
+<?php global $options; ?>
 
-
-	</div><!-- #main  -->
+	</main>
 
 	<footer role="contentinfo">
-			<div class="widget-area">
-			<?php if ( is_active_sidebar( 'footer-widget-area' ) ){
-				dynamic_sidebar( 'footer-widget-area' );					
-			}?>
-			</div>
-		
-			<div class="copyright">
-				<small>
-					&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>					
-					<?php 
-						if ($options['presstige_copy'] != "")
-							echo "<p class='small'>".stripslashes($options['presstige_copy'])."</p>";			
-				 
-					?>	
-				</small>
-			</div>
+		<div class="widget-area">
+		<?php if ( is_active_sidebar( 'footer-widget-area' ) ){
+			dynamic_sidebar( 'footer-widget-area' );					
+		}?>
+		</div>
+	
+		<div class="copyright">
+			<small>
+				&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>					
+				<?php 
+					if ($options['presstige_copy'] != "")
+					echo "<p class='small'>".stripslashes($options['presstige_copy'])."</p>";
+				?>	
+			</small>
+		</div>
 	</footer>
 </div>
 

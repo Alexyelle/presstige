@@ -62,10 +62,10 @@ endif; // ends check for handcraftedwp_comment()
 
 ?>
 
-	<div id="comments">
+	<section id="comments">
 	<?php if ( post_password_required() ) : ?>
 		<div class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'presstige' ); ?></div>
-	</div><!-- .comments -->
+	</section><!-- .comments -->
 	<?php return;
 		endif;
 	?>

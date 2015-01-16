@@ -4,13 +4,13 @@
 /*
 
 Template structure
-    1-  General
-    2-  Header
-    3-  Menu
-    4-  Content
-    5-  Footer
-    6-  Responsive
-    7.  Wordpress
+    1. General
+    2. Header
+    3. Menu
+    4. Content
+    5. Footer
+    6. Responsive
+    7. Wordpress
 */
 
 /* ----------------------------- */
@@ -23,17 +23,18 @@ Template structure
 @import "_01-base";
 
 // Sass files : chose the ones you need
-@import "_02-grids";
-@import "_03-tables"; 
-@import "_04-forms";
-@import "_05-icons";
-@import "_06-rwd";
-@import "_07-flexbox"; 
-@import "_08-print";
-@import "_09-booleans";
-@import "_10-gmaps";
-@import "_11-ie";
-@import "_12-styling";
+@import "_02-helpers"; // width and spacers visually classes
+@import "_03-grids"; // grids and autogrids
+@import "_04-tables"; 
+@import "_05-forms";
+@import "_06-icons"; // UTF-8 icons and font icon
+@import "_07-flexbox";
+@import "_08-rwd"; // Responsive Web Design helpers
+@import "_09-print";
+@import "_10-booleans"; // skip links and hyphens
+@import "_11-gmaps"; // Google maps bugs fix
+@import "_12-ie"; // IE6, IE7, IE8 support
+@import "_13-styling"; // minor stylings 
 @import "compass";
 
 .red { color:#ff000d;} //konami example
@@ -297,13 +298,9 @@ form .sb-search-submit {
 }
 
 /* Page */
-article{
-    padding-top:15px;
-    .entry-content, .entry-summary{
-        p,ul,ol{ @include rem(1.3); }
-    }
-}
 
+/* Sidebar */
+#secondary aside{ margin-bottom: 15px; }
 
 /* ----------------------------- */
 /* == 5. Footer */

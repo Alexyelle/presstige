@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Presstige v2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-31 11:19+0100\n"
-"PO-Revision-Date: 2014-04-22 09:22:03+0000\n"
+"PO-Revision-Date: 2015-01-16 10:00:34+0000\n"
 "Last-Translator: Samy Rabih <contac@lahaut.info>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,51 +20,51 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: 404.php:8
+#: 404.php:9
 #@ presstige
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
 msgstr "C&rsquo;est assez embarrassant, n'est-ce pas?"
 
-#: 404.php:12
+#: 404.php:13
 #@ presstige
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching, or one of the links below, can help."
 msgstr "Il semblerait que nous ne trouvions pas ce que vous recherchez. Peut-être qu'une autre recherche, ou un des liens ci-dessous, pourra vous aider."
 
-#: 404.php:19
+#: 404.php:20
 #@ presstige
 msgid "Most Used Categories"
 msgstr "Catégories les plus utilisées"
 
-#: 404.php:26
+#: 404.php:27
 #, php-format
 #@ presstige
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Essayez plutôt avec les archives du mois. %1$s"
 
-#: archive.php:8
+#: archive.php:9
 #, php-format
 #@ presstige
 msgid "Daily Archives: <span>%s</span>"
 msgstr "Archives du jour: <span>%s</span>"
 
-#: archive.php:10
+#: archive.php:11
 #, php-format
 #@ presstige
 msgid "Monthly Archives: <span>%s</span>"
 msgstr "Archives du mois: <span>%s</span>"
 
-#: archive.php:12
+#: archive.php:13
 #, php-format
 #@ presstige
 msgid "Yearly Archives: <span>%s</span>"
 msgstr " Archives de l'année: <span>%s</span>"
 
-#: archive.php:14
+#: archive.php:15
 #@ presstige
 msgid "Blog Archives"
 msgstr "Archives du blog"
 
-#: author.php:8
+#: author.php:9
 #, php-format
 #@ presstige
 msgid "Author Archives: <span class=\"vcard\">%s</span>"
@@ -172,90 +172,88 @@ msgstr "Connecté(e) en tant que <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" tit
 msgid "Post a comment"
 msgstr "Poster le commentaire"
 
-#: full-width-page.php:21
-#: image.php:76
-#: left-sidebar-page.php:24
-#: loop.php:42
-#: page.php:14
-#: single.php:32
+#: image.php:77
+#: loop.php:35
+#: page-exemple.php:17
+#: page.php:15
+#: single.php:28
 #@ presstige
 msgid "Pages:"
 msgstr "Pages:"
 
-#: full-width-page.php:22
-#: image.php:25
-#: image.php:90
-#: left-sidebar-page.php:25
-#: loop.php:51
-#: page.php:15
-#: single.php:52
+#: image.php:26
+#: image.php:91
+#: loop.php:42
+#: page-exemple.php:18
+#: page.php:16
+#: single.php:35
 #@ presstige
 msgid "Edit"
 msgstr "Modifier"
 
 #: functions.php:34
-#: functions.php:120
+#: functions.php:134
 #@ presstige
 msgid "Primary Menu"
 msgstr "Menu Principal"
 
-#: functions.php:97
+#: functions.php:108
 #@ presstige
 msgid "Sidebar"
 msgstr "Sidebar"
 
-#: functions.php:107
+#: functions.php:118
 #@ presstige
 msgid "Footer"
 msgstr "Footer"
 
-#: functions.php:109
+#: functions.php:120
 #@ presstige
 msgid "The footer area"
 msgstr "Zone du Footer"
 
-#: functions.php:130
+#: functions.php:199
 #@ presstige
 msgid "Name"
 msgstr "Nom"
 
-#: functions.php:131
+#: functions.php:200
 #@ presstige
 msgid "\"What shall we call you?\""
 msgstr "\"Comment devons-nous vous appeler?\""
 
-#: functions.php:133
+#: functions.php:202
 #@ presstige
 msgid "Email"
 msgstr "Email"
 
-#: functions.php:134
+#: functions.php:203
 #@ presstige
 msgid "\"Leave us a valid email adress\""
 msgstr "\"Laissez-nous une adresse email valide\""
 
-#: functions.php:136
+#: functions.php:205
 #@ presstige
 msgid "Website"
 msgstr "Site web"
 
-#: functions.php:137
+#: functions.php:206
 #@ presstige
 msgid "\"Have you got a nice website ?\""
 msgstr "\"Avez-vous un site web sympa?\""
 
-#: functions.php:145
+#: functions.php:217
 #@ presstige
 msgid "Comment"
 msgstr "Commentaire"
 
-#: functions.php:145
+#: functions.php:217
 #@ presstige
 msgid "\"What's in your mind ?\""
 msgstr "\"Qu'avez-vous en tête ?\""
 
-#: functions.php:152
-#: searchform.php:3
+#: functions.php:226
+#: functions.php:241
 #@ presstige
 msgid "Search for:"
 msgstr "Objet de la recherche :"
@@ -266,172 +264,146 @@ msgstr "Objet de la recherche :"
 msgid "Page %s"
 msgstr "Page %s"
 
-#: header.php:69
+#: header.php:63
 #@ presstige
 msgid "Main menu"
 msgstr "Menu principal"
 
-#: header.php:72
+#: header.php:66
 #@ presstige
 msgid "Skip to primary content"
 msgstr "Aller directement au contenu principal"
 
-#: header.php:73
-#@ presstige
-msgid "Skip to secondary content"
-msgstr "Aller directement au contenu secondaire"
-
-#: image.php:15
+#: image.php:16
 #, php-format
 #@ presstige
 msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 msgstr "<span class=\"meta-prep meta-prep-entry-date\">Publié </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  at <a href=\"%3$s\" title=\"Lien vers l'image grand format\">%4$s &times; %5$s</a> dans <a href=\"%6$s\" title=\"Retourner à %7$s\" rel=\"gallery\">%7$s</a>"
 
-#: image.php:29
+#: image.php:30
 #@ presstige
 msgid "&larr; Previous"
 msgstr "&larr; Précédent"
 
-#: image.php:30
+#: image.php:31
 #@ presstige
 msgid "Next &rarr;"
 msgstr "Suivant &rarr;"
 
-#: image.php:82
+#: image.php:83
 #, php-format
 #@ presstige
 msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Poster un commentaire\">Poster un commentaire</a> ou faire un trackback: <a class=\"trackback-link\" href=\"%s\" title=\"URL du Trackback pour cet article\" rel=\"trackback\">URL du Trackback pour cet article</a>."
 
-#: image.php:84
+#: image.php:85
 #, php-format
 #@ presstige
 msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr "Les commentaires sont fermés mais vous pouvez faire un trackback: <a class=\"trackback-link\" href=\"%s\" title=\"URL du Trackback pour cet article\" rel=\"trackback\">URL du trackback </a>."
 
-#: image.php:86
+#: image.php:87
 #@ presstige
 msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
 msgstr "Les Trackbacks sont fermés mais vous pouvez <a class=\"comment-link\" href=\"#respond\" title=\"Poster un commentaire\">poster un commentaire</a>."
 
-#: image.php:88
+#: image.php:89
 #@ presstige
 msgid "Both comments and trackbacks are currently closed."
 msgstr "Les commentaires et les trackbacks sont fermés actuellement."
 
-#: loop.php:8
-#: loop.php:62
-#: single.php:7
-#: single.php:57
+#: loop.php:5
+#: loop.php:53
+#: single.php:9
+#: single.php:40
 #@ presstige
 msgid "Post navigation"
 msgstr "Navigation entre les articles"
 
-#: loop.php:9
-#: loop.php:63
+#: loop.php:6
+#: loop.php:54
 #@ presstige
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Articles plus anciens"
 
-#: loop.php:10
-#: loop.php:64
+#: loop.php:7
+#: loop.php:55
 #@ presstige
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Articles plus récents <span class=\"meta-nav\">&rarr;</span>"
 
-#: loop.php:23
-#, php-format
-#@ presstige
-msgid "<span class=\"sep\">Posted on </span><a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\"  >%3$s</time></a> <span class=\"sep\"> by </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\">%6$s</a></span>"
-msgstr "<span class=\"sep\">Publié le </span><a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\"  >%3$s</time></a> <span class=\"sep\"> par </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\">%6$s</a></span>"
-
-#: loop.php:41
+#: loop.php:34
 #@ presstige
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Poursuivre la lecture <span class=\"meta-nav\">&rarr;</span>"
 
-#: loop.php:47
-#@ presstige
-msgid "Posted in "
-msgstr "Publié dans "
-
-#: loop.php:49
+#: loop.php:40
+#: single.php:33
 #@ presstige
 msgid "Tagged "
 msgstr "Tagué "
 
-#: loop.php:50
+#: loop.php:41
+#: single.php:34
 #@ presstige
 msgid "Leave a comment"
 msgstr "Laisser un commentaire"
 
-#: loop.php:50
+#: loop.php:21
+#: loop.php:41
+#: single.php:21
+#: single.php:34
 #@ presstige
 msgid "1 Comment"
 msgstr "1 Commentaire"
 
-#: loop.php:50
+#: loop.php:21
+#: loop.php:41
+#: single.php:21
+#: single.php:34
 #@ presstige
 msgid "% Comments"
 msgstr "% Commentaires"
 
-#: search.php:10
+#: search.php:11
 #, php-format
 #@ presstige
 msgid "Search Results for: %s"
 msgstr "Résultats de la recherche pour: %s"
 
-#: search.php:19
+#: search.php:20
 #@ presstige
 msgid "Nothing Found"
 msgstr "Aucun résultat"
 
-#: search.php:23
+#: search.php:24
 #@ presstige
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr "Désolé, mais rien ne correspond à vos critères de recherche. Essayez avec d'autres mots-clés SVP."
 
-#: sidebar.php:24
+#: sidebar.php:13
 #@ presstige
 msgid "Archives"
 msgstr "Archives"
 
-#: sidebar.php:31
+#: sidebar.php:20
 #@ presstige
 msgid "Meta"
 msgstr "Meta"
 
-#: single.php:8
-#: single.php:58
+#: single.php:10
+#: single.php:41
 #@ presstige
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
 msgstr "<span class=\"meta-nav\">&larr;</span> Précédent"
 
-#: single.php:9
-#: single.php:59
+#: single.php:11
+#: single.php:42
 #@ presstige
 msgid "Next <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Suivant <span class=\"meta-nav\">&rarr;</span>"
 
-#: single.php:18
-#, php-format
-#@ presstige
-msgid "<span class=\"meta-prep meta-prep-author\">Posted on </span><a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\">%3$s</time></a> <span class=\"meta-sep\"> by </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\">%6$s</a></span>"
-msgstr "<span class=\"meta-prep meta-prep-author\">Publié dans </span><a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\">%3$s</time></a> <span class=\"meta-sep\"> par </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\">%6$s</a></span>"
-
-#: single.php:39
-#, php-format
-#@ presstige
-msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
-msgstr "Cet article a été publié dans %1$s et tagué %2$s. Ajouter le  <a href=\"%3$s\" title=\"Permalien vers %4$s\" rel=\"bookmark\">permalien</a> en favori."
-
-#: single.php:41
-#, php-format
-#@ presstige
-msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
-msgstr "Cet article a été publié dans %1$s. Ajouter le  <a href=\"%3$s\" title=\"Permalien vers %4$s\" rel=\"bookmark\">permalien</a> en favori."
-
-#: tag.php:8
+#: tag.php:10
 #, php-format
 #@ presstige
 msgid "Tag Archives: %s"
@@ -536,42 +508,42 @@ msgstr "Nom du menu"
 msgid "Theme Options"
 msgstr "Options du thème"
 
-#: functions/my-theme-settings.php:250
+#: functions/my-theme-settings.php:248
 #@ presstige
 msgid "(preferably .ico)"
 msgstr "(de préférence un .ico)"
 
-#: functions/my-theme-settings.php:253
+#: functions/my-theme-settings.php:251
 #@ presstige
 msgid "Delete Favicon"
 msgstr "Supprimer la favicon"
 
-#: functions/my-theme-settings.php:328
+#: functions/my-theme-settings.php:326
 #@ presstige
 msgid "Expecting a Numeric value! Please fix."
 msgstr "Une valeur numérique est requise ! S'il vous plaît corriger."
 
-#: functions/my-theme-settings.php:341
+#: functions/my-theme-settings.php:339
 #@ presstige
 msgid "Expecting comma separated numeric values"
 msgstr "Une virgule de séparation est requise entre les valeurs numériques"
 
-#: functions/my-theme-settings.php:351
+#: functions/my-theme-settings.php:349
 #@ presstige
 msgid "Expecting comma separated numeric values! Please fix."
 msgstr "Une virgule de séparation est requise entre les valeurs numériques ! S'il vous plaît corriger."
 
-#: functions/my-theme-settings.php:376
+#: functions/my-theme-settings.php:374
 #@ presstige
 msgid "Invalid email! Please re-enter!"
 msgstr "Email invalide ! Saisissez à nouveau !"
 
-#: functions/my-theme-settings.php:378
+#: functions/my-theme-settings.php:376
 #@ presstige
 msgid "This setting field cannot be empty! Please enter a valid email address."
 msgstr "Ce champ paramètre ne peut pas être vide! S'il vous plaît entrer une adresse email valide."
 
-#: functions/my-theme-settings.php:386
+#: functions/my-theme-settings.php:384
 #@ presstige
 msgid "Please enter a valid email address."
 msgstr "S'il vous plaît entrer une adresse email valide."
@@ -698,37 +670,74 @@ msgstr "Réglages Presstige - Aide contextuelle"
 msgid "Contextual help goes here. You may want to use different html elements to format your text as you want."
 msgstr "Une aide contextuelle est ici. Vous pouvez utiliser différents éléments HTML pour formater votre texte comme vous le souhaitez."
 
-#: functions/my-theme-settings.php:286
+#: functions/my-theme-settings.php:284
 #@ presstige
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: functions.php:154
+#: functions.php:228
+#: functions.php:243
+#@ default
 #@ presstige
 msgid "Ok"
 msgstr "Ok"
 
-#: loop.php:19
+#: loop.php:16
 #, php-format
 #@ presstige
 msgid "Permalink to %s"
 msgstr "Lien permanent vers %s"
 
-#: loop.php:28
-#: single.php:23
-#, php-format
-#@ presstige
-msgid "View all posts by %s"
-msgstr "Voir tous les articles par %s"
-
-#: functions.php:153
-#: searchform.php:4
+#: functions.php:227
+#: functions.php:242
 #@ presstige
 msgid "What are you looking for?"
 msgstr "Que recherchez-vous?"
 
-#: searchform.php:5
+#: functions.php:156
 #@ presstige
-msgid "Search"
-msgstr "Recherche"
+msgid "Continue reading"
+msgstr "Lire la suite"
+
+#: loop.php:19
+#: single.php:19
+#@ presstige
+msgid "Published on"
+msgstr "Publié le"
+
+#: loop.php:20
+#: single.php:20
+#@ presstige
+msgid "by"
+msgstr "par"
+
+#: loop.php:21
+#: single.php:21
+#@ presstige
+msgid "in"
+msgstr "dans"
+
+#: loop.php:21
+#: single.php:21
+#@ presstige
+msgid "No Comments"
+msgstr "Aucun commentaire"
+
+#: loop.php:22
+#: single.php:22
+#, php-format
+#@ presstige
+msgid "Permanent Link to %s"
+msgstr "Lien permanent vers %s"
+
+#: loop.php:22
+#: single.php:22
+#@ presstige
+msgid "Permalink"
+msgstr "Lien permanent"
+
+#: index.php:8
+#@ presstige
+msgid "Recent Articles"
+msgstr "Articles récents"
 

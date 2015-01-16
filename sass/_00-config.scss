@@ -41,25 +41,15 @@ $extra-large-value		: 80px; // extra large value for margins / paddings
 $ultra-large-value		: 160px; // ultra large value for margins / paddings
 
 // breakpoints (choose unit you prefer)
-$tiny-screen			: 320px; // tiny screens media query
-$small-screen			: 480px; // small screens media query
-$medium-screen			: 768px; // medium screens media query
-$large-screen			: 1024px; // large screens media query
-$extra-large-screen		: 1280px; // extra large screens media query
-$ultra-large-screen		: 1600px; // ultra large screens media query
+$tiny-screen			: 480px; // tiny screens media query (less than 480px)
+$small-screen			: 768px; // screens between 481px and 768px
+$medium-screen			: 1024px; // screens between 769px and 1024px
+$large-screen			: 1280px; // screens between 1025px and 1280px
+$extra-large-screen		: 1600px; // screens between 1281px and 1600px
+$ultra-large-screen		: 1920px; // ultra large screens
 
 // misc (choose unit you prefer)
 $gutter		: 20px; // gutter value for grid layouts. Unit can be: %, px, em, rem
-
-// booleans
-$enable-ie678 			: true; // "true" to activate IE6/IE7/IE8 support
-$enable-styling			: true; // "true" to design basic elements like code, mark, blockquotes, etc.
-$enable-gmaps			: true; // if google maps is used
-$enable-skip-links		: true; // "true" to design skip links for accessibility concerns
-$enable-hyphens			: true; // activate automatic hyphens on small screens
-$enable-helpers-width	: true; // decide whether or not you need width helpers
-$enable-helpers-spacing	: true; // decide whether or not you need spacing helpers
-
 
 // Sass mixins : don't touch or you'll be banned ;)
 // px to em/rem 
@@ -73,8 +63,6 @@ $enable-helpers-spacing	: true; // decide whether or not you need spacing helper
 	  @warn "Please make sure `$size` is unitless."
 	}
 }
-
-
 @mixin em($size) {	
 	@if unitless($size) {
 		$bf: $base-font-size / 1px;

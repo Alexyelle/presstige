@@ -1,0 +1,221 @@
+@import "compass/css3";
+
+/* ----------------------------- */
+/* ==icons and bullets	         */
+/* ----------------------------- */ 
+.icon {
+  @include inline-block();
+}
+
+.icon:before,
+.icon.after:after {
+	content: "";
+	@include inline-block(middle);
+	position: relative; top: -0.1em;
+	margin: 0 0.3em 0 0;
+	font: 1.4em/1 sans-serif;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.1);
+	speak: none;
+}
+
+@media (min-device-width: $small-screen) {
+	.icon:before,
+	.icon.after:after {
+	font: 1em/0.6 sans-serif;
+	-webkit-transform: rotateZ(0.05deg);
+	}
+}
+
+@include font-face('Presstige', font-files('presstige.woff', 'woff','presstige.ttf', 'truetype','presstige.svg', 'svg'),'presstige.eot');
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "presstige";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  text-decoration: none;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-search:before { content: '\61'; } /* 'a' */
+.icon-mail-alt:before { content: '\62'; } /* 'b' */
+.icon-heart:before { content: '\63'; } /* 'c' */
+.icon-heart-empty:before { content: '\64'; } /* 'd' */
+.icon-star:before { content: '\65'; } /* 'e' */
+.icon-star-empty:before { content: '\66'; } /* 'f' */
+.icon-star-half:before { content: '\67'; } /* 'g' */
+.icon-home:before { content: '\68'; } /* 'h' */
+.icon-tag:before { content: '\69'; } /* 'i' */
+.icon-chat-empty:before { content: '\6a'; } /* 'j' */
+.icon-phone:before { content: '\6b'; } /* 'k' */
+.icon-angle-up:before { content: '\6c'; } /* 'l' */
+.icon-angle-down:before { content: '\6d'; } /* 'm' */
+.icon-angle-double-right:before { content: '\6e'; } /* 'n' */
+.icon-facebook:before { content: '\6f'; } /* 'o' */
+.icon-gplus:before { content: '\70'; } /* 'p' */
+.icon-instagram:before { content: '\71'; } /* 'q' */
+.icon-linkedin:before { content: '\72'; } /* 'r' */
+.icon-pinterest:before { content: '\73'; } /* 's' */
+.icon-twitter:before { content: '\74'; } /* 't' */
+.icon-angle-left:before { content: '\3c'; } /* '&lt;' */
+.icon-angle-right:before { content: '\3e'; } /* '&gt;' */
+.icon-cancel:before { content: '\78'; } /* 'x' */
+.icon-plus:before { content: '\2b'; } /* '+' */
+.icon-minus:before { content: '\2d'; } /* '-' */
+
+
+/*----------------------------*\
+ * Icons unicode              *
+\*----------------------------*/
+.icon.after:after {
+	margin: 0 0 0 8px;
+}
+
+.icon.after:before {
+	content: "" !important
+}
+
+.icon-rate:before,
+.icon-rate.after:after {
+	content: "\2605";
+}
+.icon-unrate:before,
+.icon-unrate.after:after{
+	content: "\2606";
+}
+
+.icon-check:before,
+.icon-check.after:after{
+	content: "\2713";
+}
+
+.icon-uncheck:before,
+.icon-uncheck.after:after{
+	content: "\2717";
+}
+
+.icon-cloud:before,
+.icon-cloud.after:after {
+	content: "\2601";
+}
+
+.icon-dl:before,
+.icon-dl.after:after {
+	content: "\21E3";
+	font-weight: bold;
+}
+
+.icon-cross:before,
+.icon-cross.after:after {
+	content: "\2716";
+	font-weight: bold;
+}
+
+.icon-arrow1:before, 
+.icon-arrow1.after:after {
+	content: "\2192";
+	position: relative; 
+		top: -0.15em;
+}
+
+.icon-arrow2:before,
+.icon-arrow2.after:after {
+	content: "\279E";
+}
+
+.icon-arrow3:before,
+.icon-arrow3.after:after {
+	content: "\279A";
+}
+
+.icon-bracket1:before,
+.icon-bracket1.after:after {
+	content: "\2039";
+	font-weight: bold;
+	font-size: 1.6em;
+	position: relative; 
+		top: -0.15em;
+}
+
+.icon-bracket2:before,
+.icon-bracket2.after:after {
+	content: "\203A";
+	font-weight: bold;
+	font-size: 1.6em;
+	position: relative; 
+		top: -0.15em;
+}
+
+.icon-up:before,
+.icon-up.after:after {
+	content: "\25B2";
+}
+
+.icon-down:before,
+.icon-down.after:after {
+	content: "\25BC";
+}
+
+.icon-bull:before,
+.icon-bull.after:after {
+	content: "\2022";
+	font-size: 1.2em;
+	top: -0.05em;
+}
+
+.icon-bull2:before,
+.icon-bull2.after:after {
+	content: "\25E6";
+	top: -0.05em;
+}
+
+.icon-bull3:before,
+.icon-bull3.after:after{
+	content: "\2023";
+	font-size: 1.6em;
+	top: -0.05em;
+}
+
+.icon-nav:before,
+.icon-nav.after:after {
+	content: "\2261";
+	font-weight: bold;
+}
+
+.icon-losange:before,
+.icon-losange.after:after {
+	content: "\25C6";
+}
+
+.icon-asteri:before,
+.icon-asteri.after:after {
+	content: "\2731";
+	font-weight: bold;
+}
+
+.icon-mail:before,
+.icon-mail.after:after {
+	content: "\2709";
+	font-size: 1.6em;
+	top: -.05em;
+}

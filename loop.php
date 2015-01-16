@@ -37,9 +37,9 @@
 		<?php } ?>
 
 		<footer class="entry-meta">			
-			<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'themename' ) . '</span>', ', ', '<span class="meta-sep"> - </span>' ); ?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'themename' ), __( '1 Comment', 'themename' ), __( '% Comments', 'themename' ) ); ?></span>
-			<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+			<?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'presstige' ) . '</span>', ', ', '<span class="meta-sep"> - </span>' ); ?>
+			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'presstige' ), __( '1 Comment', 'presstige' ), __( '% Comments', 'presstige' ) ); ?></span>
+			<?php edit_post_link( __( 'Edit', 'presstige' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 		</footer><!-- #entry-meta -->
 	</article><!-- #post-<?php the_ID(); ?> -->
 	
