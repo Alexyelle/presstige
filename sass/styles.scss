@@ -2,7 +2,6 @@
 /* summary */
 /* ----------------------------- */
 /*
-
 Template structure
     1. General
     2. Header
@@ -19,22 +18,27 @@ Template structure
 // Sass config file
 @import "_00-config";
 
-// Sass base styles
-@import "_01-base";
+// normalize include
+@import "_01a-normalize";
 
-// Sass files : chose the ones you need
-@import "_02-helpers"; // width and spacers visually classes
-@import "_03-grids"; // grids and autogrids
-@import "_04-tables"; 
-@import "_05-forms";
-@import "_06-icons"; // UTF-8 icons and font icon
-@import "_07-flexbox";
-@import "_08-rwd"; // Responsive Web Design helpers
-@import "_09-print";
-@import "_10-booleans"; // skip links and hyphens
-@import "_11-gmaps"; // Google maps bugs fix
-@import "_12-ie"; // IE6, IE7, IE8 support
-@import "_13-styling"; // minor stylings 
+// Sass base styles
+@import "_01b-base";
+
+@import "_02-layout"; // alignment, modules, positionning
+@import "_03-grids"; // grids
+@import "_04-tables"; // data tables consistency
+@import "_05-forms"; // forms consistency
+@import "_06-helpers"; // width and spacers visually classes
+@import "_07-responsive"; // Responsive Web Design helpers
+@import "_08-print"; // print quick reset
+@import "_09-misc"; // skip links, google maps and hyphens
+@import "_10-styling"; // minor stylings
+@import "_12-icons"; // UTF-8 icons and font icon
+@import "_13-ie"; // IE6, IE7, IE8 support partiel
+
+// WordPress base styles
+@import "_11-wordpress";
+
 @import "compass";
 
 .red { color:#ff000d;} //konami example

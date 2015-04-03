@@ -1,22 +1,14 @@
-/*!
-* www.KNACSS.com V3.0.8 (2014-08-22) @author: Raphael Goetter, Alsacreations (with help from Hugo Giraudel)
-* Licence WTFPL http://www.wtfpl.net/
-*/
-
 /* ----------------------------- */
 /* == soft reset                 */
 /* ----------------------------- */
 
-/* switching box model for all elements */
-* {
+/* switching to border-box model for all elements */
+html {
 	box-sizing: border-box;
 }
 
-/* soft reset */
-html,
-body {
-	margin: 0;
-	padding: 0;
+* {
+	box-sizing: inherit;
 }
 
 ul,
@@ -29,25 +21,18 @@ ul.unstyled {
 }
 
 img {
-	height: auto;
 	vertical-align: middle;
-	border: 0;
+}
+
+/* height auto only for non SVG images */
+img:not([src$=".svg"]) {
+	height: auto;
 }
 
 blockquote,
 figure {
 	margin-left: 0;
 	margin-right: 0;
-}
-
-audio,
-canvas,
-video {
-	display: inline-block;
-}
-
-svg:not(:root) {
-	overflow: hidden;
 }
 
 /* ----------------------------- */
@@ -143,23 +128,23 @@ h6, .h6-like {
 
 /* alternate font-sizing */
 .smaller {
-	@include em($base-font-size / 1px - 4);
+	font-size: 0.6em;
 }
 
 .small {
-	@include em($base-font-size / 1px - 2);
+	font-size: 0.8em;
 }
 
 .big {
-	@include em($base-font-size / 1px + 2);
+	font-size: 1.2em;
 }
 
 .bigger {
-	@include em($base-font-size / 1px + 4);
+	font-size: 1.5em;
 }
 
 .biggest {
-	@include em($base-font-size / 1px + 6);
+	font-size: 2em;
 }
 
 code, 
@@ -183,11 +168,6 @@ var {
 	font-style: italic;
 }
 
-strong,
-.bold {
-	font-weight: bold;
-}
-
 small,
 sub,
 sup {
@@ -199,18 +179,14 @@ sup {
 /* ----------------------------- */
 
 /* hidden but not for assistance tools, Yahoo! method */
-.visually-hidden { 
+.visually-hidden {
 	position: absolute !important;
-    border: 0 !important;
-    height: 1px !important; 
-    width: 1px !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    clip: rect(1px, 1px, 1px, 1px) !important;
-}
-
-body > script {
-	display: none !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
 }
 
 @media (max-width: $small-screen) {
@@ -230,19 +206,25 @@ body > script {
 /* ----------------------------- */
 
 /* avoid top margins on first content element */
-p, 
-.p-like, 
-ul, 
-ol, 
+p,
+.p-like,
+ul,
+ol,
 dl,
-blockquote, 
+blockquote,
 pre,
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6 {
+h1,
+.h1-like,
+h2,
+.h2-like,
+h3,
+.h3-like,
+h4,
+.h4-like,
+h5,
+.h5-like,
+h6,
+.h6-like {
 	&:first-child {
 		margin-top: 0;
 	}
@@ -258,117 +240,19 @@ li ol {
 }
 
 /* max values */
-img, 
-table, 
-td, 
-blockquote, 
-code, 
-pre, 
-textarea, 
-input, 
+img,
+table,
+td,
+blockquote,
+code,
+pre,
+textarea,
+input,
 video {
 	max-width: 100%;
 }
 
 /* margin-bottom on tables */
-table { 
+table {
 	margin-bottom: $medium-value; 
-}
-
-
-/* ----------------------------- */
-/* ==layout and modules          */
-/* ----------------------------- */
-
-/* float layout */
-/* module, gains superpower "BFC" Block Formating Context */
-.mod { 
-	overflow: hidden;
-}
-
-/* blocks that needs to be placed under floats */
-.clear,
-.line,
-.row {
-	clear: both;
-}
-
-/* blocks that must contain floats */
-.clearfix,
-.line {
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-		border-collapse: collapse;
-	}
-}
-
-/* table layout */
-.row {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-}
-
-.row > *,
-.col {
-	display: table-cell;
-	vertical-align: top;
-}
-
-/* inline-block */
-.inbl {
-	display: inline-block;
-	vertical-align: top;
-}
-
-
-/* alignments (blocks and inline) */
-/* ------------------------------ */
-
-/* left (or starting) elements */
-.left,
-.start {
-	float: left;
-}
-
-img.left,
-img.start  {
-	margin-right: $small-value;
-}
-
-/* right (or ending) elements */
-.right,
-.end {
-	float: right;
-}
-
-img.right,
-img.end {
-	margin-left: $small-value;
-}
-
-img.left, 
-img.right,
-img.start, 
-img.end {
-	margin-bottom: $tiny-value;
-}
-
-.center    { 
-	margin-left: auto; 
-	margin-right: auto; 
-}
-
-.txtleft   { 
-	text-align: left; 
-}
-
-.txtright  { 
-	text-align: right; 
-}
-
-.txtcenter { 
-	text-align: center; 
 }
