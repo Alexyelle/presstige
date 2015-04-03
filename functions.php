@@ -91,7 +91,7 @@ function scripts_styles() {
 	// paramètres => ('string:identifiant_unique', 'string:url', 'array:dépendances')
 	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	wp_enqueue_script('jquery','/wp-includes/js/jquery/jquery.js','','',true);
-	wp_enqueue_script('modernizr', get_template_directory_uri().'/js/modernizr.custom.js', array('jquery'), false, true);
+	// wp_enqueue_script('modernizr', get_template_directory_uri().'/js/modernizr.custom.js', array('jquery'), false, true);
 	wp_enqueue_script('konami', get_template_directory_uri().'/js/konami.js', array('jquery'), false, true);
 	wp_enqueue_script('general', get_template_directory_uri().'/js/general.js', array('jquery'), false, true);
 }
