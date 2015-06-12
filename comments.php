@@ -130,4 +130,4 @@ endif; // ends check for handcraftedwp_comment()
 		)
 	); ?>
 
-</div><!-- #comments -->
+<!-- </div>#comments -->

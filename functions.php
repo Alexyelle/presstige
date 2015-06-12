@@ -3,7 +3,6 @@
 
 /*** clean ups and enhancements, uncomment to use */
 require_once('functions/wordpress_cleanup.php'); //admin cleanups 
-// require_once('functions/custom_post_types.php'); // boiler template for CPT
 require_once('functions/script_style_cleanups.php'); // javascript cleanups
 // require_once('functions/remove-comments-absolute.php'); //to remove comments completely
 require_once ( 'functions/my-theme-settings.php' );
@@ -45,7 +44,6 @@ add_editor_style("css/editor-style.css");
  */
 function presstige_styles() {
 	wp_enqueue_style( 'mainstyle', get_stylesheet_uri(),  false,   0.1 );
-
 }
 
 add_action( 'wp_enqueue_scripts', 'presstige_styles' );
@@ -60,22 +58,16 @@ add_theme_support( 'automatic-feed-links' );
 /**
  * This theme uses post thumbnails
  */
-add_theme_support( 'post-thumbnails' );
-
-if ( function_exists( 'add_theme_support' ) ) {   
-	// flux
-	add_theme_support( 'automatic-feed-links' );
-	// images à la une 
-	add_theme_support( 'post-thumbnails' ); 
-	add_image_size( 'post-image', 500, 9999 ); //550 pixels wide (and unlimited height)
-	add_image_size( 'mini-image', 200, 100, true);
-
-	/*
-	//I have yet to have a good reason to support post formats. Disabling for now...
-	  add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
-	  add_post_type_support( 'page', 'post-formats' );
-	*/  
+ if ( function_exists( 'add_theme_support' ) ) {    
+	add_theme_support( 'post-thumbnails' );  
+	set_post_thumbnail_size( 250, 150, array('center', 'top')); 
+}	
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'small', 55, 55, true);
+	add_image_size( 'medium', 360, 400, true);
+	add_image_size( 'big', 750, 9999, true);
 }
+
 /**
  * This enables post formats. If you use this, make sure to delete any that you aren't going to use.
  */
@@ -89,8 +81,16 @@ if ( function_exists( 'add_theme_support' ) ) {
 function scripts_styles() {
 	// AJOUT DES SCRIPTS
 	// paramètres => ('string:identifiant_unique', 'string:url', 'array:dépendances')
-	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
-	wp_enqueue_script('jquery','/wp-includes/js/jquery/jquery.js','','',true);
+	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );	
+	if (!is_admin())   
+    {  
+        wp_deregister_script('jquery');	  
+        // Load the copy of jQuery that comes with WordPress  
+        // The last parameter set to TRUE states that it should be loaded  
+        // in the footer.  
+        wp_register_script('jquery', '/wp-includes/js/jquery/jquery.js', FALSE, '', TRUE);  
+        wp_enqueue_script('jquery');  
+    }  
 	// wp_enqueue_script('modernizr', get_template_directory_uri().'/js/modernizr.custom.js', array('jquery'), false, true);
 	wp_enqueue_script('konami', get_template_directory_uri().'/js/konami.js', array('jquery'), false, true);
 	wp_enqueue_script('general', get_template_directory_uri().'/js/general.js', array('jquery'), false, true);
@@ -325,5 +325,89 @@ function add_google_analytics() {
 		echo "<script type='text/javascript'>".$options['presstige_analytics']."</script>";
 }
 add_action('wp_footer', 'add_google_analytics');
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+// breadcrumbs http://cazue.com/articles/wordpress-creating-breadcrumbs-without-a-plugin-2013 WITH SOME DEBUG
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+function the_breadcrumb() {
+	global $post;
+	$output_array = array();
+
+	echo '<div id="breadcrumbs" itemprop="breadcrumb"><ul class="container">';
+    if (!is_home()) {
+        echo '<li class="no-smoothstate"><a href="';
+        echo get_option('home');
+        echo '">';
+        echo __('Home');
+        echo '</a><span class="separator">&nbsp;&gt;</span></li>';
+        if (is_category()) {
+            echo '<li>Catégorie<span class="separator">&nbsp;&gt;</span></li><li>';
+            single_cat_title( '', true );
+        	echo '</li>';
+        } elseif (is_single()) {  
+        	echo '<li><a href="/blog">Blog</a><span class="separator">&nbsp;&gt;</span></li><li>';
+        	the_title();
+        	echo '</li>';
+        } elseif (is_page()) {
+            if($post->post_parent){
+                $anc = get_post_ancestors( $post->ID );
+                foreach ($anc as $ancestor) {
+                    $output_array[] = '<li><a href="'.get_permalink($ancestor).'">'.get_the_title($ancestor).'</a><span class="separator">&nbsp;&gt;</span></li>';
+                }
+
+                echo implode('', array_reverse($output_array));
+                echo '<li>'.get_the_title().'</li>';
+            } else {
+                echo '<li>';
+                echo the_title();
+                echo '</li>';
+            }
+        }
+	    elseif (is_404()) { echo "<li>Page introuvable</li>"; }
+	    elseif (is_tag()) { ?><li>Tag<span class="separator">&nbsp;&gt;</span></li><li><?php echo single_tag_title() ?></li><?php }
+	    elseif (is_day()) { echo "<li>".sprintf(__('Daily Archives : <span>%s</span>', 'presstige'), get_the_date())."</li>"; }
+	    elseif (is_month()) { echo "<li>".sprintf(__('Monthly Archives : <span>%s</span>', 'presstige'), get_the_date('F Y'))."</li>"; }
+	    elseif (is_year()) { echo "<li>".sprintf(__('Yearly Archives : <span>%s</span>', 'presstige'), get_the_date('Y'))."</li>"; }
+	    elseif (is_author()) { echo "<li>Author Archive</li>"; }
+	    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { echo "<li>Blog Archives"; echo '</li>'; }
+	    elseif (is_search()) {
+	    	echo "<li>";
+			if (have_posts()) :
+				printf( __( 'Search Results for : %s', 'presstige' ), '<span>' . get_search_query() . '</span>' );
+			else :
+				_e( 'Nothing Found', 'presstige' );
+			endif;
+	    	echo "</li>";
+	   	}
+    }
+    echo '</ul></div>';
+    echo '<div class="clear"></div>';
+}
+
+//http://codex.wordpress.org/Function_Reference/wp_title
+function o2_wp_title( $title, $sep ) {
+	if ( is_feed() ) {
+		return $title;
+	}
+	
+	global $page, $paged;
+
+	// Add the blog name
+	$title .= get_bloginfo( 'name', 'display' );
+
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
+		$title .= " $sep $site_description";
+	}
+
+	// Add a page number if necessary:
+	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+		$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
+	}
+
+	return $title;
+}
+add_filter( 'wp_title', 'o2_wp_title', 10, 2 );
 
 ?>
