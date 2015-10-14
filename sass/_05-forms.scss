@@ -26,7 +26,13 @@ label,
 	font-family: inherit;
 	font-size: inherit;
 }
-
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: $base-color;
+}
 label {
 	display: inline-block;
 	vertical-align: middle;
@@ -45,7 +51,9 @@ textarea {
 	font-size: inherit;
 	resize: vertical;
 }
-
+select {
+	-webkit-appearance: menulist-button;
+}
 /* if select styling bugs on WebKit */
 /* select { -webkit-appearance: none; } */
 
@@ -67,7 +75,7 @@ textarea:-moz-placeholder {
 }
 
 .btn:focus,
-input:focus,
+input[type="button"]:focus,
 button:focus {
 	outline: 0;
 	-webkit-tap-highlight-color: transparent;
@@ -75,5 +83,24 @@ button:focus {
 	   -moz-user-select: none;
 	    -ms-user-select: none;
 	        user-select: none;
-	background-image: none;
+}
+/* unstyled forms */
+button.unstyled,
+input[type="button"].unstyled,
+input[type="submit"].unstyled,
+input[type="reset"].unstyled {
+	padding: 0;
+	border: none;
+	line-height: 1;
+	text-align: left;
+	background: none;
+	border-radius: 0;
+	box-shadow: none;
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
 }

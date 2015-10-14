@@ -17,9 +17,11 @@
 </header>
 
 <section>
-	<h2>Maintenance</h2>
-    <p>Désolé mais notre site est en cours de maintenance.<br /><br />Merci de votre compréhension !</p> 
-    <a href="/wp-login.php" title="Se connecter">Admin login</a>
+	<div>
+		<h2>Maintenance</h2>
+	    <p>Désolé mais notre site est en cours de maintenance.<br /><br />Merci de votre compréhension !</p> 
+	    <a href="/wp-login.php" title="Se connecter">Admin login</a>
+    </div>
 </section>
 </body>
 </html>

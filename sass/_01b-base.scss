@@ -1,3 +1,5 @@
+@import "compass/css3";
+
 /* ----------------------------- */
 /* == soft reset                 */
 /* ----------------------------- */
@@ -66,6 +68,7 @@ body {
 
 a {
 	color: $base-color-link;
+    @include transition(0.2s color ease-in-out);
 	&:hover, &:focus, &:active {
 		color: $base-color-link-hover;
 	}
@@ -168,12 +171,6 @@ var {
 	font-style: italic;
 }
 
-small,
-sub,
-sup {
-	font-size: smaller;
-}
-
 /* ----------------------------- */
 /* == hiding content             */
 /* ----------------------------- */
@@ -186,7 +183,7 @@ sup {
 	width: 1px !important;
 	padding: 0 !important;
 	overflow: hidden !important;
-	clip: rect(1px, 1px, 1px, 1px) !important;
+  	clip: rect(0, 0, 0, 0) !important;
 }
 
 @media (max-width: $small-screen) {
@@ -248,7 +245,8 @@ code,
 pre,
 textarea,
 input,
-video {
+video,
+svg {
 	max-width: 100%;
 }
 

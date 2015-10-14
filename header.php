@@ -38,18 +38,16 @@
 	<div class="hfeed container">
 		<header role="banner" id="site-header">
 
-			<h1 class="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+			<h1 class="site-title">
+				<a itemprop="url" href="<?php echo home_url( '/' ); ?>" rel="home">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" width="" height="" alt="<?php bloginfo( 'name' ); ?>" itemprop="logo" />
+				</a>
+			</h1>
 			<div class="site-description"><?php bloginfo( 'description' ); ?></div>
 
 			<nav class="main-menu clearfix" id="menu" role="navigation">				
-				<div class="skip-links"><a class="visually-hidden" href="#primary" title="<?php esc_attr_e( 'Skip to primary content', 'presstige' ); ?>"><?php _e( 'Skip to primary content', 'presstige' ); ?></a></div>				
-				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
-				<?php //wp_nav_menu( array( 'container' => '', 'theme_location' => 'primary', 'menu_id' => 'nav') ); ?>	
-				
-				<?php   
-					// wp_nav_menu( array( 'container_class' => 'menu main-navigation', 'theme_location' => 'primary','walker' => new Has_Subnav_Walker() ) ); 					 
-					wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary' ) );
-				?>
+				<div class="skip-links"><a href="#primary" rel="nofollow"><?php _e( 'Skip to primary content', 'presstige' ); ?></a> <a href="#menu-navigation-principale" rel="nofollow">Allez à la navigation</a></div>
+				<?php wp_nav_menu( array( 'container_class' => 'menu', 'theme_location' => 'primary', 'items_wrap' => '<button type="button" class="menu-link navtoggle">Menu</button><ul id="%1$s" class="%2$s">%3$s</ul>' ) ); ?>
 			</nav>
 
 			<!-- A supprimer si déploiement recherche non utilisé -->

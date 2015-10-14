@@ -3,7 +3,9 @@
 /* ----------------------------- */
 
 /* styling elements */
-code, kbd, mark {
+code,
+kbd,
+mark {
 	border-radius: 2px;
 }
 
@@ -14,7 +16,7 @@ kbd {
 
 code {
 	padding: 2px 4px;
-	background: rgba(0,0,0,0.04);
+  	background: rgba(0, 0, 0, 0.04);
 	color: #b11; 
 }
 
@@ -26,14 +28,12 @@ pre code {
 }
 
 mark {
-	padding:2px 4px;
-	background: #ff0;
+	padding: 2px 4px;
 }
 
 sup,
 sub {
 	vertical-align: 0;
-	position: relative;
 }
 
 sup {
@@ -92,42 +92,22 @@ hr {
 	background-color: #ccc;
 }
 
-/* alternate tables */
-.alternate { border: 0; }
-.alternate tbody { 
-	border: 1px solid #ccc; 
+/* tables */
+table,
+.table {
+  border: 1px solid #ccc;
 }
 
-.alternate thead tr > * + * {
-	border-left: 0;
+caption {
+  padding: $small-value;
+  color: #555;
+  font-style: italic;
 }
 
-.alternate tbody tr > * + * {
-	border-left: 1px solid #ccc;
+td,
+th {
+  padding: 0.3em 0.8em;
+  border: 1px #aaa dotted;
+  text-align: left;
 }
 
-/* alternate-vert tables */
-.alternate-vert { 
-	border: 0;
-	border-right: 1px solid #ccc;
-}
-
-.alternate-vert tr > :first-child {
-	border-bottom: 0;
-}
-
-.alternate-vert tr > * + * {
-	border-top: 1px solid #ccc;
-}
-
-/* striped tables */
-.striped tbody tr:nth-child(odd) {
-	background: #eee;
-	background: rgba(0, 0, 0, .05);
-}
-
-/* striped-vert tables */
-.striped-vert tr > :first-child {
-	background: #eee;
-	background: rgba(0, 0, 0, .05);
-}

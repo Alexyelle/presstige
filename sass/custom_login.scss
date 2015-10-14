@@ -1,6 +1,7 @@
 @import "compass/css3";
 
 /*  The css for the login page ! */
+html{ background-color: transparent; }
 
 .login #login_error{ 
     //if login error information removed for security with wordpress_cleanup.php
@@ -15,7 +16,7 @@
 	  image: image-url("logo_company.png");
 	  repeat: no-repeat;
 	  position: top left;
-	};
+	}
 	@include background-size(cover);
 	width:270px; 
 	height:50px; 
