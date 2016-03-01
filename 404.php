@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<div id="primary" role="region" class="content mod left w70 mrl">
+<div id="primary" role="region" class="content mod fl w70 mrl">
 	<article id="post-0" class="post error404 not-found" role="article">
 		<header class="entry-header">
 			<h1 class="entry-title"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'presstige' ); ?></h1>

@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<div id="primary" role="region" class="content mod left w70 mrl">
+<div id="primary" role="region" class="content mod fl w70 mrl">
 	<header class="entry-header">
 		<h1 class="entry-title"><?php _e( 'Recent Articles', 'presstige' ); ?></h1>
 	</header><!-- .entry-header -->

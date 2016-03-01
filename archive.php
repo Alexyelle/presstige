@@ -2,7 +2,7 @@
 get_header(); ?>
 <?php the_post(); ?>
 
-<div id="primary" role="region" class="content mod left w70 mrl">
+<div id="primary" role="region" class="content mod fl w70 mrl">
 	<header class="page-header">
 		<h1 class="page-title">
 			<?php if ( is_day() ) : ?>

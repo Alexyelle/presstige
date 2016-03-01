@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<div id="primary" role="region" class="content mod left w70 mrl">
+<div id="primary" role="region" class="content mod fl w70 mrl">
 	<header class="page-header">
 		<h1 class="page-title"><?php printf( __( 'Category Archives: %s', 'presstige' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
 		<?php $categorydesc = category_description(); if ( ! empty( $categorydesc ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' ); ?>

@@ -333,7 +333,7 @@ function the_breadcrumb() {
 	global $post;
 	$output_array = array();
 
-	echo '<div id="breadcrumbs" itemprop="breadcrumb"><ul class="container">';
+	echo '<div class="breadcrumb" itemprop="breadcrumb"><ul class="container">';
     if (!is_home()) {
         echo '<li class="no-smoothstate"><a href="';
         echo get_option('home');

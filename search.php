@@ -4,7 +4,7 @@
 get_header(); ?>
 
 
-<div id="primary" role="region" class="content mod left w70 mrl">
+<div id="primary" role="region" class="content mod fl w70 mrl">
 <?php if ( have_posts() ) : ?>
 
 	<header class="page-header">
