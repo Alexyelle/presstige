@@ -12,7 +12,7 @@ function presstige_options_page_sections() {
 	$sections['txt_section'] 		= __('Text Form Fields', 'presstige');
 	$sections['txtarea_section'] 	= __('Textarea Form Fields', 'presstige');
 	$sections['checkbox_section'] 	= __('Checkbox Form Fields', 'presstige');
-	$sections['files_section'] 	= __('Files Form Fields', 'presstige');
+	// $sections['files_section'] 	= __('Files Form Fields', 'presstige');
 	
 	return $sections;	
 }
@@ -90,13 +90,13 @@ function presstige_options_page_fields() {
 	// );
 
 	// File Form Fields section
-	$options[] = array(
-		"section" => "files_section",
-		"id"      => PRESSTIGE_SHORTNAME . "_favicon",
-		"title"   => __( 'Favicon', 'presstige' ),
-		"desc"    => __( 'Upload your favicon', 'presstige' ),
-		"type"    => "file"
-	);
+	// $options[] = array(
+	// 	"section" => "files_section",
+	// 	"id"      => PRESSTIGE_SHORTNAME . "_favicon",
+	// 	"title"   => __( 'Favicon', 'presstige' ),
+	// 	"desc"    => __( 'Upload your favicon', 'presstige' ),
+	// 	"type"    => "file"
+	// );
 	
 	return $options;	
 }

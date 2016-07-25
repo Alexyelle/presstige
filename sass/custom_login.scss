@@ -32,12 +32,6 @@ body.login {
 /* Barre du haut - Effet de survol*/
 .login p#backtoblog a:hover,.login p#backtoblog a:active { color:#6c7880; text-decoration:underline; }
 
-/* Modification de la taille du bloc "Connexion" */
-#login { 
-width:400px; 
-margin:0em auto; 
-}
-
 /* Modification de bouton "Se connecter" et des autres liens*/
 #login form .submit input { 
 	border-color:#bccad3!important; 
