@@ -12,9 +12,6 @@ jQuery(document).ready(function($) {
 
  	//  add .has-subnav to parents of .sub-menu
  	$('.sub-menu, .children').closest('li').addClass('has-subnav');
-
- 	//  add the menu link to click
- 	$('div.menu').prepend('<button type="button" class="menu-link navtoggle">Menu</button>');
  	
  	// Keyboard menu
  	$(".menu-link").focus(function() {
