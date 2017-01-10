@@ -1,40 +1,28 @@
-<?php global $options; ?>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package _s
+ */
 
-	</main>
+?>
 
-	<footer role="contentinfo">
-		<div class="widget-area">
-		<?php if ( is_active_sidebar( 'footer-widget-area' ) ){
-			dynamic_sidebar( 'footer-widget-area' );					
-		}?>
-		</div>
-	
-		<div class="copyright">
-			<small>
-				&copy; Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?>					
-				<?php 
-					if ($options['presstige_copy'] != "")
-					echo "<p class='small'>".stripslashes($options['presstige_copy'])."</p>";
-				?>	
-			</small>
-		</div>
-	</footer>
-</div>
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', '_s' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', '_s' ), 'WordPress' ); ?></a>
+			<span class="sep"> | </span>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="https://automattic.com/" rel="designer">Automattic</a>' ); ?>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
-<script type="text/javascript">
-	jQuery(document).ready(function($) { 
-		jQuery(window).konami(function(){ $("#main").addClass('red'); }); // Replace to put your own changes!
-	});
-</script>
-
-<!-- A supprimer si déploiement recherche non utilisé -->
-<script src="<?php echo get_template_directory_uri(); ?>/js/classie.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/uisearch.js"></script>
-<script>
-new UISearch( document.getElementById( 'sb-search' ) );
-</script>
-<!-- END déploiement recherche  -->
 
 </body>
 </html>

@@ -1,9 +1,0 @@
-Basé sur Starkers HTML5
-http://nathanstaines.com/archive/starkers-html5
-
-comprend:
-
-- Jquery
-- Un reset CSS HTML5
-- html5.js pour le support des balises HTML5 sur IE
-- plugin jquery konami code

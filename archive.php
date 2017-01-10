@@ -1,26 +1,51 @@
 <?php
+/**
+ * The template for displaying archive pages
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package _s
+ */
+
 get_header(); ?>
-<?php the_post(); ?>
 
-<div id="primary" role="region" class="content mod fl w70 mrl">
-	<header class="page-header">
-		<h1 class="page-title">
-			<?php if ( is_day() ) : ?>
-				<?php printf( __( 'Daily Archives: <span>%s</span>', 'presstige' ), get_the_date() ); ?>
-			<?php elseif ( is_month() ) : ?>
-				<?php printf( __( 'Monthly Archives: <span>%s</span>', 'presstige' ), get_the_date( 'F Y' ) ); ?>
-			<?php elseif ( is_year() ) : ?>
-				<?php printf( __( 'Yearly Archives: <span>%s</span>', 'presstige' ), get_the_date( 'Y' ) ); ?>
-			<?php else : ?>
-				<?php _e( 'Blog Archives', 'presstige' ); ?>
-			<?php endif; ?>
-		</h1>
-	</header>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-	<?php rewind_posts(); ?>
+		<?php
+		if ( have_posts() ) : ?>
 
-	<?php get_template_part( 'loop', 'archive' ); ?>
-</div>
+			<header class="page-header">
+				<?php
+					the_archive_title( '<h1 class="page-title">', '</h1>' );
+					the_archive_description( '<div class="archive-description">', '</div>' );
+				?>
+			</header><!-- .page-header -->
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
+
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', get_post_format() );
+
+			endwhile;
+
+			the_posts_navigation();
+
+		else :
+
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif; ?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<?php
+get_sidebar();
+get_footer();

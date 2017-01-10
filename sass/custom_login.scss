@@ -1,4 +1,4 @@
-@import "compass/css3";
+@import url('styles.css');
 
 /*  The css for the login page ! */
 html{ background-color: transparent; }
@@ -8,7 +8,7 @@ html{ background-color: transparent; }
     padding: 0;
     margin: 0;
     background: none;
-    @include box-shadow(0);
+    box-shadow: none;
 }
 
 .login h1 a {
@@ -17,7 +17,7 @@ html{ background-color: transparent; }
 	  repeat: no-repeat;
 	  position: top left;
 	}
-	@include background-size(cover);
+	background-size : cover;
 	width:270px; 
 	height:50px; 
 	margin: 20px auto;
@@ -38,12 +38,9 @@ body.login {
 	color:#FFF!important; 
 	font-weight:bold; 
 	background-color: #0BA1D7;
-	@include border-radius(3px);
-	@include text-shadow(rgba(0, 0, 0, 0.2) 0 1px 0);
-	@include background-image(linear-gradient(left top, #0BA1D7, #7DCBE8));  
+	border-radius : 3px;
 }
 #login form .submit input:hover { 
-	@include background-image(linear-gradient(left top, #7DCBE8, #0BA1D7));  
 	color:#FFFFFF!important; 
 }
 .login #nav a { color:#7c8991!important; }

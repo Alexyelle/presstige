@@ -1,33 +1,48 @@
 <?php
-  
+/**
+ * The template for displaying search results pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package _s
+ */
 
 get_header(); ?>
 
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-<div id="primary" role="region" class="content mod fl w70 mrl">
-<?php if ( have_posts() ) : ?>
+		<?php
+		if ( have_posts() ) : ?>
 
-	<header class="page-header">
-		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'presstige' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-	</header>
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', '_s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			</header><!-- .page-header -->
 
-	<?php get_template_part( 'loop', 'search' ); ?>
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
 
-<?php else : ?>
+				/**
+				 * Run the loop for the search to output the results.
+				 * If you want to overload this in a child theme then include a file
+				 * called content-search.php and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', 'search' );
 
-	<article id="post-0" class="post no-results not-found" role="article">
-		<header class="entry-header">
-			<h1 class="entry-title"><?php _e( 'Nothing Found', 'presstige' ); ?></h1>
-		</header><!-- .entry-header -->
+			endwhile;
 
-		<div class="entry-content">
-			<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'presstige' ); ?></p>
-			<?php get_search_form_HTML5_bis(); ?>
-		</div><!-- .entry-content -->
-	</article><!-- #post-0 -->
+			the_posts_navigation();
 
-<?php endif; ?>
-</div>
+		else :
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif; ?>
+
+		</main><!-- #main -->
+	</section><!-- #primary -->
+
+<?php
+get_sidebar();
+get_footer();
