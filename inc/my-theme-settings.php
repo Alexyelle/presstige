@@ -33,7 +33,6 @@ function presstige_get_settings() {
 	$output['presstige_page_title'] 		= __('Theme Options','theme_name');
 	$output['presstige_page_sections'] 	= presstige_options_page_sections();
 	$output['presstige_page_fields'] 		= presstige_options_page_fields();
-	$output['presstige_contextual_help'] 	= presstige_options_page_contextual_help();
 	
 return $output;
 }  
@@ -113,9 +112,6 @@ function presstige_register_settings(){
 function presstige_add_menu(){
 	
 	$settings_output 		= presstige_get_settings();
-	// collect our contextual help text
-	$presstige_contextual_help = $settings_output['presstige_contextual_help'];
-	
 	// Display Settings Page link under the "Appearance" Admin Menu
 	$presstige_settings_page = add_theme_page(__('Theme Options'), __('Theme Options','theme_name'), 'manage_options', PRESSTIGE_PAGE_BASENAME, 'presstige_settings_page_fn');
 
@@ -183,74 +179,11 @@ function presstige_form_field_fn($args = array()) {
 			}
 			echo ($desc != '') ? "<span class='description'>$desc</span>" : "";
 		break;
-		
-		case 'textarea':
-			$options[$id] = stripslashes($options[$id]);
-			// $options[$id] = esc_html( $options[$id]);
-			echo "<textarea class='textarea$field_class' type='text' id='$id' name='" . $presstige_option_name . "[$id]' rows='5' cols='60'>$options[$id]</textarea>";
-			echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : ""; 		
-		break;
-		
-		case 'select':
-			echo "<select id='$id' class='select$field_class' name='" . $presstige_option_name . "[$id]'>";
-				foreach($choices as $item) {
-					$value 	= esc_attr($item, 'theme_name');
-					$item 	= esc_html($item, 'theme_name');
-					
-					$selected = ($options[$id]==$value) ? 'selected="selected"' : '';
-					echo "<option value='$value' $selected>$item</option>";
-				}
-			echo "</select>";
-			echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : ""; 
-		break;
-		
-		case 'select2':
-			echo "<select id='$id' class='select$field_class' name='" . $presstige_option_name . "[$id]'>";
-			foreach($choices as $item) {
 				
-				$item = explode("|",$item);
-				$item[0] = esc_html($item[0], 'theme_name');
-				
-				$selected = ($options[$id]==$item[1]) ? 'selected="selected"' : '';
-				echo "<option value='$item[1]' $selected>$item[0]</option>";
-			}
-			echo "</select>";
-			echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";
-		break;
-		
 		case 'checkbox':
 			echo "<input class='checkbox$field_class' type='checkbox' id='$id' name='" . $presstige_option_name . "[$id]' value='1' " . checked( $options[$id], 1, false ) . " />";
 			echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";
 		break;
-		
-		case "multi-checkbox":
-			foreach($choices as $item) {
-				
-				$item = explode("|",$item);
-				$item[0] = esc_html($item[0], 'theme_name');
-				
-				$checked = '';
-				
-			    if ( isset($options[$id][$item[1]]) ) {
-					if ( $options[$id][$item[1]] == 'true') {
-			   			$checked = 'checked="checked"';
-					}
-				}
-				
-				echo "<input class='checkbox$field_class' type='checkbox' id='$id|$item[1]' name='" . $presstige_option_name . "[$id|$item[1]]' value='1' $checked /> $item[0] <br/>";
-			}
-			echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";
-		break;
-
-		// case "file":
-		// 	$options[$id] = esc_html( $options[$id]);
-		// 	$delete = "delete_".$id;
-		// 	echo "<input id='$id' name='$id' type='file' /><label for='$id'><img height='16' src='". $options[$id] ."' />" . __( '(preferably .ico)', 'theme_name' ) . "</label>";
-		// 	if ( '' != $options[$id] ):
-	 //            // echo "<input id='" . $delete . "' name='" . $presstige_option_name . "[".$delete."]' type='submit' class='button-primary' value='". __( 'Delete Favicon', 'theme_name' )."' />";	            
-	 //            echo "<input id='" . $delete . "' name='" . $delete . "' type='submit' class='button-primary' value='". __( 'Delete Favicon', 'theme_name' )."' />";
-	 //        endif; 
-		// break;
 	}
 }
 
@@ -453,85 +386,6 @@ function presstige_validate_options($input) {
 					}
 				break;
 				
-				case 'textarea':
-					//switch validation based on the class!
-					switch ( $option['class'] ) {
-						//for only inline html
-						case 'inlinehtml':
-							// accept only inline html
-							$input[$option['id']] 		= trim($input[$option['id']]); // trim whitespace
-							$input[$option['id']] 		= force_balance_tags($input[$option['id']]); // find incorrectly nested or missing closing tags and fix markup
-							$input[$option['id']] 		= addslashes($input[$option['id']]); //wp_filter_kses expects content to be escaped!
-							$valid_input[$option['id']] = wp_filter_kses($input[$option['id']]); //calls stripslashes then addslashes
-						break;
-						
-						//for no html
-						case 'nohtml':
-							//accept the input only after stripping out all html, extra white space etc!
-							$input[$option['id']] 		= sanitize_text_field($input[$option['id']]); // need to add slashes still before sending to the database
-							$valid_input[$option['id']] = addslashes($input[$option['id']]);
-						break;
-						
-						//for allowlinebreaks
-						case 'allowlinebreaks':
-							//accept the input only after stripping out all html, extra white space etc!
-							$input[$option['id']] 		= wp_strip_all_tags($input[$option['id']]); // need to add slashes still before sending to the database
-							$valid_input[$option['id']] = addslashes($input[$option['id']]);
-						break;
-						
-						// a "cover-all" fall-back when the class argument is not set
-						default:
-							// accept only limited html
-							//my allowed html
-							$allowed_html = array(
-								'a' 			=> array('href' => array (),'title' => array ()),
-								'b' 			=> array(),
-								'blockquote' 	=> array('cite' => array ()),
-								'br' 			=> array(),
-								'dd' 			=> array(),
-								'dl' 			=> array(),
-								'dt' 			=> array(),
-								'em' 			=> array (), 
-								'i' 			=> array (),
-								'li' 			=> array(),
-								'ol' 			=> array(),
-								'p' 			=> array(),
-								'q' 			=> array('cite' => array ()),
-								'strong' 		=> array(),
-								'ul' 			=> array(),
-								'h1' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ()),
-								'h2' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ()),
-								'h3' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ()),
-								'h4' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ()),
-								'h5' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ()),
-								'h6' 			=> array('align' => array (),'class' => array (),'id' => array (), 'style' => array ())
-							);
-							
-							$input[$option['id']] 		= trim($input[$option['id']]); // trim whitespace
-							$input[$option['id']] 		= force_balance_tags($input[$option['id']]); // find incorrectly nested or missing closing tags and fix markup
-							$input[$option['id']] 		= wp_kses( $input[$option['id']], $allowed_html); // need to add slashes still before sending to the database
-							$valid_input[$option['id']] = addslashes($input[$option['id']]);							
-						break;
-					}
-				break;
-				
-				case 'select':
-					// check to see if the selected value is in our approved array of values!
-					$valid_input[$option['id']] = (in_array( $input[$option['id']], $option['choices']) ? $input[$option['id']] : '' );
-				break;
-				
-				case 'select2':
-					// process $select_values
-						$select_values = array();
-						foreach ($option['choices'] as $k => $v) {
-							// explode the connective
-							$pieces = explode("|", $v);
-							
-							$select_values[] = $pieces[1];
-						}
-					// check to see if selected value is in our approved array of values!
-					$valid_input[$option['id']] = (in_array( $input[$option['id']], $select_values) ? $input[$option['id']] : '' );
-				break;
 				
 				case 'checkbox':
 					// if it's not set, default to null!
@@ -540,69 +394,11 @@ function presstige_validate_options($input) {
 					}
 					// Our checkbox value is either 0 or 1
 					$valid_input[$option['id']] = ( $input[$option['id']] == 1 ? 1 : 0 );
-				break;
-				
-				case 'multi-checkbox':
-					unset($checkboxarray);
-					$check_values = array();
-					foreach ($option['choices'] as $k => $v ) {
-						// explode the connective
-						$pieces = explode("|", $v);
-						
-						$check_values[] = $pieces[1];
-					}
-					
-					foreach ($check_values as $v ) {		
-						
-						// Check that the option isn't null
-						if (!empty($input[$option['id'] . '|' . $v])) {
-							// If it's not null, make sure it's true, add it to an array
-							$checkboxarray[$v] = 'true';
-						}
-						else {
-							$checkboxarray[$v] = 'false';
-						}
-					}
-					// Take all the items that were checked, and set them as the main option
-					if (!empty($checkboxarray)) {
-						$valid_input[$option['id']] = $checkboxarray;
-					}
-				break;
-
-				// case 'file':
-				// 	// $delete =! empty($input['delete_'.$id.'']) ? true : false; 
-				// 	$inputfile = $option['id'];
-				// 	// favicon
-				// 	if (isset($_POST['delete_presstige_favicon'])){
-				// 		$option['id'] = $input[$option['id']]; 
-				// 	    delete_image( $input[$option['id']] );  
-				// 	    $option['id'] = '';  
-				// 	}else if ($_FILES[$inputfile]['size'] > 0) {
-				// 	    $overrides = array('test_form' => false); 
-				// 	    $file = wp_handle_upload($_FILES[$inputfile], $overrides);
-				// 	    $inputfile = $file['url'];
-				// 		$valid_input[$option['id']] = $inputfile;
-				// 	}else{
-				// 		$options = get_option('presstige_options');
-				// 		$valid_input[$option['id']] = $options['presstige_favicon'];
-				// 	}	
-				// break;
-				
+				break;			
 			}
 		}
 return $valid_input; // return validated input
 }
-
-function delete_image( $image_url ) {  
-    global $wpdb;  
-    // We need to get the image's meta ID.  
-    $query = "SELECT ID FROM wp_posts where guid = '" . esc_url($image_url) . "' AND post_type = 'attachment'";  
-    $results = $wpdb->get_results($query);  
-    // And delete it  
-    foreach ( $results as $row ) {  
-        wp_delete_attachment( $row->ID );  
-    }  
-}  
 
  /**
  * Helper function for creating admin messages
