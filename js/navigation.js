@@ -33,10 +33,12 @@
 	button.onclick = function() {
 		if ( -1 !== container.className.indexOf( 'toggled' ) ) {
 			container.className = container.className.replace( ' toggled', '' );
+			button.className = button.className.replace( ' close', '' );
 			button.setAttribute( 'aria-expanded', 'false' );
 			menu.setAttribute( 'aria-expanded', 'false' );
 		} else {
 			container.className += ' toggled';
+			button.className += ' close';
 			button.setAttribute( 'aria-expanded', 'true' );
 			menu.setAttribute( 'aria-expanded', 'true' );
 		}
@@ -104,3 +106,31 @@
 		}
 	}( container ) );
 } )();
+
+jQuery(document).ready(function($) {
+
+	//  add .has-subnav to parents of .sub-menu
+	$('.sub-menu, .children').closest('li').addClass('has-subnav');
+
+	// To enable sub-menus to be open
+	var add_toggle_links = function() { 		
+	 	if ($('.lines-button').is(":visible")){
+	 		if ($(".toggle-link").length > 0){
+	 		}
+	 		else{
+	 			$('.has-subnav > a').after('<span class="toggle-link"> Open submenu </span>');
+	 			$('.toggle-link').click(function(e) {		
+					var $this = $(this);
+					$this.toggleClass('active').siblings('ul').toggleClass('active');
+				});	
+	 		}
+	 	}
+		else{
+			$('.toggle-link').empty();
+		}
+    }
+
+	add_toggle_links();
+
+	$(window).bind("resize", add_toggle_links);
+});

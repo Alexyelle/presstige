@@ -1,5 +1,7 @@
 <?php
 
+require_once ( 'inc/option-maintenance.php' );
+
 /**
  * _s functions and definitions
  *
@@ -106,9 +108,23 @@ add_action( 'widgets_init', '_s_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+		
+	if (!is_admin())   
+    {  
+        wp_deregister_script('jquery');
+
+        // Load the copy of jQuery that comes with WordPress  
+        // The last parameter set to TRUE states that it should be loaded  
+        // in the footer.  
+        wp_register_script('jquery', '/wp-includes/js/jquery/jquery.js', FALSE, '', TRUE);  
+        wp_enqueue_script('jquery');  
+    }  
+
+	wp_enqueue_style( 'main', get_template_directory_uri() . '/css/styles.css' );
 
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'general', get_template_directory_uri() . '/js/general.js', array(), '20170224', true );
 
 	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -150,40 +166,19 @@ require get_template_directory() . '/inc/jetpack.php';
 //////////////////////////
 
 /**
- * Load theme options.
- */
-require get_template_directory() . '/inc/my-theme-settings.php';
-
-/** 
-* Collects our theme options 
-* 
-* @return array 
-*/  
-function presstige_get_global_options(){  
-	$options = array();  
-	$options = get_option('presstige_options');
-return $options;  
-}  
-
-$options = presstige_get_global_options();  
-
-// Maintenance page
-function load_page_wait() {
-	$options = get_option('presstige_options');
-	$maintenance = $options['presstige_maintenance'];
-	if ( $maintenance == 1){
-		$isLoginPage = strpos($_SERVER['REQUEST_URI'], "wp-login.php") !== false;
-		$adminPage = strpos($_SERVER['REQUEST_URI'], "wp-admin") !== false;
-		if($maintenance && !is_user_logged_in() && !$isLoginPage && !$adminPage) {
-			include('inc/maintenance.php');
-			exit();	
-		}
-	}
-}
-add_action('init','load_page_wait');
-
-
-/**
  *	This theme supports editor styles
  */
 add_editor_style("css/editor-style.css");
+
+/*** Add a login stylesheet and a wordpress specifiq stylesheet------------
+Special thanks to Valentin Brandt :  
+http://www.geekeries.fr/snippet/personnaliser-interface-ui-wordpress-3-2/ 
+comment code if not needed -----------*/
+
+if( !function_exists('gk_ui_wp32_login'))  {
+	function gk_ui_wp32_login() {
+		echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory') . '/css/custom_login.css"/>';
+	}
+}
+
+add_action('login_head', 'gk_ui_wp32_login');

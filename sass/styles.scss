@@ -1,6 +1,12 @@
 /*!
-* www.KNACSS.com V6.0.5 (1er décembre 2016) @author: Alsacreations, Raphael Goetter
-* Licence WTFPL http://www.wtfpl.net/
+Theme Name: Presstige
+Theme URI: 
+Author: O2Sources
+Author URI: http://www.o2sources.com
+Description: A blank theme for starting a WordPress project based on <a href="http://underscores.me/"><em>underscores</em></a> but with css based on <a href="http://knacss.com/">knacss</a>.
+Version: 2.0
+License: GPL
+License URI: http://codex.wordpress.org/License
 */
 
 /* ----------------------------- */
@@ -69,24 +75,41 @@
         font-size: 2rem;
     }
     a{ color:$color1; }
-    a:hover{ color:$color2 }
+    a:hover{ color:$color2; }
 }
 /* END option réseaux sociaux */
 
 /* General */
 .container{
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1280px;
     padding: 0 15px;    
     position: relative;
-}
+} 
 
 /* Navigation */
 .main-navigation {
     clear: both;
     display: block;
-    float: left;
-    width: 100%;
+    width: 100%;   
+    
+    //Menu principal
+    ul.nav-menu > li{        
+        position: relative;     
+        > a{                
+            display: block;
+            padding: 10px; 
+        }        
+
+        &.current_page_item > a,
+        &.current-menu-item > a,
+        &.current_page_ancestor > a,
+        &.current-menu-ancestor > a {            
+            &::after{       
+                opacity: 1;
+            }
+        }
+    }
 
     ul {
         display: none;
@@ -94,78 +117,210 @@
         margin: 0;
         padding-left: 0;
 
+        // Sous-menu
         ul {
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-            float: left;
-            position: absolute;
-            top: 1.5em;
-            left: -999em;
-            z-index: 99999;
-
-            ul {
-                left: -999em;
-                top: 0;
-            }
-
-            li {
-                &:hover > ul,
-                &.focus > ul {
-                    left: 100%;
-                }
-            }
-
-            a {
-                width: 200px;
-            }
-
-            :hover > a,
-            .focus > a {
-            }
-
-            a:hover,
-            a.focus {
+            a {   
+                display: block;
+                padding: 10px;
             }
         }
-
-        li:hover > ul,
-        li.focus > ul {
-            left: auto;
-        }
-    }
-
-    li {
-        float: left;
-        position: relative;
-
-        &:hover > a,
-        &.focus > a {
-        }
-    }
+    }    
 
     a {
-        display: block;
         text-decoration: none;
     }
+}
 
-    .current_page_item > a,
-    .current-menu-item > a,
-    .current_page_ancestor > a,
-    .current-menu-ancestor > a {
+/* Navicon */
+// https://sarasoueidan.com/blog/navicon-transformicons/
+@mixin line {
+  display: inline-block;
+  width: $button-size;
+  height: $button-size/7;
+  background: $color1;
+  border-radius: $button-size/14; 
+  transition: $transition;
+}
+
+.lines {   
+    @include line;
+    position: relative; 
+
+    &:before, &:after {   
+        @include line;
+        position: absolute;
+        left:0;
+        content: '';
+        transform-origin: $button-size/14 center;
+    }
+
+    &:before { top: $button-size/4; }
+    &:after { top: -$button-size/4; }
+}
+.lines-button {
+    display: inline-block;
+    padding: $button-size/2 $button-size/4;
+    transition: .3s;
+    cursor: pointer;
+    user-select: none;
+    border-radius: $button-size/7;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:active {
+        transition: 0;
+        background: rgba(0,0,0,.1);
+    }
+}
+.lines-button.x.close .lines{
+ 
+    background: transparent;
+
+    &:before, &:after{
+      transform-origin: 50% 50%;
+      top:0;
+      width: $button-size;
+    }
+ 
+    &:before{
+      transform: rotate3d(0,0,1,45deg); 
+    }
+    &:after{
+      transform: rotate3d(0,0,1,-45deg); 
     }
 }
 
 /* Small menu. */
 .menu-toggle,
-.main-navigation.toggled ul {
+.main-navigation.toggled ul.menu {
     display: block;
 }
 
-@media screen and (min-width: 37.5em) {
-    .menu-toggle {
+//Class spécifique au menu mobile
+@media (max-width: $small) {
+    .main-navigation li{ display: block; }
+
+    //Submenu mobile
+    .toggle-link {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        height: 42px;
+        width: 40px;
+        border: none;
+        z-index: 200;
+        font-size: 0em;
+        background: rgba(255, 255, 255,0.1);
+        cursor: pointer;
+    }
+    /* arrow to indicate that we have subnav*/
+    .menu .has-subnav > .toggle-link:after {
+        content: "+";
+        font-size: 16px;
+        position: absolute;
+        width: 20px;
+        top: 10px;
+        bottom: 0px;
+        right: 10px;
+        font-weight: bold;
+        color: $color1;
+        text-align: center;
+    }
+
+    .menu .has-subnav  > .toggle-link.active:after {
+        content: "-";
+    }
+
+    .sub-menu { max-height: 90em; }
+
+    /* Hide the Sub menu */
+    li:hover .sub-menu,
+    li:hover .children {
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    /* Open the Sub menu ! */
+    li .sub-menu.active,
+    li.hover .sub-menu,
+    li .children.active,
+    li.hover .children {
+        max-height: 30em;
+        overflow: visible;
+        position: relative;
+        display: block;
+    }
+}
+//Class spécifique au menu desktop
+@media (min-width: ($small + 1)) {
+    .lines-button {
         display: none;
     }
+
+    //Menu principal
+    ul.nav-menu > li{
+        display: inline-block;   
+
+        &:hover > ul,
+        &.focus > ul {
+            left: 0;
+        }   
+        > a{                
+            display: inline-block;
+            padding: 10px;            
+            &::after{
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: $color1;
+                opacity: 0;
+                transition: opacity .3s,transform .3s;
+            }
+        }       
+
+        &:hover > a::after,
+        &.focus > a::after {                
+            opacity: 1;
+            transform: translateY(-7px);
+        }
+    }
+
     .main-navigation ul {
-        display: block;
+        display: block; 
+
+        // Sous-menu
+        ul {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 2.5em;
+            left: -999em;
+            z-index: 9999;            
+            width: 220px;
+            background-color: $color2;
+
+            a{                
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -5px;
+                    width: 5px;
+                    height: 100%;
+                    background: $color1;
+                    opacity: 0;
+                    transition: opacity .3s,transform .3s;
+                }
+                &:hover::before{
+                    opacity: 1;
+                    transform: translateX(5px);            
+                }
+            }
+        }
     }
 }
 

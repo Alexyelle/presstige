@@ -1,0 +1,27 @@
+.icon-bug { background-image: url('png/bug.png'); background-repeat: no-repeat; }
+
+.icon-check { background-image: url('png/check.png'); background-repeat: no-repeat; }
+
+.icon-cross { background-image: url('png/cross.png'); background-repeat: no-repeat; }
+
+.icon-home-1 { background-image: url('png/home-1.png'); background-repeat: no-repeat; }
+
+.icon-home-2 { background-image: url('png/home-2.png'); background-repeat: no-repeat; }
+
+.icon-home-blue { background-image: url('png/home-blue.png'); background-repeat: no-repeat; }
+
+.icon-home-gray { background-image: url('png/home-gray.png'); background-repeat: no-repeat; }
+
+.icon-home-green { background-image: url('png/home-green.png'); background-repeat: no-repeat; }
+
+.main-navigation li:hover.icon-home,
+.icon-home-red { background-image: url('png/home-red.png'); background-repeat: no-repeat; }
+
+.icon-home { background-image: url('png/home.png'); background-repeat: no-repeat; }
+
+.icon-mail { background-image: url('png/mail.png'); background-repeat: no-repeat; }
+
+.icon-more { background-image: url('png/more.png'); background-repeat: no-repeat; }
+
+.icon-tag { background-image: url('png/tag.png'); background-repeat: no-repeat; }
+

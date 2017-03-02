@@ -7,8 +7,7 @@ Just like the original starter theme, don't use it as a Parent Theme!
 
 *Specificities of the theme*
 
-* Embeds a starting template for a custom option page inc/theme-options.php 
-** Already existing: maintenance page + links for social network
 * Embeds CSS for the customisation of the login page (css/custom_login.css)
 * Embeds CSS for the customisation of the editor page (To have the same styles as the front-end.)
 * Konami code
+* Maintenance page
