@@ -187,6 +187,8 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	// Enregistrement des tâches 
 	grunt.registerTask('default', ['browserSync', 'watch']); // "default" = "grunt" en ligne de commande directement dans le dossier du thème
