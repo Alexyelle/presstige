@@ -36,9 +36,9 @@
 		<div class="site-branding">
 			<?php
 			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://via.placeholder.com/200x100" alt="<?php bloginfo( 'name' ); ?>"></a></h1>
 			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?><img src="http://via.placeholder.com/200x100" alt="<?php bloginfo( 'name' ); ?>"></a></p>
 			<?php
 			endif;
 
@@ -49,13 +49,12 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'theme_name' ); ?></button> -->
+		<input type="checkbox" id="btn-burger" class="btn-burger-checkbox">
+		<label for="btn-burger" role="button" class="btn-burger-label" aria-labelledby="menu"><span class="lines"></span></label>
 
-			<button class="lines-button x" type="button" role="button" aria-label="Toggle Navigation">
-				<span class="lines"></span>
-			</button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+		<nav id="site-navigation" class="main-navigation" role="navigation">					
+			
+			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu', 'container' => '', 'menu_class' => 'nav-menu' ) ); ?>
 		</nav><!-- #site-navigation -->		
 
 	</header><!-- #masthead -->

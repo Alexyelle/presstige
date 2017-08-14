@@ -10,7 +10,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header">	
+		<?php
+		if ( has_post_thumbnail() ) {
+		?>
+		<figure>
+			<a class="block-link" href="<?php get_the_permalink() ?>">		
+			<?php the_post_thumbnail();	?>	
+			</a>		
+		</figure>	
+		<?php
+		} else {
+			echo '<div class="icon-thumbnail"><a class="block-link" href="'.get_the_permalink().'"></a></div>';
+		};
+		?>
+		<div class="entry-header-text">
 		<?php
 		if ( is_single() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -22,8 +36,8 @@
 		<div class="entry-meta">
 			<?php _s_posted_on(); ?>
 		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
+		<?php endif; ?>
+		</div><!-- .entry-text -->
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

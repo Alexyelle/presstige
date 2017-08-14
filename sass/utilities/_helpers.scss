@@ -12,7 +12,7 @@
 }
 
 /* hidden but not for an assistive technology like a screen reader, Yahoo! method */
-.visually-hidden {
+.visually-hidden, .screen-reader-text {
   position: absolute !important;
   border: 0 !important;
   height: 1px !important;

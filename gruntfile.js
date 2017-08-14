@@ -181,7 +181,7 @@ module.exports = function(grunt){
      });
 
 	// Chargement des plugins
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-postcss');

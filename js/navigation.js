@@ -109,25 +109,29 @@
 
 jQuery(document).ready(function($) {
 
-	//  add .has-subnav to parents of .sub-menu
-	$('.sub-menu, .children').closest('li').addClass('has-subnav');
-
 	// To enable sub-menus to be open
 	var add_toggle_links = function() { 		
-	 	if ($('.lines-button').is(":visible")){
-	 		if ($(".toggle-link").length > 0){
-	 		}
-	 		else{
-	 			$('.has-subnav > a').after('<span class="toggle-link"> Open submenu </span>');
-	 			$('.toggle-link').click(function(e) {		
-					var $this = $(this);
-					$this.toggleClass('active').siblings('ul').toggleClass('active');
-				});	
-	 		}
-	 	}
-		else{
+		var nav = $( ".btn-burger-checkbox ~ label ~ nav .nav-menu" ).css( "display");
+
+		// if (( nav == "block" ) && $( ".btn-burger-checkbox" ).is( ":checked")) {
+		if (( nav == "block" )) {
+
+			if ($(".toggle-link").length == 0){
+			  $('.sub-menu').after('<span class="toggle-link"> Open submenu </span>');
+			}
+
+			$('.toggle-link').click(function(e) {
+				var $this = $(this);
+				$this.toggleClass('active').prev('ul').toggleClass('active');
+			});
+
+			$('.site-branding, #content').click(function(e) {
+				$( ".btn-burger-checkbox" ).prop( "checked", false );
+			});
+	  	} else {
 			$('.toggle-link').empty();
-		}
+			$('.sub-menu, .toggle-link').removeClass("active")
+		} 
     }
 
 	add_toggle_links();
