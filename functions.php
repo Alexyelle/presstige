@@ -182,3 +182,11 @@ if( !function_exists('gk_ui_wp32_login'))  {
 }
 
 add_action('login_head', 'gk_ui_wp32_login');
+
+/**
+ * Change the Login Logo URL in WordPress 
+ */
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );
+function custom_loginlogo_url($url) {
+    return '/';
+}

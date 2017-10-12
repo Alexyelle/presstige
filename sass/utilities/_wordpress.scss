@@ -8,6 +8,14 @@ Contributors: Automattic, Geoffrey Crofte
 Description: Reset styles for WordPress usage of KNACSS
 */
 
+// current menu elements
+.current_page_item > a {
+}
+.current-menu-item > a {
+}
+.current_page_ancestor > a {
+}
+
 // blocks of content navigation
 .comment-navigation,
 .paging-navigation,

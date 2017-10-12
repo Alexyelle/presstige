@@ -34,7 +34,7 @@ License URI: http://codex.wordpress.org/License
 
 @import "_vendor/_normalize.scss"; // normalize (basic reset)
 
-@import "_variables.scss";
+@import "_config/_variables.scss";
 
 @import "_config/_breakpoints.scss";
 @import "_config/_mixins.scss";
